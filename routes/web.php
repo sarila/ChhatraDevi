@@ -29,6 +29,11 @@ Route::post('/reset-password', 'AdminLoginController@resetPassword')->name('rese
 Route::prefix('/admin')->group(function() {
 	Route::group(['middleware' => 'admin'], function() {
 		Route::get('/dashboard', 'AdminLoginController@adminDashboard')->name('admin.dashboard');
+		
+		//Change password
+		Route::get('/profile/change-password', 'AdminController@changePassword')->name('change.password');
+		Route::post('/profile/check-password', 'AdminController@checkPassword')->name('check-password');
+		Route::post('/profile/update-password/{id}', 'AdminController@updatePassword')->name('update.password');
 	});
 
 	//Admin Logout

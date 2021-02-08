@@ -15,3 +15,5 @@
 
 <!-- Custom JS -->
 <script src="{{asset('AdminDashboard/assets/js/app.js')}}"></script>
+
+@yield('js')
