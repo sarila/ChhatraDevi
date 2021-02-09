@@ -12,6 +12,9 @@
 				<li>
 					<a href="{{ route('setting') }}"><i class="la la-cogs"></i> <span> Settings</span> </a>
 				</li>
+				<li>
+					<a href="{{ route('teams.index')}}"><i class="la la-users"></i> <span> Our Teams</span> </a>
+				</li>
 			</ul>
 		</div>
     </div>

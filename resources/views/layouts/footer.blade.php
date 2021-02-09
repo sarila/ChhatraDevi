@@ -13,7 +13,12 @@
 <script src="{{asset('admin/assets/plugins/raphael/raphael.min.js')}}"></script>
 <script src="{{asset('admin/assets/js/chart.js')}}"></script>
 
+<!-- Datatable JS -->
+<script src="{{ asset('admin/assets/datatables/datatables.js') }}"></script>
+<script src="{{ asset('admin/assets/js/dataTables.bootstrap4.min.js') }}"></script>
 <!-- Custom JS -->
 <script src="{{asset('admin/assets/js/app.js')}}"></script>
+
+
 
 @yield('js')

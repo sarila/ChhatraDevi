@@ -50,6 +50,11 @@ Route::prefix('/admin')->group(function() {
 		//Social Settings
 		Route::get('/setting/social', 'SettingController@social')->name('social');
 		Route::post('/social/update/{id}', 'SettingController@socialUpdate')->name('update.social');
+
+		//Our Team
+		Route::resource('teams', TeamController::class);
+		Route::get('/team/dataTable', 'TeamController@dataTable')->name('teamTable');
+
 	});
 
 	//Admin Logout
