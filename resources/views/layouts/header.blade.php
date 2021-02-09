@@ -4,7 +4,7 @@
 		<!-- Logo -->
 	    <div class="header-left">
 	        <a href="{{route('admin.dashboard')}}" class="logo">
-				<img src="{{asset('/AdminDashboard/assets/img/logo.png')}}" width="40" height="40" alt="">
+				<img src="{{asset('/admin/assets/img/logo.png')}}" width="40" height="40" alt="">
 			</a>
 	    </div>
 		<!-- /Logo -->
@@ -25,16 +25,21 @@
 		
 		<a id="mobile_btn" class="mobile_btn" href="index.html#sidebar"><i class="fa fa-bars"></i></a>
 		
+        @php
+            $current_user = Auth::guard('admin')->user();
+        @endphp
+
+
 		<!-- Header Menu -->
 		<ul class="nav user-menu">
 			<li class="nav-item dropdown has-arrow main-drop">
 				<a href="" class="dropdown-toggle nav-link" data-toggle="dropdown">
-					<span class="user-img"><img src="{{asset('/AdminDashboard/assets/img/profiles/avatar-21.jpg')}}" alt="">
+					<span class="user-img"><img src="{{ asset('storage/'. $current_user->image) }}" alt="">
 					<span class="status online"></span></span>
 					<span>Admin</span>
 				</a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="profile.html">My Profile</a>
+					<a class="dropdown-item" href="admin.profile">My Profile</a>
 					<a class="dropdown-item" href="settings.html">Settings</a>
 					<a class="dropdown-item" href="{{route('change.password')}}">Change Password</a>
 					<a class="dropdown-item" href="{{route('logout')}}">Logout</a>

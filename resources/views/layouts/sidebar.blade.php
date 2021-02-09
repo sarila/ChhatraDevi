@@ -9,6 +9,9 @@
 				<li>
 					<a href="{{ route('admin.dashboard') }}"><i class="la la-dashboard"></i> <span> Dashboard</span> </a>
 				</li>
+				<li>
+					<a href="{{ route('setting') }}"><i class="la la-cogs"></i> <span> Settings</span> </a>
+				</li>
 			</ul>
 		</div>
     </div>

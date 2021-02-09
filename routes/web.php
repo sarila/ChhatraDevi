@@ -34,6 +34,22 @@ Route::prefix('/admin')->group(function() {
 		Route::get('/profile/change-password', 'AdminController@changePassword')->name('change.password');
 		Route::post('/profile/check-password', 'AdminController@checkPassword')->name('check-password');
 		Route::post('/profile/update-password/{id}', 'AdminController@updatePassword')->name('update.password');
+
+		//Admin Profile
+		Route::get('/profile/update', 'AdminController@adminProfile')->name('admin.profile');
+		Route::post('/profile/update/{id}', 'AdminController@updateProfile')->name('update.profile');
+
+		//Settings
+		Route::get('/setting', 'SettingController@index')->name('setting');
+		Route::post('/setting/update/{id}', 'SettingController@updateSetting')->name('update.setting');
+
+		//Theme
+		Route::get('/setting/theme', 'SettingController@theme')->name('theme');
+		Route::post('/theme/update/{id}', 'SettingController@updateTheme')->name('update.theme');
+
+		//Social Settings
+		Route::get('/setting/social', 'SettingController@social')->name('social');
+		Route::post('/social/update/{id}', 'SettingController@socialUpdate')->name('update.social');
 	});
 
 	//Admin Logout

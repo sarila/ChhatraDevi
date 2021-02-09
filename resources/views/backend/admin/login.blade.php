@@ -10,16 +10,16 @@
         <title>Login - HRMS admin template</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('/AdminDashboard/assets/img/favicon.png')}}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('/admin/assets/img/favicon.png')}}">
 		
 		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="{{asset('/AdminDashboard/assets/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('/admin/assets/css/bootstrap.min.css')}}">
 		
 		<!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="{{asset('/AdminDashboard/assets/css/font-awesome.min.css')}}">
+        <link rel="stylesheet" href="{{asset('/admin/assets/css/font-awesome.min.css')}}">
 		
 		<!-- Main CSS -->
-        <link rel="stylesheet" href="{{asset('/AdminDashboard/assets/css/style.css')}}">
+        <link rel="stylesheet" href="{{asset('/admin/assets/css/style.css')}}">
 		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -37,7 +37,7 @@
 				
 					<!-- Account Logo -->
 					<div class="account-logo">
-						<a href="{{route('admin.dashboard')}}"><img src="{{asset('/AdminDashboard/assets/img/logo2.png')}}" alt="Dreamguy's Technologies"></a>
+						<a href="{{route('admin.dashboard')}}"><img src="{{asset('/admin/assets/img/logo2.png')}}" alt="Dreamguy's Technologies"></a>
 					</div>
 					<!-- /Account Logo -->
 					
@@ -88,14 +88,14 @@
 		<!-- /Main Wrapper -->
 		
 		<!-- jQuery -->
-        <script src="{{asset('/AdminDashboard/assets/js/jquery-3.2.1.min.js')}}"></script>
+        <script src="{{asset('/admin/assets/js/jquery-3.2.1.min.js')}}"></script>
 		
 		<!-- Bootstrap Core JS -->
-        <script src="{{asset('/AdminDashboard/assets/js/popper.min.js')}}"></script>
-        <script src="{{asset('/AdminDashboard/assets/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('/admin/assets/js/popper.min.js')}}"></script>
+        <script src="{{asset('/admin/assets/js/bootstrap.min.js')}}"></script>
 		
 		<!-- Custom JS -->
-		<script src="{{asset('/AdminDashboard/assets/js/app.js')}}"></script>
+		<script src="{{asset('/admin/assets/js/app.js')}}"></script>
 		
     </body>
 </html>
