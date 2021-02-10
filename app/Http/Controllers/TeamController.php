@@ -83,7 +83,7 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        //
+        return view('backend.teams.show', compact('team'));
     }
 
     /**
@@ -94,7 +94,7 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        //
+        return view('backend.teams.edit', compact('team'));
     }
 
     /**
@@ -106,7 +106,32 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
     {
-        //
+        $data = $request->all();
+        $validateData = $request->validate([
+            'name' => 'required',
+            'designation'=> 'required',
+            'department'=> 'required',
+            'address'=> 'required',
+        ]); 
+        $team->name = $data['name'];
+        $team->designation = $data['designation'];
+        $team->department = $data['department'];
+        $team->address = $data['address'];
+        $random = Str::random(10);
+        if ($request->hasFile('image')) {
+            $image_tmp = $request->file('image');
+            if ($image_tmp->isValid()) {
+                $extension = $image_tmp->getClientOriginalExtension();
+                $filename = $random . '.' . $extension;
+                $path = 'storage/team/';
+                $image_path = public_path($path . $filename);
+                Image::make($image_tmp)->save($image_path);
+                $team->image = $filename;
+            }
+        }
+        $team->save();
+        Session::flash('info_message', 'Team has been Updated Successfully');
+        return redirect()->route('teams.index');
     }
 
     /**
@@ -117,21 +142,28 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
-        //
+        $team->delete();
+        Session::flash('info_message', 'Team has been deleted successfully');
+        return redirect()->back();
     }
 
     public function dataTable(){
         $model = Team::latest()->get();
         return DataTables::of($model)
+        ->addcolumn('image', function($model) {
+            $url= asset('storage/team/'. $model->image);
+            return '<img src="' .$url. '" width="40" align="center" />';
+        })
         ->addColumn('action', function ($model){
             return view ('backend.teams.actions', [
                 'model' => $model,
                 'url_show' => route('teams.show', $model->id),
                 'url_edit' => route('teams.edit', $model->id),
+                'url_delete' => route('teams.destroy', $model->id),
             ]);
         })
         ->addIndexColumn()
-        ->rawColumns(['action'])
+        ->rawColumns(['image','action'])
         ->make(true);
     }
 

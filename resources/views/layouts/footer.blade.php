@@ -16,6 +16,11 @@
 <!-- Datatable JS -->
 <script src="{{ asset('admin/assets/datatables/datatables.js') }}"></script>
 <script src="{{ asset('admin/assets/js/dataTables.bootstrap4.min.js') }}"></script>
+
+<!-- JS for sweet alert -->
+<script src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('admin/assets/js/jquery.sweet-alert.custom.js') }}"></script>
+
 <!-- Custom JS -->
 <script src="{{asset('admin/assets/js/app.js')}}"></script>
 

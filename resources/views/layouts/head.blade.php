@@ -26,7 +26,10 @@
 		<link rel="stylesheet" href="{{asset('/admin/assets/plugins/morris/morris.css')}}">
 
 		<!-- Datatable CSS -->
-        <link rel="stylesheet" href="{{ asset('public/adminpanel/assets/css/dataTables.bootstrap4.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/admin/assets/css/dataTables.bootstrap4.min.css') }}">
+
+        <!-- CSS for sweetalert -->
+		<link rel="stylesheet" href="{{ asset('/admin/assets/css/sweetalert.css') }}">
 
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{asset('/admin/assets/css/style.css')}}">

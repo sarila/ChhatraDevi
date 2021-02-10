@@ -57,7 +57,39 @@
             </div>
         </div>
     </div>
-    <!-- /Page Content -->
+    <!-- Page Content -->
+    <!-- For show data -->
+    <div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="modal-header">
+                    <h4 class="modal-title" id="modal-title">Form Input</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- For delete data -->
+    <!-- <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="modal-header">
+                    <h4 class="modal-title" id="modal-title">Delete</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    Confirm Delete? 
+                    <button class="btn btn-danger" id="deleteButton">Yes Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ -->
+
+
 </div>
 
 @endsection
@@ -76,11 +108,65 @@
                 {data: 'department', name: 'department'},
                 {data: 'designation', name: 'designation'},
                 {data: 'address', name: 'address'},
-                {data: 'image', name: 'image', render: function (data, type, full, meta) {
-                    return "<img src=\"" +data + "\" height=\"50\"/>";
-                }},
+                {data: 'image', name: 'image'},
                 {data: 'action', name: 'action', orderable: false}
             ]
         });
     </script>
+    
+    <script>      
+        // For Show Modal 
+        $('body').on('click', '.btn-show', function (event) {
+            event.preventDefault();
+            var me = $(this),
+                url = me.attr('href'),
+                title = me.attr('title');
+            $('#modal-title').text(title);
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: 'html',
+                success: function (response) {
+                    $('#modal-body').html(response);
+                }
+            });
+            $('#showModal').modal('show');
+        });
+
+        // For Delete Modal 
+        // $('body').on('click', '.btn-delete', function (event) {
+        //     event.preventDefault();
+        //     $.ajax({
+        //         type: "DELETE",
+        //         url: url,
+        //         dataType: 'html',
+        //         success: function (response) {
+        //             $('#modal-body').html('Delete successful');
+        //         }
+        //     });
+        // });
+
+        $(document).on('click', '.btn-delete', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            swal({
+                    title: "Are you sure!",
+                    type: "warning",
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Yes!",
+                    showCancelButton: true,
+                },
+                function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "{{url('/teams/{id}')}}",
+                        data: {id:id},
+                        success: function (data) {
+                            window.location.href =  SITEURL + "/admin/" + deleteFunction + "/" + id;
+                        }         
+                    });
+            });
+        });
+    </script>
+        
 @endsection
