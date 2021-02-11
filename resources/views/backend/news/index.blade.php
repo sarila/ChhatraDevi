@@ -43,8 +43,6 @@
                                     <tr>
                                         <th>S.N.</th>
                                         <th>Title</th>
-                                        <th>Description</th>
-                                        <th>Excerpt</th>
                                         <th>SEO-Title</th>
                                         <th>Keyword</th>
                                         <th>Image</th>
@@ -54,24 +52,32 @@
                                 </thead>
 
                                 <tbody>
-                                    <!-- @foreach($news as $news)
+                                    @foreach($news as $data)
                                         <tr>
-                                            <td>{{ $news->id }}</td>
-                                            <td>{{ $news->news_name }}</td>
+                                            <td>{{ $data->id }}</td>
+                                            <td>{{ $data->title }}</td>
+                                            <td>{{ $data->seo_title }}</td>
+                                            <td>{{ $data->keywords }}</td>
+                                            <td> <img src="{{ asset('storage/news/'. $data->image)}}"  width="40" align="center"></td>
+                                            <td>{{ $data->news_type }}</td>
+
                                             <td>
-                                                <form action="{{ route('categories.destroy',$news->id) }}" method="POST">
-                                                <a class="btn btn-primary" href="{{ route('categories.edit',$news->id) }}"><i class="fa fa-pencil"></i></a>
-                                                @csrf
+                                                <form action="{{ route('news.destroy',$data->id) }}" method="POST">
 
-                                                @method('DELETE')
+                                                    <a href="{{ route('news.show',$data->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a>
 
-                                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                    <a class="btn btn-primary" href="{{ route('news.edit',$data->id) }}"><i class="fa fa-pencil"></i></a>
+                                                    @csrf
 
-                                            </form>
+                                                    @method('DELETE')
+
+                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+
+                                                </form>
 
                                             </td>
                                         </tr>
-                                    @endforeach -->
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

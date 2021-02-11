@@ -39,8 +39,8 @@
 					<span>Admin</span>
 				</a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="admin.profile">My Profile</a>
-					<a class="dropdown-item" href="settings.html">Settings</a>
+					<a class="dropdown-item" href="{{route('admin.profile')}}">My Profile</a>
+					<a class="dropdown-item" href="{{route('setting')}}">Settings</a>
 					<a class="dropdown-item" href="{{route('change.password')}}">Change Password</a>
 					<a class="dropdown-item" href="{{route('logout')}}">Logout</a>
 				</div>

@@ -46,7 +46,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="excerpt" style="font-size: 14px">Excerpt</label>
-                                        <textarea class="form-control" type="text" name="excerpt" id="excerpt" ></textarea> 
+                                        <textarea class="form-control" type="text" name="excerpt" id="excerpt" > {{old('excerpt')}}</textarea> 
                                     </div>
                                 </div>
                             </div>
@@ -66,29 +66,34 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="image">Image <span class="text-danger">*</span></label>
                                         <input type="file" name="image" class="form-control" id="image" accept="image/*" onchange="readURL(this);">
                                     </div>
                                 </div>
-                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>News Type</label><br>
+                                        <input type="radio" id="articles" name="news_type" value="0" selected>
+                                        <label for="articles">Article</label><br>
+                                        <input type="radio" id="media-coverage" name="news_type" value="1">
+                                        <label for="media-coverage">Media Coverage</label><br>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label>Content</label>
+                                <label>Description</label>
                                 <textarea rows="5" cols="5" class="form-control editor1" id="editor1"  name="description">
                                     {{ old('description') }}
                                 </textarea>
                             </div>
-
                             <div class="col-md-12">
                                 <div class="text-right">
                                     <button type="submit" class="btn btn-primary">Add News</button>
                                 </div>
                             </div>
                         </form>
-
-
                     </div>
                 </div>
             </div>
