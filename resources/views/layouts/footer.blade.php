@@ -21,6 +21,9 @@
 <script src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
 <script src="{{ asset('admin/assets/js/jquery.sweet-alert.custom.js') }}"></script>
 
+<!-- Jquery for datatable -->
+<script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+
 <!-- Custom JS -->
 <script src="{{asset('admin/assets/js/app.js')}}"></script>
 

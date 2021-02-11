@@ -19,8 +19,8 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $team = Team::all();
-        return view('backend.teams.index', compact('team'));
+        $teams = Team::all();
+        return view('backend.teams.index', compact('teams'));
     }
 
     /**
@@ -145,26 +145,6 @@ class TeamController extends Controller
         $team->delete();
         Session::flash('info_message', 'Team has been deleted successfully');
         return redirect()->back();
-    }
-
-    public function dataTable(){
-        $model = Team::latest()->get();
-        return DataTables::of($model)
-        ->addcolumn('image', function($model) {
-            $url= asset('storage/team/'. $model->image);
-            return '<img src="' .$url. '" width="40" align="center" />';
-        })
-        ->addColumn('action', function ($model){
-            return view ('backend.teams.actions', [
-                'model' => $model,
-                'url_show' => route('teams.show', $model->id),
-                'url_edit' => route('teams.edit', $model->id),
-                'url_delete' => route('teams.destroy', $model->id),
-            ]);
-        })
-        ->addIndexColumn()
-        ->rawColumns(['image','action'])
-        ->make(true);
     }
 
 }

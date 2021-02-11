@@ -15,6 +15,12 @@
 				<li>
 					<a href="{{ route('teams.index')}}"><i class="la la-users"></i> <span> Our Teams</span> </a>
 				</li>
+				<li>
+					<a href="{{ route('categories.index')}}"><i class="la la-list-alt"></i> <span> Categories</span> </a>
+				</li>
+				<li>
+					<a href="{{ route('news.index')}}"><i class="la la-newspaper"></i> <span> All News</span> </a>
+				</li>
 			</ul>
 		</div>
     </div>

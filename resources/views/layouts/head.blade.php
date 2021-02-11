@@ -8,6 +8,10 @@
 		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
         <meta name="author" content="Dreamguys - Bootstrap Admin Template">
         <meta name="robots" content="noindex, nofollow">
+
+        <!-- csrf token mismatched -->
+		<!-- <meta name="csrf-token" content="{{ csrf_token() }}">  -->
+		
         <title>Dashboard</title>
 		
 		<!-- Favicon -->
@@ -30,6 +34,9 @@
 
         <!-- CSS for sweetalert -->
 		<link rel="stylesheet" href="{{ asset('/admin/assets/css/sweetalert.css') }}">
+
+		<!-- Jquery for datatable -->
+		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
 
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{asset('/admin/assets/css/style.css')}}">

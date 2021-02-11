@@ -53,8 +53,15 @@ Route::prefix('/admin')->group(function() {
 
 		//Our Team
 		Route::resource('teams', TeamController::class);
-		Route::get('/team/dataTable', 'TeamController@dataTable')->name('teamTable');
 
+		//Category
+		Route::resource('categories', CategoryController::class);
+
+		//News
+		Route::resource('news', NewsController::class);
+
+		//route to store image through Ck editor
+		Route::post('ckeditor', 'CkeditorFileUploadController@store')->name('ckeditor.store');
 	});
 
 	//Admin Logout

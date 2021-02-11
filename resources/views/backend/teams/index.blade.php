@@ -50,6 +50,34 @@
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
+
+                                 <tbody>
+                                    @foreach($teams as $team)
+                                        <tr>
+                                            <td>{{ $team->id }}</td>
+                                            <td>{{ $team->name }}</td>
+                                            <td>{{ $team->department }}</td>
+                                            <td>{{ $team->designation }}</td>
+                                            <td>{{ $team->address }}</td>
+                                            <td> <img src="{{ asset('storage/team/'. $team->image)}}"  width="40" align="center"></td>
+                                            <td>
+                                                <form action="{{ route('teams.destroy',$team->id) }}" method="POST">
+
+                                                    <a href="{{ route('teams.show',$team->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a>
+
+                                                    <a class="btn btn-primary" href="{{ route('teams.edit',$team->id) }}"><i class="fa fa-pencil"></i></a>
+                                                    @csrf
+
+                                                    @method('DELETE')
+
+                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+
+                                                </form>
+
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -72,53 +100,23 @@
         </div>
     </div>
 
-    <!-- For delete data -->
-    <!-- <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header" id="modal-header">
-                    <h4 class="modal-title" id="modal-title">Delete</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body" id="modal-body">
-                    Confirm Delete? 
-                    <button class="btn btn-danger" id="deleteButton">Yes Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
- -->
-
 
 </div>
 
 @endsection
 @section('js')
     <script>
-        $('#team-datatable').DataTable({
-            processing: true,
-            serverSide: true,
-            sorting: true,
-            searchable : true,
-            responsive: true,
-            ajax: "{{ route('teamTable') }}",
-            columns: [
-                {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                {data: 'name', name: 'name'},
-                {data: 'department', name: 'department'},
-                {data: 'designation', name: 'designation'},
-                {data: 'address', name: 'address'},
-                {data: 'image', name: 'image'},
-                {data: 'action', name: 'action', orderable: false}
-            ]
+        $(function() {
+            $('#team-datatable').DataTable();
         });
     </script>
     
     <script>      
         // For Show Modal 
-        $('body').on('click', '.btn-show', function (event) {
+        $('body').on('click', '.show', function (event) {
             event.preventDefault();
             var me = $(this),
+            
                 url = me.attr('href'),
                 title = me.attr('title');
             $('#modal-title').text(title);
@@ -131,41 +129,6 @@
                 }
             });
             $('#showModal').modal('show');
-        });
-
-        // For Delete Modal 
-        // $('body').on('click', '.btn-delete', function (event) {
-        //     event.preventDefault();
-        //     $.ajax({
-        //         type: "DELETE",
-        //         url: url,
-        //         dataType: 'html',
-        //         success: function (response) {
-        //             $('#modal-body').html('Delete successful');
-        //         }
-        //     });
-        // });
-
-        $(document).on('click', '.btn-delete', function (e) {
-            e.preventDefault();
-            var id = $(this).data('id');
-            swal({
-                    title: "Are you sure!",
-                    type: "warning",
-                    confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes!",
-                    showCancelButton: true,
-                },
-                function() {
-                    $.ajax({
-                        type: "POST",
-                        url: "{{url('/teams/{id}')}}",
-                        data: {id:id},
-                        success: function (data) {
-                            window.location.href =  SITEURL + "/admin/" + deleteFunction + "/" + id;
-                        }         
-                    });
-            });
         });
     </script>
         
