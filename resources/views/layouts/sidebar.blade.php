@@ -21,6 +21,12 @@
 				<li>
 					<a href="{{ route('news.index')}}"><i class="la la-newspaper"></i> <span> All News</span> </a>
 				</li>
+				<li>
+					<a href="{{ route('galleries.index')}}"><i class="la la-newspaper"></i> <span>Gallery</span> </a>
+				</li>
+				<li>
+					<a href="{{ route('images.index')}}"><i class="la la-newspaper"></i> <span>Image</span> </a>
+				</li>
 			</ul>
 		</div>
     </div>
