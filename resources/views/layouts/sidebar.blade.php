@@ -19,13 +19,16 @@
 					<a href="{{ route('categories.index')}}"><i class="la la-list-alt"></i> <span> Categories</span> </a>
 				</li>
 				<li>
-					<a href="{{ route('news.index')}}"><i class="la la-newspaper"></i> <span> All News</span> </a>
+					<a href="{{ route('news.index')}}"><i class="la la-newspaper-o"></i> <span> All News</span> </a>
 				</li>
 				<li>
-					<a href="{{ route('galleries.index')}}"><i class="la la-newspaper"></i> <span>Gallery</span> </a>
+					<a href="{{ route('galleries.index')}}"><i class="la la-picture-o"></i> <span>Gallery</span> </a>
 				</li>
 				<li>
-					<a href="{{ route('images.index')}}"><i class="la la-newspaper"></i> <span>Image</span> </a>
+					<a href="{{ route('images.index')}}"><i class="la la-camera"></i> <span>Images</span> </a>
+				</li>
+				<li>
+					<a href="{{ route('projects.index')}}"><i class="la la-tasks"></i> <span>Projects</span> </a>
 				</li>
 			</ul>
 		</div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -103,22 +104,25 @@ class AdminController extends Controller
             if ($image_tmp->isValid()) {
                 $extension = $image_tmp->getClientOriginalExtension();
                 $filename = $random . '.' . $extension;
-                $image_path = public_path('storage/' . $filename);
-                Image::make($image_tmp)->save($image_path);
-                $admin->image = $filename;
-            }
-        }
-        $admin->save();
-        $image_path = 'storage/';
-        if ($data['current_image'] != "") {
-            if (file_exists($image_path . $data['current_image'])) {
-                if (!empty($data['image'])) {
-                    if (file_exists($image_path . $admin->image)) {
-                        unlink($image_path . $data['current_image']);
+                $path = 'storage/admin/';
+               if(!File::isDirectory($path)){
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                 //code for remove old file
+                if($admin->image != ''  && $admin->image != null){
+                   $file_old = $path.$admin->image;
+                   if (file_exists($file_old)) {
+                        unlink($file_old);
                     }
                 }
+                $image_path = public_path($path . $filename);
+                Image::make($image_tmp)->save($image_path);
             }
+        } else {
+            $filename = $admin->image;
         }
+        $admin->image = $filename;
+        $admin->save();
         Session::flash('success_message', 'Profile has been updated successfully');
         return redirect()->back();
     }

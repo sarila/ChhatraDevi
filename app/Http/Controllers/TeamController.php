@@ -124,11 +124,21 @@ class TeamController extends Controller
                 $extension = $image_tmp->getClientOriginalExtension();
                 $filename = $random . '.' . $extension;
                 $path = 'storage/team/';
+                if(!File::isDirectory($path)){
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                 //code for remove old file
+                if($team->image != ''  && $team->image != null){
+                   $file_old = $path.$team->image;
+                   unlink($file_old);
+                }
                 $image_path = public_path($path . $filename);
                 Image::make($image_tmp)->save($image_path);
-                $team->image = $filename;
             }
+        } else {
+            $filename = $team->image;
         }
+        $team->image = $filename;
         $team->save();
         Session::flash('info_message', 'Team has been Updated Successfully');
         return redirect()->route('teams.index');

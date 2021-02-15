@@ -8,7 +8,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Gallery</h3>
+                    <h3 class="page-title">News</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="">Dashboard</a></li>
                         <li class="breadcrumb-item active">View All</li>
@@ -21,21 +21,16 @@
         <!-- /Page Header -->
 
         @include('backend.includes.message')
-
-        @foreach ($images as $image)::
-            <div class="col-12 mb-3">
-                <div class="img-holder">
-                    {{ $gallery->image }}
-                    <img src="{{ asset('/storage/galleries/') . $image }}"  alt="">
-                </div>
+  
+        <div class="col-12 mb-3">
+            <div class="img-holder">
+                <img class="lazy-image" src="{{asset('public/storage/news'.$news->image)}}"  alt="">
             </div>
+        </div>
         <!-- End of Image -->
-        @endforeach 
-        
         <div class="col-12 align-self-center">
             <div class="content xs-title">
-                <?php echo $gallery->name ?>
-                
+                {{$news->description}}
             </div>
         </div>
         <!-- End of Content -->

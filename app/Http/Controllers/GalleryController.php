@@ -66,7 +66,7 @@ class GalleryController extends Controller
                 $image_path = public_path($path . $filename);
                 Image::make($image)->save($image_path);
                 $gallery->images()->create([
-                    'image' => $image_path,
+                    'image' => $filename,
                 ]);
             } 
         }

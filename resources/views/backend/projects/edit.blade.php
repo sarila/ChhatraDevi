@@ -84,9 +84,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>News Type</label><br>
-                                        <input type="radio" id="articles" name="news_type" value="0" {{!$news->news_type ? 'checked' : ''}}>
+                                        <input type="radio" id="articles" name="news_type" value="0" selected>
                                         <label for="articles">Article</label><br>
-                                        <input type="radio" id="media-coverage" name="news_type" value="1" {{$news->news_type ? 'checked' : ''}}>
+                                        <input type="radio" id="media-coverage" name="news_type" value="1">
                                         <label for="media-coverage">Media Coverage</label><br>
                                     </div>
                                 </div>

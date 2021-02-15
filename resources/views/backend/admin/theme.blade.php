@@ -56,7 +56,7 @@
                             <span class="form-text text-muted">Recommended image size is 190px x 60px</span>
                         </div>
                         <div class="col-lg-4">
-                            <div class="img-thumbnail float-right"><img src="{{asset('public/uploads/'.$theme->header_logo)}}" alt="" width="190" height="60" id="one"></div>
+                            <div class="img-thumbnail float-right"><img src="{{asset('storage/admin/theme/'.$theme->header_logo)}}" alt="" width="100" height="100" id="one"></div>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -66,7 +66,7 @@
                             <span class="form-text text-muted">Recommended image size is 190px x 60px</span>
                         </div>
                         <div class="col-lg-4">
-                            <div class="img-thumbnail float-right"><img src="{{ asset('public/uploads/'.$theme->footer_logo) }}" alt="" width="190" height="60" id="three"></div>
+                            <div class="img-thumbnail float-right"><img src="{{ asset('storage/admin/theme/'.$theme->footer_logo) }}" alt="" width="100" height="100" id="three"></div>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -76,7 +76,7 @@
                             <span class="form-text text-muted">Recommended image size is 16px x 16px</span>
                         </div>
                         <div class="col-lg-4">
-                            <div class="settings-image img-thumbnail float-right"><img src="{{ asset('public/uploads/'.$theme->favicon) }}" class="img-fluid" width="60" height="16" alt="" id="two"></div>
+                            <div class="settings-image img-thumbnail float-right"><img src="{{ asset('storage/admin/theme/'.$theme->favicon) }}" class="img-fluid" width="60" height="60" alt="" id="two"></div>
                         </div>
                     </div>
                     <div class="submit-section">
@@ -96,7 +96,7 @@
                 reader.onload = function(e) {
                     $('#one')
                         .attr('src', e.target.result)
-                        .width(190)
+                        .width(100)
                 };
                 reader.readAsDataURL(input.files[0]);
             }
@@ -107,7 +107,7 @@
                 reader.onload = function(e) {
                     $('#three')
                         .attr('src', e.target.result)
-                        .width(190)
+                        .width(100)
                 };
                 reader.readAsDataURL(input.files[0]);
             }
@@ -118,7 +118,7 @@
                 reader.onload = function(e) {
                     $('#two')
                         .attr('src', e.target.result)
-                        .width(16)
+                        .width(60)
                 };
                 reader.readAsDataURL(input.files[0]);
             }

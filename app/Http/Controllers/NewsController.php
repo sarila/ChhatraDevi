@@ -110,7 +110,6 @@ class NewsController extends Controller
             'title' => 'required|max:255',
             'excerpt' => 'required|max:255',
             'seo_title' => 'required',
-            'image' => 'required',
         ]);
         $data = $request->all();
         $news->title = $data['title'];
@@ -129,11 +128,18 @@ class NewsController extends Controller
                 if(!File::isDirectory($path)){
                     File::makeDirectory($path, 0777, true, true);
                 }
+                 //code for remove old file
+                if($news->image != ''  && $news->image != null){
+                   $file_old = $path.$news->image;
+                   unlink($file_old);
+                }
                 $image_path = public_path($path . $filename);
                 Image::make($image_tmp)->save($image_path);
-                $news->image = $filename;
             }
+        } else {
+            $filename = $news->image;
         }
+        $news->image = $filename;
         $news->save();
         Session::flash('info_message', 'News has been Updated');
         return redirect()->route('news.index');

@@ -97,7 +97,7 @@
                                 @if(empty($user->image))
                                     <img src="{{ asset('public/uploads/default/avatar.png') }}" style="width: 100px" id="one">
                                 @else
-                                    <img src="{{ asset('public/uploads/admin/profile/'.$user->image) }}" style="width: 100px" id="one">
+                                    <img src="{{ asset('storage/admin/'.$user->image) }}" style="width: 100px" id="one">
                                 @endif
                             </div>
                         </div>

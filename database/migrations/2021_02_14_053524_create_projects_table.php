@@ -18,6 +18,8 @@ class CreateProjectsTable extends Migration
             $table->string('title');
             $table->string('excerpt');
             $table->longText('description');
+            $table->string('coverimage');
+            $table->date('start_date');
             $table->unsignedBigInteger('gallery_id');
             $table->tinyInteger('status');
             $table->foreign('gallery_id')->references('id')->on('galleries');

@@ -34,7 +34,7 @@
 		<ul class="nav user-menu">
 			<li class="nav-item dropdown has-arrow main-drop">
 				<a href="" class="dropdown-toggle nav-link" data-toggle="dropdown">
-					<span class="user-img"><img src="{{ asset('storage/'. $current_user->image) }}" alt="">
+					<span class="user-img"><img src="{{ asset('storage/admin/'. $current_user->image) }}" alt="">
 					<span class="status online"></span></span>
 					<span>Admin</span>
 				</a>

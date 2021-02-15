@@ -66,6 +66,9 @@ Route::prefix('/admin')->group(function() {
 		//Photos
 		Route::resource('images', ImageController::class);
 
+		//Projects
+		Route::resource('projects', ProjectController::class);
+
 		//route to store image through Ck editor
 		Route::post('ckeditor', 'CkeditorFileUploadController@store')->name('ckeditor.store');
 	});
