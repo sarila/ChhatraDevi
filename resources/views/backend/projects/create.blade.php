@@ -101,7 +101,6 @@
                                     <label for="start_date">Start Date <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="start_date" id="datepicker"> 
                                 </div>
-
                             </div>
                             <div class="col-md-12">
                                 <div class="text-right">

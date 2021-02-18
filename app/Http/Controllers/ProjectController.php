@@ -91,7 +91,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('backend.projects.show', compact('project'));
     }
 
     /**
@@ -102,7 +102,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $galleries = Gallery::all();
+        $categories = Category::all();
+        return view('backend.projects.edit', compact('project', 'galleries', 'categories'));
     }
 
     /**
@@ -114,7 +116,46 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+         $this->validate($request, [
+            'title' => 'required|max:255',
+            'excerpt' => 'required|max:255',
+            'description' => 'required',
+            'coverimage' => 'required',
+        ]);
+
+        $data = $request->all();
+        $project->title = $data['title'];
+        $project->excerpt = $data['excerpt'];
+        $project->description = $data['description'];
+        $project->gallery_id = $data['gallery_id'];
+        $project->status = $data['status'];
+        $project->category_id = $data['category_id'];
+        $project->start_date =  Carbon::create($data['start_date']);
+        $random = Str::random(10);
+        if ($request->hasFile('coverimage')) {
+            $coverimage_tmp = $request->file('coverimage');
+            if ($coverimage_tmp->isValid()) {
+                $extension = $coverimage_tmp->getClientOriginalExtension();
+                $filename = $random . '.' . $extension;
+                $path = 'storage/project/';
+                if(!File::isDirectory($path)){
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                 //code for remove old file
+                if($project->coverimage != ''  && $project->coverimage != null){
+                   $file_old = $path.$project->coverimage;
+                   unlink($file_old);
+                }
+                $coverimage_path = public_path($path . $filename);
+                Image::make($coverimage_tmp)->save($coverimage_path);
+            }
+        } else {
+            $filename = $project->coverimage;
+        }
+        $project->coverimage = $filename;
+        $project->save();
+        Session::flash('info_message', 'Project has been Added');
+        return redirect()->route('projects.index');
     }
 
     /**
@@ -125,6 +166,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        Session::flash('info_message', 'Project Deleted');
+        return redirect()->back();
     }
 }

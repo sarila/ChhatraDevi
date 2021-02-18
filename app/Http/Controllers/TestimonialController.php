@@ -151,6 +151,7 @@ class TestimonialController extends Controller
     public function destroy(Testimonial $testimonial)
     {
         $testimonial->delete();
+        Session::flash('info_message', 'Testimonial Deleted');
         return redirect()->back();
     }
 }

@@ -92,10 +92,10 @@
                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Status</label><br>
-                                        <input type="radio" id="ongoing" name="status" value="0">
-                                        <label for="ongoing">Ongoing</label><br>
-                                        <input type="radio" id="completed" name="status" value="1">
-                                        <label for="completed">Completed</label><br>
+                                        <input type="radio" id="past" name="status" value="0">
+                                        <label for="past">Past Event</label><br>
+                                        <input type="radio" id="future" name="status" value="1">
+                                        <label for="future">Future Events</label><br>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -109,17 +109,21 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <label for="time_duration">Time Duration <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="time_duration" id="time_duration"> 
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="coverimage">Cover Image <span class="text-danger">*</span></label>
-                                        <input type="file" name="coverimage" class="form-control" id="coverimage" accept="image/*" onchange="readURL(this);">
+                                        <label for="feature_image">Feature Image <span class="text-danger">*</span></label>
+                                        <input type="file" name="feature_image" class="form-control" id="feature_image" accept="image/*" onchange="readURL(this);">
                                     </div>
                                 </div>  
                                 <div class="col-md-6">
-                                    <label for="start_date">Start Date <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="start_date" id="datepicker"> 
+                                    <label for="date">Date <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="date" id="datepicker"> 
                                 </div>
 
                             </div>

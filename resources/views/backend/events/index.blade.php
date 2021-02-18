@@ -8,7 +8,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Projects</h3>
+                    <h3 class="page-title">Events</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="">Dashboard</a></li>
                         <li class="breadcrumb-item active">View All</li>
@@ -32,7 +32,7 @@
                         </span>
                         <div class="pull-right">
                             <div class="dropdown">
-                                <a href="{{route('projects.create')}}" class="btn btn-primary" ><i class="fa fa-plus"></i> Add New</a>
+                                <a href="{{route('events.create')}}" class="btn btn-primary" ><i class="fa fa-plus"></i> Add New</a>
                             </div>
                         </div>
                     </div>
@@ -43,6 +43,12 @@
                                     <tr>
                                         <th>S.N.</th>
                                         <th>Title</th>
+                                        <th>Location</th>
+                                        <th>Duration</th>
+                                        <th>Entrance (no. of seat)</th>
+                                        <th>Feature_image</th>
+                                        <th>Date</th>
+                                        <th>Time Duration</th>
                                         <th>Gallery_id</th>
                                         <th>Category_id</th>
                                         <th>Status</th>
@@ -52,10 +58,16 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach($projects as $data)
+                                    @foreach($events as $data)
                                         <tr>
                                             <td>{{ $data->id }}</td>
                                             <td>{{ $data->title }}</td>
+                                            <td>{{ $data->location }}</td>
+                                            <td>{{ $data->duration }}</td>
+                                            <td>{{ $data->no_of_seat }}</td>
+                                            <td>{{ $data->feature_image }}</td>
+                                            <td>{{ $data->date }}</td>
+                                            <td>{{ $data->time_duration }}</td>
                                             <td>{{ $data->gallery_id }}</td>
                                             <td>{{ $data->category_id }}</td>
                                             <td>{{ $data->status }}</td>
@@ -63,11 +75,11 @@
                                             <td>{{ $data->projects_type }}</td>
 
                                             <td>
-                                                <form action="{{ route('projects.destroy',$data->id) }}" method="POST">
+                                                <form action="{{ route('events.destroy',$data->id) }}" method="POST">
 
-                                                    <a href="{{ route('projects.show',$data->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a>
+                                                    <a href="{{ route('events.show',$data->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a>
 
-                                                    <a class="btn btn-primary" href="{{ route('projects.edit',$data->id) }}"><i class="fa fa-pencil"></i></a>
+                                                    <a class="btn btn-primary" href="{{ route('events.edit',$data->id) }}"><i class="fa fa-pencil"></i></a>
                                                     @csrf
 
                                                     @method('DELETE')
@@ -97,7 +109,7 @@
 
 <script>
  $(function() {
-   $('#projects-datatable').DataTable();
+   $('#events-datatable').DataTable();
  });
 </script>
 @endsection

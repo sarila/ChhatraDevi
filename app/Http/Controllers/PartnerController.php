@@ -148,7 +148,8 @@ class PartnerController extends Controller
      */
     public function destroy(Partner $partner)
     {
-        $partner->destroy();
+        $partner->delete();
+        Session::flash('info_message', 'Partner Deleted');
         return redirect()->back();
     }
 }

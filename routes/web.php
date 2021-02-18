@@ -18,7 +18,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/login', 'AdminLoginController@login')->name('login');
+Route::get('admin/login', 'AdminLoginController@login')->name('login');
 Route::post('/login', 'AdminLoginController@adminLogin')->name('admin.login');
 Route::get('/forget-password', 'AdminLoginController@forgetPassword')->name('forget-password');
 Route::post('/reset-password', 'AdminLoginController@resetPassword')->name('reset-password');
