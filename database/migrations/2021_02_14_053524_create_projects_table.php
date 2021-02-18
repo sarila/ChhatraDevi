@@ -21,8 +21,10 @@ class CreateProjectsTable extends Migration
             $table->string('coverimage');
             $table->date('start_date');
             $table->unsignedBigInteger('gallery_id');
+            $table->unsignedBigInteger('category_id');
             $table->tinyInteger('status');
             $table->foreign('gallery_id')->references('id')->on('galleries');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

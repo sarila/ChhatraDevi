@@ -37,6 +37,14 @@
                                         <input type="text" class="form-control" name="category_name" id="category_name" value="{{ old('category_name') }}">
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <textarea rows="5" cols="5" class="form-control editor1" id="editor1"  name="description">
+                                            {{ old('description') }}
+                                        </textarea>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="text-right">
@@ -52,19 +60,13 @@
     <!-- /Page Content -->
 @endsection
 
-<!-- @section('js')
+@section('js')
+<!-- CKEDITOR js -->
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
     <script type="text/javascript">
-        function readURL(input){
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#one')
-                        .attr('src', e.target.result)
-                        .width(100)
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+        CKEDITOR.replace('editor1', {
+            filebrowserUploadUrl: "{{route('ckeditor.store', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
     </script>
 @endsection
- -->

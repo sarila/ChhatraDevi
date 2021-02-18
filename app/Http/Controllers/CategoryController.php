@@ -44,6 +44,7 @@ class CategoryController extends Controller
         $data=$request->all();
         $category = new Category();
         $category->category_name = $data['category_name'];
+        $category->description = $data['description'];
         $category->slug = Str::slug($data['category_name']);
         $category->save();
         Session::flash('info_message', 'Category has been Added');
@@ -86,6 +87,7 @@ class CategoryController extends Controller
         ]);
         $data=$request->all();
         $category->category_name = $data['category_name'];
+        $category->description = $data['description'];
         $category->slug = Str::slug($data['category_name']);
         $category->save();
         Session::flash('info_message', 'Category has been updated');

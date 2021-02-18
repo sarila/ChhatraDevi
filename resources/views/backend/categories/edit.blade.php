@@ -36,6 +36,14 @@
                                         <input type="text" class="form-control" name="category_name" id="category_name" value="{{ old('category_name')??$category->category_name }}">
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <textarea rows="5" cols="5" class="form-control editor1" id="editor1"  name="description">
+                                            {{old('description') ?? $category->description}}
+                                        </textarea>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="text-right">
@@ -50,4 +58,16 @@
     </div>
     <!-- /Page Content -->
 
+    @endsection
+
+    @section('js')
+
+    <!-- CKEDITOR js -->
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('editor1', {
+            filebrowserUploadUrl: "{{route('ckeditor.store', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
     @endsection

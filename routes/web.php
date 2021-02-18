@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
@@ -26,6 +23,7 @@ Route::post('/login', 'AdminLoginController@adminLogin')->name('admin.login');
 Route::get('/forget-password', 'AdminLoginController@forgetPassword')->name('forget-password');
 Route::post('/reset-password', 'AdminLoginController@resetPassword')->name('reset-password');
 
+//Route Backend
 Route::prefix('/admin')->group(function() {
 	Route::group(['middleware' => 'admin'], function() {
 		Route::get('/dashboard', 'AdminLoginController@adminDashboard')->name('admin.dashboard');
@@ -69,6 +67,16 @@ Route::prefix('/admin')->group(function() {
 		//Projects
 		Route::resource('projects', ProjectController::class);
 
+		//Partners
+		Route::resource('partners', PartnerController::class);
+
+		//Testimonials
+		Route::resource('testimonials', TestimonialController::class);
+
+		//Events
+		Route::resource('events', EventController::class);
+
+
 		//route to store image through Ck editor
 		Route::post('ckeditor', 'CkeditorFileUploadController@store')->name('ckeditor.store');
 	});
@@ -76,3 +84,7 @@ Route::prefix('/admin')->group(function() {
 	//Admin Logout
 	Route::get('/logout', 'AdminLoginController@login')->name('logout');
 });
+
+//Route Frontend
+
+Route::get('/', 'FrontController@index')->name('indexPage');

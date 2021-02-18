@@ -38,6 +38,10 @@
 		<!-- Jquery for datatable -->
 		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
 
+		<!-- Date-picker jquery -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
+  		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{asset('/admin/assets/css/style.css')}}">
 		

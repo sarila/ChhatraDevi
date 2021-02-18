@@ -30,6 +30,15 @@
 				<li>
 					<a href="{{ route('projects.index')}}"><i class="la la-tasks"></i> <span>Projects</span> </a>
 				</li>
+				<li>
+					<a href="{{ route('testimonials.index')}}"><i class="la la-tasks"></i> <span>Testimonials</span> </a>
+				</li>
+				<li>
+					<a href="{{ route('partners.index')}}"><i class="la la-tasks"></i> <span>Partners</span> </a>
+				</li>
+				<li>
+					<a href="{{ route('events.index')}}"><i class="la la-tasks"></i> <span>Events</span> </a>
+				</li>
 			</ul>
 		</div>
     </div>

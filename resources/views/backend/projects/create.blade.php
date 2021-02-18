@@ -60,33 +60,48 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="gallery_id" style="font-size: 14px">gallery_id</label>
-                                        <input class="form-control" type="text" name="gallery_id" id="gallery_id" >
+                                        <label for="category_id"> Gallery ID</label>
+                                        <select name="gallery_id" id="gallery_id" class="form-control select">
+                                            <option value="0">None</option>
+                                            @foreach($galleries as $gallery)
+                                                <option value= " {{$gallery->id}} ">{{$gallery->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                               <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Status</label><br>
+                                        <input type="radio" id="ongoing" name="status" value="0">
+                                        <label for="ongoing">Ongoing</label><br>
+                                        <input type="radio" id="completed" name="status" value="1">
+                                        <label for="completed">Completed</label><br>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="status" style="font-size: 14px">status</label>
-                                        <input class="form-control" type="text" name="status" id="status" >
+                                        <label for="category_id">Category ID</label>
+                                        <select name="category_id" id="category_id" class="form-control select">
+                                            <option value="0">None</option>
+                                            @foreach($categories as $category)
+                                                <option value= " {{$category->id}} ">{{$category->category_name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="image">Image <span class="text-danger">*</span></label>
-                                        <input type="file" name="image" class="form-control" id="image" accept="image/*" onchange="readURL(this);">
+                                        <label for="coverimage">Cover Image <span class="text-danger">*</span></label>
+                                        <input type="file" name="coverimage" class="form-control" id="coverimage" accept="image/*" onchange="readURL(this);">
                                     </div>
-                                </div>
+                                </div>  
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Status</label><br>
-                                        <input type="radio" id="articles" name="news_type" value="0" selected>
-                                        <label for="articles">Ongoing</label><br>
-                                        <input type="radio" id="media-coverage" name="news_type" value="1">
-                                        <label for="media-coverage">Completed</label><br>
-                                    </div>
+                                    <label for="start_date">Start Date <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="start_date" id="datepicker"> 
                                 </div>
+
                             </div>
                             <div class="col-md-12">
                                 <div class="text-right">
@@ -125,5 +140,17 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+    </script>
+
+    <script>
+        $( "#datepicker" ).datepicker({
+            format: "mm/dd/yyyy",
+            weekStart: 0,
+            calendarWeeks: true,
+            autoclose: true,
+            todayHighlight: true,
+            rtl: true,
+            orientation: "auto"
+        });
     </script>
 @endsection

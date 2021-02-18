@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Gallery;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class ProjectController extends Controller
 {
@@ -25,7 +32,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('backend.projects.create');
+        $galleries = Gallery::all();
+        $categories = Category::all();
+        return view('backend.projects.create', compact('galleries', 'categories'));
     }
 
     /**
@@ -36,7 +45,42 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'excerpt' => 'required|max:255',
+            'description' => 'required',
+            'coverimage' => 'required',
+        ]);
+
+        $data = $request->all();
+        $project = new Project();
+        $project->title = $data['title'];
+        $project->excerpt = $data['excerpt'];
+        $project->description = $data['description'];
+        $project->gallery_id = $data['gallery_id'];
+        $project->status = $data['status'];
+        $project->category_id = $data['category_id'];
+        $project->start_date =  Carbon::create($data['start_date']);
+        $random = Str::random(10);
+        if ($request->hasFile('coverimage')) {
+            $image_tmp = $request->file('coverimage');
+            if ($image_tmp->isValid()) {
+                $extension = $image_tmp->getClientOriginalExtension();
+                $filename = $random . '.' . $extension;
+                $path = 'storage/project/';
+                if(!File::isDirectory($path)){
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                $image_path = public_path($path . $filename);
+                Image::make($image_tmp)->save($image_path);
+                $project->coverimage = $filename;
+            }
+        }
+       
+        $project->save();
+        Session::flash('info_message', 'Project has been Added');
+        return redirect()->route('projects.index');
     }
 
     /**

@@ -24,6 +24,12 @@
 <!-- Jquery for datatable -->
 <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 
+<!-- Date-picker -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+
+
+
 <!-- Custom JS -->
 <script src="{{asset('admin/assets/js/app.js')}}"></script>
 

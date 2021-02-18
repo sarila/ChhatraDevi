@@ -54,15 +54,14 @@
                                             <td>{{ $category->category_name }}</td>
                                             <td>
                                                 <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
-                                                <a class="btn btn-primary" href="{{ route('categories.edit',$category->id) }}"><i class="fa fa-pencil"></i></a>
-                                                @csrf
+                                                    <a href="{{ route('categories.show',$category->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a>
+                                                    <a class="btn btn-primary" href="{{ route('categories.edit',$category->id) }}"><i class="fa fa-pencil"></i></a>
+                                                    @csrf
 
-                                                @method('DELETE')
+                                                    @method('DELETE')
 
-                                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-
-                                            </form>
-
+                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -75,36 +74,6 @@
         </div>
     </div>
     <!-- Page Content -->
-    <!-- For show data -->
-    <!-- <div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header" id="modal-header">
-                    <h4 class="modal-title" id="modal-title">Form Input</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body" id="modal-body">
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- For delete data -->
-    <!-- <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header" id="modal-header">
-                    <h4 class="modal-title" id="modal-title">Delete</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body" id="modal-body">
-                    Confirm Delete? 
-                    <button class="btn btn-danger" id="deleteButton">Yes Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
- -->
 
 
 </div>
