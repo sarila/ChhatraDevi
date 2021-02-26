@@ -8,7 +8,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Categories</h3>
+                    <h3 class="page-title">Sliders</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="">Dashboard</a></li>
                         <li class="breadcrumb-item active">View All</li>
@@ -32,32 +32,32 @@
                         </span>
                         <div class="pull-right">
                             <div class="dropdown">
-                                <a href="{{route('categories.create')}}" class="btn btn-primary" ><i class="fa fa-plus"></i> Add New</a>
+                                <a href="{{route('sliders.create')}}" class="btn btn-primary" ><i class="fa fa-plus"></i> Add New</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped custom-table mb-0" id="category-datatable">
+                            <table class="table table-striped custom-table mb-0" id="slider-datatable">
                                 <thead>
                                     <tr>
                                         <th>S.N.</th>
-                                        <th>Name</th>
-                                        <th>Icon</th>
+                                        <th>Title</th>
+                                        <th>Image</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach($categories as $category)
+                                    @foreach($sliders as $slider)
                                         <tr>
-                                            <td>{{ $category->id }}</td>
-                                            <td>{{ $category->category_name }}</td>
-                                            <td> <img src="{{ asset('storage/category/'. $category->category_icon)}}"  width="40" align="center"></td>
+                                            <td>{{ $slider->id }}</td>
+                                            <td>{{ $slider->title }}</td>
+                                            <td> <img src="{{ asset('storage/slider/'. $slider->slider_image)}}"  width="40" align="center"></td>
                                             <td>
-                                                <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
-                                                    <a href="{{ route('categories.show',$category->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a>
-                                                    <a class="btn btn-primary" href="{{ route('categories.edit',$category->id) }}"><i class="fa fa-pencil"></i></a>
+                                                <form action="{{ route('sliders.destroy',$slider->id) }}" method="POST">
+                                                    <a href="{{ route('sliders.show',$slider->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a>
+                                                    <a class="btn btn-primary" href="{{ route('sliders.edit',$slider->id) }}"><i class="fa fa-pencil"></i></a>
                                                     @csrf
 
                                                     @method('DELETE')
@@ -85,7 +85,7 @@
 
 <script>
  $(function() {
-   $('#category-datatable').DataTable();
+   $('#slider-datatable').DataTable();
  });
 </script>
 @endsection

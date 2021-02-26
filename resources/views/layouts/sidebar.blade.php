@@ -37,6 +37,9 @@
 					<a href="{{ route('partners.index')}}"><i class="la la-tasks"></i> <span>Partners</span> </a>
 				</li>
 				<li>
+					<a href="{{ route('sliders.index')}}"><i class="la la-tasks"></i> <span>Slider</span> </a>
+				</li>
+				<li>
 					<a href="{{ route('events.index')}}"><i class="la la-tasks"></i> <span>Events</span> </a>
 				</li>
 			</ul>

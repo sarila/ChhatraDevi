@@ -8,7 +8,8 @@ use Illuminate\Notifications\Notifiable;
 
 class Setting extends Model
 {
-    protected $guard ='Setting';
+    protected $table ='settings';
+    protected $guarded = [];
     use HasFactory;
     use Notifiable;
 }

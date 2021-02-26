@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class CategoryController extends Controller
 {
@@ -40,12 +42,31 @@ class CategoryController extends Controller
     {
         $this->validate($request, [
             'category_name'=>'required',
+            'category_icon'=>'required',
         ]);
+       
         $data=$request->all();
         $category = new Category();
         $category->category_name = $data['category_name'];
         $category->description = $data['description'];
         $category->slug = Str::slug($data['category_name']);
+        $category->category_icon = $data['category_icon'];
+
+        $random = Str::random(10);
+        if ($request->hasFile('category_icon')) {
+            $icon_tmp = $request->file('category_icon');
+            if ($icon_tmp->isValid()) {
+                $extension = $icon_tmp->getClientOriginalExtension();
+                $filename = $random . '.' . $extension;
+                $path = 'storage/category/';
+                if(!File::isDirectory($path)){
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                $icon_path = public_path($path . $filename);
+                Image::make($icon_tmp)->save($icon_path);
+                $category->category_icon = $filename;
+            }
+        }
         $category->save();
         Session::flash('info_message', 'Category has been Added');
         return redirect()->route('categories.index');
@@ -89,6 +110,29 @@ class CategoryController extends Controller
         $category->category_name = $data['category_name'];
         $category->description = $data['description'];
         $category->slug = Str::slug($data['category_name']);
+
+        $random = Str::random(10);
+        if ($request->hasFile('category_icon')) {
+            $icon_tmp = $request->file('category_icon');
+            if ($icon_tmp->isValid()) {
+                $extension = $icon_tmp->getClientOriginalExtension();
+                $filename = $random . '.' . $extension;
+                $path = 'storage/category/';
+                if(!File::isDirectory($path)){
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                //code for remove old file
+                if($category->category_icon != ''  && $category->category_icon != null){
+                   $file_old = $path.$category->category_icon;
+                   unlink($file_old);
+                }
+                $icon_path = public_path($path . $filename);
+                Image::make($icon_tmp)->save($icon_path);
+            }
+        } else {
+            $filename = $category->category_icon;
+        }
+        $category->category_icon = $filename;
         $category->save();
         Session::flash('info_message', 'Category has been updated');
         return redirect()->route('categories.index');

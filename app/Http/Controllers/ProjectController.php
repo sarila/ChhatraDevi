@@ -120,7 +120,6 @@ class ProjectController extends Controller
             'title' => 'required|max:255',
             'excerpt' => 'required|max:255',
             'description' => 'required',
-            'coverimage' => 'required',
         ]);
 
         $data = $request->all();

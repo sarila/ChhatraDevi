@@ -7,14 +7,14 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Update Category</h3>
+                    <h3 class="page-title">Update Slider</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Add New</li>
                     </ul>
                 </div>
                 <div class="col-auto float-right ml-auto">
-                    <a href=" {{route('categories.index')}}" class="btn add-btn" ><i class="fa fa-eye"></i> All Category</a>
+                    <a href=" {{route('sliders.index')}}" class="btn add-btn" ><i class="fa fa-eye"></i> All Slider</a>
                 </div>
             </div>
         </div>
@@ -26,36 +26,42 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="post" action="{{route('categories.update', $category->id)}}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('sliders.update', $slider->id)}}" enctype="multipart/form-data">
                             @csrf
                             @method('put')
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="category_name">Category Name <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="category_name" id="category_name" value="{{ old('category_name')??$category->category_name }}">
+                                        <label for="title">Title</label>
+                                        <input type="text" class="form-control" name="title" id="title" value="{{ old('title')??$slider->title }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea rows="5" cols="5" class="form-control editor1" id="editor1"  name="description">
-                                            {{old('description') ?? $category->description}}
+                                        <textarea rows="5" class="form-control" id="description"  name="description">
+                                            {{old('description') ?? $slider->description}}
                                         </textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="link">Link</label>
+                                        <input type="text" class="form-control" name="link" id="link" value="{{ old('link')??$slider->link }}">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label>Icon<span class="text-danger">*</span></label>
-                                        <input type="hidden" name="category_icon">
-                                        <input class="form-control" name="category_icon" type="file" accept="image/*" id="category_icon" onchange="readURL(this);">
+                                        <label for="slider_image">Slider Image<span class="text-danger">*</span></label>
+                                        <input type="hidden" name="slider_image">
+                                        <input class="form-control" name="slider_image" type="file" accept="image/*" id="slider_image" onchange="readURL(this);">
                                     </div>
                                     <div class="welcome-img">
-                                        @if(empty($category->category_icon))
+                                        @if(empty($slider->slider_image))
                                             <img src="" style="width: 100px" id="one">
                                         @else
-                                            <img src="{{ asset('storage/category/'.$category->category_icon) }}" style="width: 100px" id="one">
+                                            <img src="{{ asset('storage/slider/'.$slider->slider_image) }}" style="width: 100px" id="one">
                                         @endif
                                     </div>
                                 </div>

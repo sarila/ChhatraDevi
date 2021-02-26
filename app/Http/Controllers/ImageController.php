@@ -44,9 +44,10 @@ class ImageController extends Controller
     {
         $this->validate($request, [
             'gallery_id' => 'required',
+            'image_type' => 'required',
         ]);
         $data = $request->all();
-        // $files = $request->file('images');
+        $new_image = new img();
         if ($request->hasFile('images')) {
 
             foreach($request->images as $image) {
@@ -59,12 +60,9 @@ class ImageController extends Controller
                 }
                 $image_path = public_path($path . $filename);
                 Image::make($image)->save($image_path);
-                $image->move(public_path() . '/mytestfile/', $filename);
-                $new_image = new img();
                 $new_image->gallery_id = $data['gallery_id'];
                 $new_image->image = $image_path;
-            }
-           
+            } 
         }
 
         $new_image->save();

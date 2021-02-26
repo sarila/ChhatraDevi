@@ -76,6 +76,9 @@ Route::prefix('/admin')->group(function() {
 		//Events
 		Route::resource('events', EventController::class);
 
+		//Sliders
+		Route::resource('sliders', SliderController::class);
+
 
 		//route to store image through Ck editor
 		Route::post('ckeditor', 'CkeditorFileUploadController@store')->name('ckeditor.store');

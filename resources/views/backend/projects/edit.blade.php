@@ -73,9 +73,9 @@
                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Status</label><br>
-                                        <input type="radio" id="ongoing" name="status" value="0">
+                                        <input type="radio" id="ongoing" name="status" value="0"  {{!$project->status ? 'checked' : ''}}>
                                         <label for="ongoing">Ongoing</label><br>
-                                        <input type="radio" id="completed" name="status" value="1">
+                                        <input type="radio" id="completed" name="status" value="1" {{$project->status ? 'checked' : ''}}>
                                         <label for="completed">Completed</label><br>
                                     </div>
                                 </div>
