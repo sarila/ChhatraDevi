@@ -49,10 +49,7 @@
                                         <th>Feature_image</th>
                                         <th>Date</th>
                                         <th>Time Duration</th>
-                                        <th>Gallery_id</th>
-                                        <th>Category_id</th>
                                         <th>Status</th>
-                                        <th>Start Date</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -65,15 +62,10 @@
                                             <td>{{ $data->location }}</td>
                                             <td>{{ $data->duration }}</td>
                                             <td>{{ $data->no_of_seat }}</td>
-                                            <td>{{ $data->feature_image }}</td>
+                                            <td><img src="{{ asset('storage/event/'. $data->feature_image)}}" width="100px"></td>
                                             <td>{{ $data->date }}</td>
                                             <td>{{ $data->time_duration }}</td>
-                                            <td>{{ $data->gallery_id }}</td>
-                                            <td>{{ $data->category_id }}</td>
                                             <td>{{ $data->status }}</td>
-                                            <td>{{ $data->start_date }}</td>
-                                            <td>{{ $data->projects_type }}</td>
-
                                             <td>
                                                 <form action="{{ route('events.destroy',$data->id) }}" method="POST">
 

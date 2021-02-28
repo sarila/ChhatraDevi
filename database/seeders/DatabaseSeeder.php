@@ -25,16 +25,19 @@ class DatabaseSeeder extends Seeder
             'created_at'=>now(),
             'updated_at'=>now(),
         ]);
+        
         Role::insert([
             'name'=>'Admin',
             'created_at'=>now(),
             'updated_at'=>now(),
         ]);
+
         Role::insert([
             'name'=>'Editor',
             'created_at'=>now(),
             'updated_at'=>now(),
         ]);
+
         Admin::insert([
             'firstname' => 'Sarila',
             'lastname' => 'Ngakhusi',
@@ -47,17 +50,22 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now()
         ]);
 
+        Theme::insert([
+            'website_name' => 'ChattraDevi Foundation',
+        ]);
+
         Setting::insert([
             'site_title' => 'ChhatraDevi Foundation',
             'contact_number' => 1234567890,
             'email' => 'ChhatraDevi@gmail.com',
             'address' => 'Kathmandu, Nepal',
+            'about_title' => 'WE CANT HELP EVERYONE BUT EVERYONE CAN HELP SOME ONE.',
+            'about_us' => 'Chhatra Devi Foundation Nepal',
+            'excerpt' => 'Chhatra Devi Foundation Nepal',
+            'about_image' => 'sampleimage.jpg',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
       
-        Theme::insert([
-            'website_name' => 'ChattraDevi Foundation',
-        ]);
     }
 }

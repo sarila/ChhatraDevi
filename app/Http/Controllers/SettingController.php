@@ -25,12 +25,21 @@ class SettingController extends Controller
             'contact_number' => 'required',
             'email' => 'required|email',
             'address' => 'required',
+            'about_us' => 'required',
+            'excerpt' => 'required',
+            'about_title' => 'required',
         ]);
         $data = $request->all();
         $setting->site_title = $data['site_title'];
         $setting->contact_number = $data['contact_number'];
         $setting->email = $data['email'];
         $setting->address = $data['address'];
+        $setting->about_title = $data['about_title'];
+        $setting->about_us = $data['about_us'];
+        $setting->excerpt = $data['excerpt'];
+        $setting->our_values = $data['our_values'];
+        $setting->our_mission = $data['our_mission'];
+        $setting->our_vision = $data['our_vision'];
         $setting->save();
         Session::flash('success_message', 'Settings has been updated successfully');
         return redirect()->back();

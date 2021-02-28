@@ -82,7 +82,6 @@
                                     <div class="form-group">
                                         <label for="category_id"> Gallery ID</label>
                                         <select name="gallery_id" id="gallery_id" class="form-control select">
-                                            <option value="0">None</option>
                                             @foreach($galleries as $gallery)
                                                 <option value= " {{$gallery->id}} ">{{$gallery->name}}</option>
                                             @endforeach
@@ -102,7 +101,6 @@
                                     <div class="form-group">
                                         <label for="category_id">Category ID</label>
                                         <select name="category_id" id="category_id" class="form-control select">
-                                            <option value="0">None</option>
                                             @foreach($categories as $category)
                                                 <option value= " {{$category->id}} ">{{$category->category_name}}</option>
                                             @endforeach

@@ -29,7 +29,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <form method="post" action="{{route('news.update', $news->id)}}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('events.update', $event->id)}}" enctype="multipart/form-data">
                             @method('PATCH')
                             @csrf
                             <div class="text-center">
@@ -38,8 +38,28 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="title" style="font-size: 14px">News Title</label>
-                                        <input class="form-control" type="text" name="title" id="title" value="{{ old('title')??$news->title }}" >
+                                        <label for="title" style="font-size: 14px">Title</label>
+                                        <input class="form-control" type="text" name="title" id="title" value="{{old('title') ?? $event->title}}">
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="location" style="font-size: 14px">Location</label>
+                                        <input class="form-control" type="text" name="location" id="location" value="{{old('location') ?? $event->location}}">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="duration" style="font-size: 14px">Duration</label>
+                                        <input class="form-control" type="text" name="duration" id="duration" value="{{old('duration') ?? $event->duration}}">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="no_of_seat" style="font-size: 14px">Entrance/ No. of Seat:</label>
+                                        <input class="form-control" type="text" name="no_of_seat" id="no_of_seat" value="{{old('no_of_seat') ?? $event->no_of_seat}}">
                                     </div>
                                 </div>
                             </div>
@@ -47,64 +67,78 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="excerpt" style="font-size: 14px">Excerpt</label>
-                                        <textarea class="form-control" type="text" name="excerpt" id="excerpt" >{{ old('excerpt')??$news->excerpt }}</textarea> 
+                                        <textarea class="form-control" type="text" name="excerpt" id="excerpt" > {{old('excerpt') ?? $event->excerpt}} </textarea> 
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="seo_title" style="font-size: 14px">SEO Title</label>
-                                        <input class="form-control" type="text" name="seo_title" id="seo_title" value="{{ old('seo_title')??$news->seo_title }}" >
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="keywords" style="font-size: 14px">SEO Keywords</label>
-                                        <input class="form-control" type="text" name="keywords" id="keywords" value="{{ old('keywords')??$news->keywords }}" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Image</label>
-                                        <input type="hidden" name="image">
-                                        <input class="form-control" name="image" type="file" accept="image/*" id="image" onchange="readURL(this);">
-                                    </div>
-                                    <div class="welcome-img">
-                                        @if(empty($news->image))
-                                            <img src="" style="width: 100px" id="one">
-                                        @else
-                                            <img src="{{ asset('storage/news/'.$news->image) }}" style="width: 100px" id="one">
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>News Type</label><br>
-                                        <input type="radio" id="articles" name="news_type" value="0" selected>
-                                        <label for="articles">Article</label><br>
-                                        <input type="radio" id="media-coverage" name="news_type" value="1">
-                                        <label for="media-coverage">Media Coverage</label><br>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea rows="5" cols="5" class="form-control editor1" id="editor1"  name="description" >
-                                    {{!!old('description') ?? $news->description }}
+                                <textarea rows="5" cols="5" class="form-control editor1" id="editor1"  name="description">
+                                    {{ old('description') ?? $event->description }}
                                 </textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="category_id"> Gallery ID</label>
+                                        <select name="gallery_id" id="gallery_id" class="form-control select">
+                                            @foreach($galleries as $gallery)
+                                                <option value= " {{$gallery->id}} ">{{$gallery->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                               <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Status</label><br>
+                                        <input type="radio" id="past" name="status" value="0" {{!$event->status ? 'checked' : ''}}>
+                                        <label for="past">Past Event</label><br>
+                                        <input type="radio" id="future" name="status" value="1" {{!$event->status ? 'checked' : ''}}>
+                                        <label for="future">Future Events</label><br>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="category_id">Category ID</label>
+                                        <select name="category_id" id="category_id" class="form-control select">
+                                            @foreach($categories as $category)
+                                                <option value= " {{$category->id}} " {{!$event->category_id ? 'checked' : ''}}>{{$category->category_name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="time_duration">Time Duration <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="time_duration" id="time_duration"  value="{{old('time_duration') ?? $event->time_duration}}"> 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="feature_image">Feature Image <span class="text-danger">*</span></label>
+                                        <input type="file" name="feature_image" class="form-control" id="feature_image" accept="image/*" onchange="readURL(this);">
+                                    </div>
+                                    <div class="welcome-img">
+                                        @if(empty($event->feature_image))
+                                            <img src="" style="width: 100px" id="one">
+                                        @else
+                                            <img src="{{ asset('storage/event/'.$event->feature_image) }}" style="width: 100px" id="one">
+                                        @endif
+                                    </div>
+                                </div>  
+                                <div class="col-md-6">
+                                    <label for="date">Date <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="date" id="datepicker"  value="{{old('date') ?? $event->date}}"> 
+                                </div>
+
                             </div>
                             <div class="col-md-12">
                                 <div class="text-right">
-                                    <button type="submit" class="btn btn-primary">Update News</button>
+                                    <button type="submit" class="btn btn-primary">Add Project</button>
                                 </div>
                             </div>
                         </form>
-
-
                     </div>
                 </div>
             </div>

@@ -70,13 +70,19 @@
                                         </select>
                                     </div>
                                 </div>
-                               <div class="col-md-6">
+                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Status</label><br>
-                                        <input type="radio" id="ongoing" name="status" value="0"  {{!$project->status ? 'checked' : ''}}>
+                                        <label for="status">Status</label><br>
+                                        <input type="radio" id="ongoing" name="status" value="0" {{!$project->status ? 'checked' : ''}}>
                                         <label for="ongoing">Ongoing</label><br>
                                         <input type="radio" id="completed" name="status" value="1" {{$project->status ? 'checked' : ''}}>
                                         <label for="completed">Completed</label><br>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="goal">Goal Amount in dollars</label><br>
+                                        <input class="form-control"  type="number" id="goal" name="goal" value="{{old('goal')??$project->goal}}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">

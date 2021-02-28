@@ -46,6 +46,7 @@
                                         <th>Gallery_id</th>
                                         <th>Category_id</th>
                                         <th>Status</th>
+                                        <th>Goal Amount</th>
                                         <th>Start Date</th>
                                         <th>Actions</th>
                                     </tr>
@@ -59,8 +60,8 @@
                                             <td>{{ $data->gallery_id }}</td>
                                             <td>{{ $data->category_id }}</td>
                                             <td>{{ $data->status }}</td>
+                                            <td>{{ $data->goal }}</td>
                                             <td>{{ $data->start_date }}</td>
-                                            <td>{{ $data->projects_type }}</td>
 
                                             <td>
                                                 <form action="{{ route('projects.destroy',$data->id) }}" method="POST">

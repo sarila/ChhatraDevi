@@ -84,7 +84,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea rows="5" cols="5" class="form-control editor1" id="editor1"  name="description">
+                                <textarea rows="5" class="form-control editor1" id="editor1"  name="description">
                                     {{ old('description') }}
                                 </textarea>
                             </div>

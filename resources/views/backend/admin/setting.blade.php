@@ -71,6 +71,70 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="about_title">About Title <span class="text-danger">*</span></label>
+                                <input class="form-control" name="about_title" id="about_title" type="text" value="{{ $setting->about_title }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="excerpt">About Excerpt <span class="text-danger">*</span></label>
+                                <textarea class="form-control" name="excerpt" id="excerpt" type="text" rows="7">{{ $setting->excerpt }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="about_us">About Us <span class="text-danger">*</span></label>
+                                <textarea class="form-control ckeditor" name="about_us" id="editor1" type="text">{{ $setting->about_us }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="our_values">Our Values</label>
+                                <textarea class="form-control ckeditor" name="our_values" id="our_values" type="text">{{ $setting->our_values }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="our_vision">Our Visions</label>
+                                <textarea class="form-control ckeditor" name="our_vision" id="our_vision" type="text">{{ $setting->our_vision }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="our_mission"> Our Missions</label>
+                                <textarea class="form-control ckeditor" name="our_mission" id="our_mission" type="text">{{ $setting->our_mission }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Image  <span class="text-danger">*</span></label>
+                                <input type="hidden" name="about_image" value="{{ $setting->about_image }}">
+                                <input class="form-control" name="about_image" type="file" accept="image/*" id="image" onchange="readURL(this);">
+                            </div>
+                            <div class="welcome-img">
+                                @if(empty($setting->about_image))
+                                    <img src="" style="width: 100px" id="one">
+                                @else
+                                    <img src="{{ asset('storage/admin/'.$setting->about_image) }}" style="width: 100px" id="one">
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                     <div class="submit-section">
                         <button class="btn btn-primary submit-btn" type="submit">Save</button>
                     </div>
@@ -78,4 +142,31 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+
+ <!-- CKEDITOR js -->
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('editor1', {
+            filebrowserUploadUrl: "{{route('ckeditor.store', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        function readURL(input){
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#one')
+                        .attr('src', e.target.result)
+                        .width(100)
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 @endsection

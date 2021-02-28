@@ -8,50 +8,22 @@
     <div class="swiper-container">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <div class="slider-wrapper">
-                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/sliders/slider-1.jpg" alt="">
-                    <div class="slider-content">
-                        <h2 class="slider-title" data-swiper-parallax="-1000">Help <span>someone's dream</span> come true.</h2>
-                        <div class="text" data-swiper-parallax="-400">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing, elit. Dicta rem magnam minus at deserunt saepe quae similique veritatis, neque sunt quasi corporis. Facere facilis laborum repudiandae, eligendi, blanditiis nesciunt veniam?</p>
-                        </div>
-                        <div class="button" data-swiper-parallax="-300">
-                            <a href="#" class="button-one py-md-2 px-md-3 font-w-semi"><i class="far fa-heart mr-2"></i>Donate Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- end swiper-slide -->
-            <div class="swiper-slide">
-                <div class="slider-wrapper">
-                    <img class="lazy-image" src="assets/images/sliders/slider-2.jpg" alt="">
-                    <div class="slider-content">
-                        <div class="container">
-                            <h2 class="slider-title" data-swiper-parallax="-1000">Help <span>someone's dream</span> come true.</h2>
+            <?php foreach ($sliders as $slider): ?>
+                <div class="swiper-slide">
+                    <div class="slider-wrapper">
+                        <img class="lazy-image" src="{{ asset('storage/slider/'. $slider->slider_image) }}" data-src="{{ asset('storage/slider/'. $slider->slider_image) }}" alt="">
+                        <div class="slider-content">
+                            <h2 class="slider-title" data-swiper-parallax="-1000">{{$slider->title}}</h2>
                             <div class="text" data-swiper-parallax="-400">
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing, elit. Dicta rem magnam minus at deserunt saepe quae similique veritatis, neque sunt quasi corporis. Facere facilis laborum repudiandae, eligendi, blanditiis nesciunt veniam?</p>
+                                <p>{{$slider->description}}</p>
                             </div>
                             <div class="button" data-swiper-parallax="-300">
-                                <a href="#" class="button-one py-md-2 px-md-3 font-w-semi"><i class="far fa-heart mr-2"></i>Donate Now</a>
+                                <a href="{{$slider->link}}" class="button-one py-md-2 px-md-3 font-w-semi"><i class="far fa-heart mr-2"></i>Donate Now</a>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div> <!-- end swiper-slide -->
-            <div class="swiper-slide">
-                <div class="slider-wrapper">
-                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/sliders/slider-3.jpg" alt="">
-                    <div class="slider-content">
-                        <h2 class="slider-title" data-swiper-parallax="-1000">Help <span>someone's dream</span> come true.</h2>
-                        <div class="text" data-swiper-parallax="-400">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing, elit. Dicta rem magnam minus at deserunt saepe quae similique veritatis, neque sunt quasi corporis. Facere facilis laborum repudiandae, eligendi, blanditiis nesciunt veniam?</p>
-                        </div>
-                        <div class="button" data-swiper-parallax="-300">
-                            <a href="#" class="button-one py-md-2 px-md-3 font-w-semi"><i class="far fa-heart mr-2"></i>Donate Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- end swiper-slide -->
+                </div> <!-- end swiper-slide -->
+            <?php endforeach ?>
         </div>
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
@@ -81,48 +53,15 @@
             <span class="position-relative d-inline-block for-af"></span>
         </header>
         <div class="row">
-            <!-- col -->
-            <div class="col-lg-2 col-6 mb-3">
-                <a href="service-detail.php" class="holder box-shadow-3 ls-title bg-white px-md-2 text-center">
-                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/after-slider/healthcare.png" alt="">
-                    <h2 class="icon-title text-black mb-0 mt-2 font-weight-bold">Health</h2>
-                </a>
-            </div>
-            <!-- col -->
-            <div class="col-lg-2 col-6 mb-3">
-                <a href="service-detail.php" class="holder box-shadow-3 ls-title bg-white px-md-2 text-center">
-                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/after-slider/graduation-cap.png" alt="">
-                    <h2 class="icon-title text-black mb-0 mt-2 font-weight-bold">Education</h2>
-                </a>
-            </div>
-            <!-- col -->
-            <div class="col-lg-2 col-6 mb-3">
-                <a href="service-detail.php" class="holder box-shadow-3 ls-title bg-white px-md-2 text-center">
-                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/after-slider/peace.png" alt="">
-                    <h2 class="icon-title text-black mb-0 mt-2 font-weight-bold">Peace</h2>
-                </a>
-            </div>
-            <!-- col -->
-            <div class="col-lg-2 col-6 mb-3">
-                <a href="service-detail.php" class="holder box-shadow-3 ls-title bg-white px-md-2 text-center">
-                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/after-slider/right.png" alt="">
-                    <h2 class="icon-title text-black mb-0 mt-2 font-weight-bold">Human Right</h2>
-                </a>
-            </div>
-            <!-- col -->
-            <div class="col-lg-2 col-6 mb-3">
-                <a href="service-detail.php" class="holder box-shadow-3 ls-title bg-white px-md-2 text-center">
-                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/after-slider/care.png" alt="">
-                    <h2 class="icon-title text-black mb-0 mt-2 font-weight-bold">Child protection</h2>
-                </a>
-            </div>
-            <!-- col -->
-            <div class="col-lg-2 col-6 mb-3">
-                <a href="service-detail.php" class="holder box-shadow-3 ls-title bg-white px-md-2 text-center">
-                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/after-slider/love.png" alt="">
-                    <h2 class="icon-title text-black mb-0 mt-2 font-weight-bold">Women Empowerment</h2>
-                </a>
-            </div>
+            <?php foreach ($categories as $category): ?>
+                <!-- col -->
+                <div class="col-lg-2 col-6 mb-3">
+                    <a href="service-detail.php" class="holder box-shadow-3 ls-title bg-white px-md-2 text-center">
+                        <img class="lazy-image" src="{{ asset('storage/category/'.$category->category_icon )}}" data-src="{{ asset('storage/category/'.$category->category_icon )}}" alt="">
+                        <h2 class="icon-title text-black mb-0 mt-2 font-weight-bold">{{$category->category_name}}</h2>
+                    </a>
+                </div>
+            <?php endforeach ?>
         </div>
     </div>
 </section>
@@ -168,66 +107,40 @@
             <div class="swiper-container">
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper py-4 position-relative">
-                    <!-- Slider -->
-                    <div class="swiper-slide">
-                        <div class="slider-wrapper bg-white p-md-3 box-shadow-1 pb-2">
-                            <div class="row">
-                                <!-- Right -->
-                                <div class="col-md-4 col-12 mb-md-0 mb-2">
-                                    <div class="img-holder">
-                                        <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/causes/img (2).jpg" alt="">
-                                    </div>
-                                </div>
-                                <!-- Left -->
-                                <div class="col-md-8 col-12">
-                                    <div class="content xs-title px-md-0 px-2">
-                                        <a href="donate.php" class="sm-title text-black font-weight-bold">Raise Fund for Healthy Food</a>
-                                        <div class="fund pb-2 pt-1">
-                                            <span class="text-sec raised">$51,867</span> Raised of <span class="goal text-black font-weight-bold">$75,000</span> goal
-                                        </div>
-                                        <div class="progres position-relative w-75 mb-3">
-                                            <span class="bar w-40"></span>
-                                        </div>
-                                        <p>Do not hope to evade any illness or death, for they are crucial reminders of the transience of this life, and you are only sojourners on this world</p>
-                                        <div class="btn-more">
-                                            <a href="donate.php" class="button-four xs-title py-1">Read More<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
-                                            <a href="project-detail.php" class="ml-2 button-one-sec xs-title py-1">Donate Now <i class="fab fa-gratipay ml-2"></i></a>
+
+                    <?php foreach ($ongoingProjects as $ongoingProject): ?>
+                        <!-- Slider -->
+                        <div class="swiper-slide">
+                            <div class="slider-wrapper bg-white p-md-3 box-shadow-1 pb-2">
+                                <div class="row">
+                                    <!-- Right -->
+                                    <div class="col-md-4 col-12 mb-md-0 mb-2">
+                                        <div class="img-holder">
+                                            <img class="lazy-image" src="{{ asset('storage/project/'.$ongoingProject->frontimage)}}" data-src="{{ asset('storage/project/'.$ongoingProject->frontimage)}}" alt="">
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Slider -->
-                    <div class="swiper-slide">
-                        <div class="slider-wrapper bg-white p-md-3 box-shadow-1 pb-2">
-                            <div class="row">
-                                <!-- Right -->
-                                <div class="col-md-4 col-12 mb-md-0 mb-2">
-                                    <div class="img-holder">
-                                        <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/causes/img (3).jpg" alt="">
-                                    </div>
-                                </div>
-                                <!-- Left -->
-                                <div class="col-md-8 col-12">
-                                    <div class="content xs-title px-md-0 px-2">
-                                        <a href="project-detail.php" class="sm-title text-black font-weight-bold">Raise Fund for Healthy Food</a>
-                                        <div class="fund pb-2 pt-1">
-                                            <span class="text-sec raised">$61,867</span> Raised of <span class="goal text-black font-weight-bold">$65,000</span> goal
-                                        </div>
-                                        <div class="progres position-relative w-75 mb-3">
-                                            <span class="bar w-40"></span>
-                                        </div>
-                                        <p>Do not hope to evade any illness or death, for they are crucial reminders of the transience of this life, and you are only sojourners on this world</p>
-                                        <div class="btn-more">
-                                            <a href="project-detail.php" class="button-four xs-title py-1">Read More <i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
-                                            <a href="donate.php" class="ml-2 button-one-sec xs-title py-1">Donate Now <i class="fab fa-gratipay ml-2"></i></a>
+                                    <!-- Left -->
+                                    <div class="col-md-8 col-12">
+                                        <div class="content xs-title px-md-0 px-2">
+                                            <a href="donate.php" class="sm-title text-black font-weight-bold">{{$ongoingProject->title}}</a>
+                                            <div class="fund pb-2 pt-1">
+                                                <span class="text-sec raised">$51,867</span> Raised of <span class="goal text-black font-weight-bold">{{$ongoingProject->goal}}</span> goal
+                                            </div>
+                                            <div class="progres position-relative w-75 mb-3">
+                                                <span class="bar w-40"></span>
+                                            </div>
+                                            <p>{{$ongoingProject->excerpt}}</p>
+                                            <div class="btn-more">
+                                                <a href="donate.php" class="button-four xs-title py-1">Read More<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
+                                                <a href="project-detail.php" class="ml-2 button-one-sec xs-title py-1">Donate Now <i class="fab fa-gratipay ml-2"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endforeach ?>
+                   
                 </div>
             </div>
             <!-- Swipper Container -->
@@ -252,95 +165,48 @@
                 <header class="section-header-two mb-4">
                     <h2 class="section-title xs-title text-uppercase"><img src="assets/images/causes/like-white.png" alt="" class="mr-2"># Upcoming Events</h2>
                 </header>
-                <!-- One -->
-                <div class="wrapper p-2 box-shadow-2 mb-3">
-                    <div class="row">
-                        <div class="col-3">
-                            <div class="e-date text-uppercase bg-main sm-title text-white text-center">
-                                28 <br> Feb
+                <?php foreach ($upcomingEvents as $upcomingEvent): ?>
+                    <!-- One -->
+                    <div class="wrapper p-2 box-shadow-2 mb-3">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="e-date text-uppercase bg-main sm-title text-white text-center">
+                                    28 <br> Feb
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-9">
-                            <div class="event-box">
-                                <a href="event-detail.php" class="d-block ls-title font-weight-bold text-black mb-0">Event: Foods For Poor</a>
-                                <span class="date ts-title text-upppercase mr-2"><i class="far fa-calendar-alt text-pri mr-2 font-weight-bold"></i> 06 Oct 2018</span>
-                                <span class="date ts-title text-upppercase"><i class="fas fa-map-marker-alt text-pri mr-2"></i> New Baneshwor</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- One -->
-                <div class="wrapper p-2 box-shadow-2 mb-3">
-                    <div class="row">
-                        <div class="col-3">
-                            <div class="e-date text-uppercase bg-main sm-title text-white text-center">
-                                06 <br> dec
-                            </div>
-                        </div>
-                        <div class="col-9">
-                            <div class="event-box">
-                                <a href="event-detail.php" class="d-block ls-title font-weight-bold text-black mb-0">Event: Help For Education</a>
-                                <span class="date ts-title text-upppercase mr-2"><i class="far fa-calendar-alt text-pri mr-2 font-weight-bold"></i> 06 Oct 2018</span>
-                                <span class="date ts-title text-upppercase"><i class="fas fa-map-marker-alt text-pri mr-2"></i> New Baneshwor</span>
+                            <div class="col-9">
+                                <div class="event-box">
+                                    <a href="event-detail.php" class="d-block ls-title font-weight-bold text-black mb-0">Event:{{ $upcomingEvent->title }}</a>
+                                    <span class="date ts-title text-upppercase mr-2"><i class="far fa-calendar-alt text-pri mr-2 font-weight-bold"></i> {{ $upcomingEvent->date }}</span>
+                                    <span class="date ts-title text-upppercase"><i class="fas fa-map-marker-alt text-pri mr-2"></i> {{ $upcomingEvent->location }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- One -->
-                <div class="wrapper p-2 box-shadow-2 mb-3">
-                    <div class="row">
-                        <div class="col-3">
-                            <div class="e-date text-uppercase bg-main sm-title text-white text-center">
-                                18 <br> oct
-                            </div>
-                        </div>
-                        <div class="col-9">
-                            <div class="event-box">
-                                <a href="event-detail.php" class="d-block ls-title font-weight-bold text-black mb-0">Event: Foods For Poor</a>
-                                <span class="date ts-title text-upppercase mr-2"><i class="far fa-calendar-alt text-pri mr-2 font-weight-bold"></i> 06 Oct 2018</span>
-                                <span class="date ts-title text-upppercase"><i class="fas fa-map-marker-alt text-pri mr-2"></i> New Baneshwor</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- One -->
-                <div class="wrapper p-2 box-shadow-2 mb-3">
-                    <div class="row">
-                        <div class="col-3">
-                            <div class="e-date text-uppercase bg-main sm-title text-white text-center">
-                                06 <br> dec
-                            </div>
-                        </div>
-                        <div class="col-9">
-                            <div class="event-box">
-                                <a href="event-detail.php" class="d-block ls-title font-weight-bold text-black mb-0">Event: Help The Children</a>
-                                <span class="date ts-title text-upppercase mr-2"><i class="far fa-calendar-alt text-pri mr-2 font-weight-bold"></i> 06 Oct 2018</span>
-                                <span class="date ts-title text-upppercase"><i class="fas fa-map-marker-alt text-pri mr-2"></i> New Baneshwor</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach ?>
+               
             </div>
             <!-- Past events -->
             <div class="col-lg-8 col-12">
                 <header class="section-header-two text-right mb-4">
                     <h2 class="section-title xs-title text-uppercase"><img src="assets/images/causes/like-white.png" alt="" class="mr-2"># Past Events</h2>
                 </header>
-                <div class="wrapper box-shadow-2 mb-4">
+                <?php foreach ($pastEvents as $pastEvent): ?>
+                     <div class="wrapper box-shadow-2 mb-4">
                         <div class="row">
                             <div class="col-lg-4 col-12 mb-md-0 mb-3">
                                 <div class="img-holder p-2">
-                                    <img src="assets/images/image-bg.svg" data-src="assets/images/causes/img (5).jpg" alt="">
+                                    <img src="{{asset('storage/event/'.$pastEvent->feature_image)}}" data-src="{{asset('storage/event/'.$pastEvent->feature_image)}}" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-12 align-self-center">
                                 <div class="content xs-title p-2">
-                                    <a href="event-detail.php" class="event-title ls-title text-black font-weight-bold text-center">Charity begins at home, but should not end there</a>
+                                    <a href="event-detail.php" class="event-title ls-title text-black font-weight-bold text-center">{{$pastEvent->title}}</a>
                                     <div class="event-box">
-                                        <span class="date ts-title text-upppercase mr-2"><i class="far fa-calendar-alt text-pri mr-2 font-weight-bold"></i> 06 Oct 2018</span>
-                                        <span class="date ts-title text-upppercase"><i class="fas fa-map-marker-alt text-pri mr-2"></i> New Baneshwor</span>
+                                        <span class="date ts-title text-upppercase mr-2"><i class="far fa-calendar-alt text-pri mr-2 font-weight-bold"></i>{{$upcomingEvent->date}}</span>
+                                        <span class="date ts-title text-upppercase"><i class="fas fa-map-marker-alt text-pri mr-2"></i> {{ $pastEvent->location}}</span>
                                     </div>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adip....</p>
+                                    <p>{{ $pastEvent->excerpt}}</p>
                                     <div class="btns">
                                         <a href="event-detail.php" class="button-two font-weight-bold py-1 xs-title">Read More<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
                                     </div>
@@ -349,29 +215,7 @@
                         </div>
                     </div>
                 <!-- wrapper end -->
-                <div class="wrapper box-shadow-2 mb-4">
-                        <div class="row">
-                            <div class="col-lg-4 col-12 mb-md-0 mb-3">
-                                <div class="img-holder p-2">
-                                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/causes/img (5).jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12 align-self-center">
-                                <div class="content xs-title p-2">
-                                    <a href="event-detail.php" class="event-title ls-title text-black font-weight-bold text-center">Charity begins at home, but should not end there</a>
-                                    <div class="event-box">
-                                        <span class="date ts-title text-upppercase mr-2"><i class="far fa-calendar-alt text-pri mr-2 font-weight-bold"></i> 06 Oct 2018</span>
-                                        <span class="date ts-title text-upppercase"><i class="fas fa-map-marker-alt text-pri mr-2"></i> New Baneshwor</span>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adip....</p>
-                                    <div class="btns">
-                                        <a href="event-detail.php" class="button-two font-weight-bold py-1 xs-title">Read More<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <!-- wrapper end -->
+                <?php endforeach ?>
             </div>
         </div>
     </div>
@@ -498,60 +342,26 @@
         </header>
         <div class="holder p-2 bg-light py-4">
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-12 mb-3">
-                    <div class="col-wrapper bg-white p-2 box-shadow-2">
-                        <div class="img-wrapper">
-                            <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/causes/01.jpg" alt="">
-                        </div>
-                        <div class="meta-info py-2">
-                            <span class="date xs-title text-upppercase"><i class="far fa-calendar-alt text-pri mr-2 font-weight-bold"></i> 06 Oct 2018</span>
-                        </div>
-                        <div class="content xs-title">
-                            <a href="event-detail.php" class="event-title ls-title text-black font-weight-bold text-center">Charity begins at home, but should not end there</a>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Aspernatur dolorum natus unde earum.</p>
-                        </div>
-                        <div class="btns">
-                            <a href="event-detail.php" class="button-two font-weight-bold py-1 xs-title">Read More<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Col -->
-                <div class="col-lg-4 col-md-6 col-12 mb-3">
-                    <div class="col-wrapper bg-white p-2 box-shadow-2">
-                        <div class="img-wrapper">
-                            <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/causes/img (1).jpg" alt="">
-                        </div>
-                        <div class="meta-info py-2">
-                            <span class="date xs-title text-upppercase"><i class="far fa-calendar-alt text-pri mr-2 font-weight-bold"></i> 06 Oct 2018</span>
-                        </div>
-                        <div class="content xs-title">
-                            <a href="event-detail.php" class="event-title ls-title text-black font-weight-bold text-center">Charity begins at home, but should not end there</a>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Aspernatur dolorum natus unde earum.</p>
-                        </div>
-                        <div class="btns">
-                            <a href="event-detail.php" class="button-two font-weight-bold py-1 xs-title">Read More<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
+                <?php foreach ($news as $latestNews): ?>
+                    <div class="col-lg-4 col-md-6 col-12 mb-3">
+                        <div class="col-wrapper bg-white p-2 box-shadow-2">
+                            <div class="img-wrapper">
+                                <img class="lazy-image" src="{{asset('storage/news/'. $latestNews->image)}}" data-src="{{asset('storage/news/'. $latestNews->image)}}" alt="">
+                            </div>
+                            <div class="meta-info py-2">
+                                <span class="date xs-title text-upppercase"><i class="far fa-calendar-alt text-pri mr-2 font-weight-bold"></i> {{$latestNews->created_at}}</span>
+                            </div>
+                            <div class="content xs-title">
+                                <a href="event-detail.php" class="event-title ls-title text-black font-weight-bold text-center">{{$latestNews->title}}</a>
+                                <p>{{$latestNews->excerpt}}</p>
+                            </div>
+                            <div class="btns">
+                                <a href="event-detail.php" class="button-two font-weight-bold py-1 xs-title">Read More<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <!-- End of Col -->
-                <div class="col-lg-4 col-md-6 col-12 mb-3">
-                    <div class="col-wrapper bg-white p-2 box-shadow-2">
-                        <div class="img-wrapper">
-                            <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/causes/img (4).jpg" alt="">
-                        </div>
-                        <div class="meta-info py-2">
-                            <span class="date xs-title text-upppercase"><i class="far fa-calendar-alt text-pri mr-2 font-weight-bold"></i> 06 Oct 2018</span>
-                        </div>
-                        <div class="content xs-title">
-                            <a href="event-detail.php" class="event-title ls-title text-black font-weight-bold text-center">Charity begins at home, but should not end there</a>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Aspernatur dolorum natus unde earum.</p>
-                        </div>
-                        <div class="btns">
-                            <a href="event-detail.php" class="button-two font-weight-bold py-1 xs-title">Read More<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Col -->
+                <?php endforeach ?>
             </div>
         </div>
     </div>

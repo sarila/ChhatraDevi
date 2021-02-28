@@ -69,15 +69,23 @@
                                         </select>
                                     </div>
                                 </div>
-                               <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Status</label><br>
+                                        <label for="status">Status</label><br>
                                         <input type="radio" id="ongoing" name="status" value="0">
                                         <label for="ongoing">Ongoing</label><br>
                                         <input type="radio" id="completed" name="status" value="1">
                                         <label for="completed">Completed</label><br>
                                     </div>
                                 </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="goal">Goal Amount in dollars</label><br>
+                                        <input class="form-control"  type="number" id="goal" name="goal">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="category_id">Category ID</label>
@@ -87,6 +95,12 @@
                                                 <option value= " {{$category->id}} ">{{$category->category_name}}</option>
                                             @endforeach
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="frontimage">Front Image <span class="text-danger">*</span></label>
+                                        <input type="file" name="frontimage" class="form-control" id="frontimage" accept="image/*" onchange="readURL(this);">
                                     </div>
                                 </div>
                             </div>
@@ -102,6 +116,8 @@
                                     <input type="text" class="form-control" name="start_date" id="datepicker"> 
                                 </div>
                             </div>
+
+                           
                             <div class="col-md-12">
                                 <div class="text-right">
                                     <button type="submit" class="btn btn-primary">Add Project</button>

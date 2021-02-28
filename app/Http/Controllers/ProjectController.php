@@ -61,6 +61,7 @@ class ProjectController extends Controller
         $project->gallery_id = $data['gallery_id'];
         $project->status = $data['status'];
         $project->category_id = $data['category_id'];
+        $project->goal = $data['goal'];
         $project->start_date =  Carbon::create($data['start_date']);
         $random = Str::random(10);
         if ($request->hasFile('coverimage')) {
@@ -75,6 +76,21 @@ class ProjectController extends Controller
                 $image_path = public_path($path . $filename);
                 Image::make($image_tmp)->save($image_path);
                 $project->coverimage = $filename;
+            }
+        }
+        $random = Str::random(10);
+        if ($request->hasFile('frontimage')) {
+            $image_tmp = $request->file('frontimage');
+            if ($image_tmp->isValid()) {
+                $extension = $image_tmp->getClientOriginalExtension();
+                $filename = $random . '.' . $extension;
+                $path = 'storage/project/';
+                if(!File::isDirectory($path)){
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                $image_path = public_path($path . $filename);
+                Image::make($image_tmp)->save($image_path);
+                $project->frontimage = $filename;
             }
         }
        
@@ -129,6 +145,7 @@ class ProjectController extends Controller
         $project->gallery_id = $data['gallery_id'];
         $project->status = $data['status'];
         $project->category_id = $data['category_id'];
+        $project->goal = $data['goal'];
         $project->start_date =  Carbon::create($data['start_date']);
         $random = Str::random(10);
         if ($request->hasFile('coverimage')) {
@@ -149,9 +166,32 @@ class ProjectController extends Controller
                 Image::make($coverimage_tmp)->save($coverimage_path);
             }
         } else {
-            $filename = $project->coverimage;
+            $filename1 = $project->coverimage;
         }
-        $project->coverimage = $filename;
+
+        $random = Str::random(10);
+        if ($request->hasFile('frontimage')) {
+            $frontimage_tmp = $request->file('frontimage');
+            if ($frontimage_tmp->isValid()) {
+                $extension = $frontimage_tmp->getClientOriginalExtension();
+                $filename = $random . '.' . $extension;
+                $path = 'storage/project/';
+                if(!File::isDirectory($path)){
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                 //code for remove old file
+                if($project->frontimage != ''  && $project->frontimage != null){
+                   $file_old = $path.$project->frontimage;
+                   unlink($file_old);
+                }
+                $frontimage_path = public_path($path . $filename);
+                Image::make($frontimage_tmp)->save($frontimage_path);
+            }
+        } else {
+            $filename2 = $project->frontimage;
+        }
+        $project->coverimage = $filename1;
+        $project->frontimage = $filename2;
         $project->save();
         Session::flash('info_message', 'Project has been Added');
         return redirect()->route('projects.index');

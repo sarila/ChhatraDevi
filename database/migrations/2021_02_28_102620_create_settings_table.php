@@ -23,6 +23,13 @@ class CreateSettingsTable extends Migration
             $table->string('instagram')->nullable();
             $table->string('email');
             $table->string('address');
+            $table->string('about_title');
+            $table->longText('about_us');
+            $table->mediumText('excerpt');
+            $table->string('about_image');
+            $table->mediumText('our_mission')->nullable();
+            $table->mediumText('our_values')->nullable();
+            $table->mediumText('our_vision')->nullable();
             $table->timestamps();
         });
     }
