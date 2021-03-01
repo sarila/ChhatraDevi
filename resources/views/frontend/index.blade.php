@@ -69,26 +69,28 @@
 <!-- About Section -->
 <section class="about-section py-4">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-5 col-12 md-lg-0 mb-3">
-                <div class="wrapper">
-                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/about/img-1.jpg" alt="">
+        <?php foreach ($settings as $setting): ?>
+            <div class="row">
+                <div class="col-lg-5 col-12 md-lg-0 mb-3">
+                    <div class="wrapper">
+                        <img class="lazy-image" src="{{ asset('storage/about/'. $setting->about_image) }}" data-src="{{ asset('storage/about/'. $setting->about_image) }}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-7 col-12">
+                    <header class="section-header mb-3">
+                        <h2 class="section-title xs-title text-uppercase font-weight-bold"># About Us</h2>
+                        <h3 class="lg-title title text-black font-weight-bold text-uppercase">{{ $setting->about_title }}</h3>
+                    </header>
+                    <div class="content">
+                       {{ $setting->excerpt }}
+                    </div>
+                    <div class="btn-wrapper">
+                        <a href="about.php" class="button-two py-md-2 px-md-3 font-w-semi">Read More<i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-7 col-12">
-                <header class="section-header mb-3">
-                    <h2 class="section-title xs-title text-uppercase font-weight-bold"># About Us</h2>
-                    <h3 class="lg-title title text-black font-weight-bold text-uppercase">WE <span>Can't help everyone</span> but <span>everyone can help</span> some one.</h3>
-                </header>
-                <div class="content">
-                    <p>Chhatra Devi Foundation Nepal is established for social work all over in Nepal in sectors like Health, Education, Peace, Human Rights, Child Protection, Woman Empowerment, Disabilities and others.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing, elit. Voluptates beatae est dolor tempore architecto aut quis dolores nobis, neque corrupti deleniti voluptatibus veritatis, facere delectus obcaecati, officiis tenetur dicta? Inventore. Lorem ipsum, dolor, sit amet consectetur adipisicing elit.</p>
-                </div>
-                <div class="btn-wrapper">
-                    <a href="about.php" class="button-two py-md-2 px-md-3 font-w-semi">Read More<i class="fas fa-arrow-right ml-2"></i></a>
-                </div>
-            </div>
-        </div>
+        <?php endforeach ?>
+       
     </div>
 </section>
 <!-- End of About Section -->
@@ -348,8 +350,8 @@
                             <div class="img-wrapper">
                                 <img class="lazy-image" src="{{asset('storage/news/'. $latestNews->image)}}" data-src="{{asset('storage/news/'. $latestNews->image)}}" alt="">
                             </div>
-                            <div class="meta-info py-2">
-                                <span class="date xs-title text-upppercase"><i class="far fa-calendar-alt text-pri mr-2 font-weight-bold"></i> {{$latestNews->created_at}}</span>
+                            <div class="meta-info py-2">    
+                                <span class="date xs-title text-upppercase"><i class="far fa-calendar-alt text-pri mr-2 font-weight-bold"></i> {{ $latestNews->created_at->format('Y-M-d')}}</span>
                             </div>
                             <div class="content xs-title">
                                 <a href="event-detail.php" class="event-title ls-title text-black font-weight-bold text-center">{{$latestNews->title}}</a>

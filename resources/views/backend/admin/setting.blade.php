@@ -41,7 +41,8 @@
                     </div>
                 @endif
 
-                <form method="post" action="{{route('update.setting', $setting->id) }}">
+                <form method="post" action="{{route('update.setting', $setting->id) }}" enctype="multipart/form-data">
+                    @method('PATCH')
                     @csrf
                     <div class="row">
                         <div class="col-sm-12">
@@ -130,7 +131,7 @@
                                 @if(empty($setting->about_image))
                                     <img src="" style="width: 100px" id="one">
                                 @else
-                                    <img src="{{ asset('storage/admin/'.$setting->about_image) }}" style="width: 100px" id="one">
+                                    <img src="{{ asset('storage/about/'.$setting->about_image) }}" style="width: 100px" id="one">
                                 @endif
                             </div>
                         </div>

@@ -39,7 +39,7 @@ Route::prefix('/admin')->group(function() {
 
 		//Settings
 		Route::get('/setting', 'SettingController@index')->name('setting');
-		Route::post('/setting/update/{id}', 'SettingController@updateSetting')->name('update.setting');
+		Route::patch('/setting/update/{id}', 'SettingController@updateSetting')->name('update.setting');
 
 		//Theme
 		Route::get('/setting/theme', 'SettingController@theme')->name('theme');

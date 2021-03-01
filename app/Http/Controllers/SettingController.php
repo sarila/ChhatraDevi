@@ -40,6 +40,28 @@ class SettingController extends Controller
         $setting->our_values = $data['our_values'];
         $setting->our_mission = $data['our_mission'];
         $setting->our_vision = $data['our_vision'];
+        $random = Str::random(10);
+        if ($request->hasFile('about_image')) {
+            $icon_tmp = $request->file('about_image');
+            if ($icon_tmp->isValid()) {
+                $extension = $icon_tmp->getClientOriginalExtension();
+                $filename = $random . '.' . $extension;
+                $path = 'storage/about/';
+                if(!File::isDirectory($path)){
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                //code for remove old file
+                if($setting->about_image != ''  && $setting->about_image != null){
+                   $file_old = $path.$setting->about_image;
+                   unlink($file_old);
+                }
+                $icon_path = public_path($path . $filename);
+                Image::make($icon_tmp)->save($icon_path);
+            }
+        } else {
+            $filename = $setting->about_image;
+        }
+        $setting->about_image = $filename;
         $setting->save();
         Session::flash('success_message', 'Settings has been updated successfully');
         return redirect()->back();

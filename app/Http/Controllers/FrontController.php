@@ -27,7 +27,7 @@ class FrontController extends Controller
         $news = News::latest()->get();
         $partners = DB::table('partners')->get(['icon']);
         $settings = Setting::all();
-        $sliders = Slider::all();        
+        $sliders = Slider::all();     
 
     	return view('frontend.index', compact('categories', 'ongoingProjects', 'upcomingEvents', 'pastEvents', 'teams', 'testimonials', 'news', 'partners', 'settings', 'sliders'));
     }
