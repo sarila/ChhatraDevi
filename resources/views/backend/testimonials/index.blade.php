@@ -38,7 +38,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped custom-table mb-0" id="team-datatable">
+                            <table class="table table-striped custom-table mb-0" id="testimonial-datatable">
                                 <thead>
                                     <tr>
                                         <th>S.N.</th>

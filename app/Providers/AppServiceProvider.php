@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use App\Models\Setting;
 use App\Models\Theme;
 use Illuminate\Support\Facades\View;
@@ -25,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer(['frontend.*'], function($view){
             $view->with('setting', Setting::first());
+        });
+
+        View::composer(['frontend.includes.*'], function($view){
+            $view->with('services', Category::all());
         });
     }
 

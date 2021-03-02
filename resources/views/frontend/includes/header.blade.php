@@ -46,17 +46,17 @@
                                 <nav class="main-navigation">
                                     <ul class="navbar-nav font-w-semi list-none text-uppercase xs-title ">
                                         <li class="nav-item mr-lg-2 mb-lg-0 mb-3">
-                                            <a class="nav-link active" href="index.php">Home</a>
+                                            <a class="nav-link active" href="{{ route('indexPage') }}">Home</a>
                                         </li>
                                         <li class="nav-item dropdown mr-md-1 mb-lg-0 mb-3">
                                             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                                                 About
                                             </a>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="about.php">Who We Are</a>
-                                                <a class="dropdown-item" href="events-listing.php">Events</a>
-                                                <a class="dropdown-item" href="team.php">Our Team</a>
-                                                <a class="dropdown-item" href="gallery-album.php">Gallery</a>
+                                                <a class="dropdown-item" href="{{ route('aboutUs') }}">Who We Are</a>
+                                                <a class="dropdown-item" href="{{ route('events') }}">Events</a>
+                                                <a class="dropdown-item" href="{{ route('teams') }}">Our Team</a>
+                                                <a class="dropdown-item" href="{{ route('gallery') }}">Gallery</a>
                                             </div>
                                         </li>
                                         <!-- Dropdown -->
@@ -65,11 +65,10 @@
                                                 Services
                                             </a>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="service.php">All</a>
-                                                <a class="dropdown-item" href="service-detail.php">Health</a>
-                                                <a class="dropdown-item" href="service-detail.php">Education</a>
-                                                <a class="dropdown-item" href="service-detail.php">Peace & Development</a>
-                                                <a class="dropdown-item" href="service-detail.php">Human Rights</a>
+                                                <a class="dropdown-item" href="{{route('services')}}">All</a>
+                                                @foreach ($services as $service)
+                                                    <a class="dropdown-item" href="{{route('serviceDetail', $service->slug)}}">{{$service->category_name}}</a>
+                                                @endforeach
                                             </div>
                                         </li>
                                         <li class="nav-item dropdown mr-md-1 mb-lg-0 mb-3">
@@ -77,8 +76,8 @@
                                                 Projects
                                             </a>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="on-going-project.php">On Going</a>
-                                                <a class="dropdown-item" href="completed-project.php">Completed</a>
+                                                <a class="dropdown-item" href="{{route('ongoingProjects')}}">On Going</a>
+                                                <a class="dropdown-item" href="{{route('completedProjects')}}">Completed</a>
                                             </div>
                                         </li>
                                         <li class="nav-item dropdown mr-md-1 mb-lg-0 mb-3">

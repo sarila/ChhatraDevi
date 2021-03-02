@@ -76,16 +76,14 @@
         </div>
     </div>
     <!-- Page Content -->
-
-
 </div>
 
 @endsection
 @section('js')
-
-<script>
- $(function() {
-   $('#category-datatable').DataTable();
- });
-</script>
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#category-datatable').DataTable();
+        } );
+    </script>
+    
 @endsection

@@ -17,4 +17,9 @@ class Project extends Model
 	{
 		return $this->belongsTo(Gallery::class);
 	}
+
+	public function category()
+	{
+		return $this->belongsTo(Category::class);
+	}
 }

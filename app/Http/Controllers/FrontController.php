@@ -2,31 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Event;
+use App\Models\Gallery;
 use App\Models\News;
-use App\Models\Partner;
 use App\Models\Project;
 use App\Models\Setting;
 use App\Models\Slider;
-use App\Models\Team;
-use App\Models\Testimonial;
-use Illuminate\Http\Request;
 use DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 
 class FrontController extends Controller
 {
     public function index()
     {
         $categories = DB::table('categories')->get(['category_name', 'category_icon']);
-        $ongoingProjects = Project::where('status', 0)->get();
-        $upcomingEvents = Event::where('status', 1)->inRandomOrder(4)->get();
-        $pastEvents = Event::where('status', 0)->inRandomOrder(2)->get();
-        $teams = Team::inRandomOrder()->get();
-        $testimonials = Testimonial::all();
-        $news = News::latest()->get();
+        $ongoingProjects = DB::table('projects')->where('status', 0)->get();
+        $upcomingEvents = DB::table('events')->where('status', 1)->inRandomOrder(4)->limit(4)->get();
+        $pastEvents = DB::table('events')->where('status', 0)->inRandomOrder()->limit(2)->get();
+        $teams = DB::table('teams')->inRandomOrder()->limit(6)->get();
+        $testimonials = DB::table('testimonials')->get();
+        $news = News::latest()->limit(3)->get();
         $partners = DB::table('partners')->get(['icon']);
-        $settings = Setting::all();
+        $settings = Setting::first()->get();
         $sliders = Slider::all();     
 
     	return view('frontend.index', compact('categories', 'ongoingProjects', 'upcomingEvents', 'pastEvents', 'teams', 'testimonials', 'news', 'partners', 'settings', 'sliders'));
@@ -34,27 +32,72 @@ class FrontController extends Controller
 
     public function aboutUs()
     {
-    	return view('frontend.about');
+        $categories = DB::table('categories')->get(['category_name', 'category_icon']);
+        $projects = DB::table('projects')->inRandomOrder()->limit(3)->get();
+        $partners = DB::table('partners')->get(['icon']);
+        $teams = DB::table('teams')->inRandomOrder()->limit(6)->get();
+        $setting = Setting::first()->get();
+    	return view('frontend.about', compact('categories', 'projects', 'teams', 'setting', 'partners'));
     }
 
-    public function team()
+    public function teams()
     {
-    	return view('frontend.about');
+        $teams = DB::table('teams')->get();
+        $departments = DB::table('teams')->select('department', DB::raw('count(*) as total'))
+        ->groupBy('department')
+        ->get();
+    	return view('frontend.team', compact('teams', 'departments'));
     }
 
-    public function event()
+    public function events()
     {
-    	return view('frontend.about');
+        $upcomingEvents = DB::table('events')->where('status', 1)->inRandomOrder(4)->limit(4)->get();
+        $pastEvents = DB::table('events')->where('status', 0)->inRandomOrder()->limit(2)->get();
+    	return view('frontend.event', compact('upcomingEvents', 'pastEvents'));
     }
 
 
     public function gallery()
     {
-    	return view('frontend.about');
+        $galleries = Gallery::all();
+    	return view('frontend.gallery', compact('galleries'));
     }
 
-    public function service()
+    public function services()
     {
-    	return view('frontend.about');
+        $categories = DB::table('categories')->get(['category_name', 'category_icon']);
+        return view('frontend.all-services', compact('categories'));
+    }
+
+    public function serviceDetail($service)
+    {
+
+        $serviceDetail = DB::table('categories')->where('slug', $service)->first();
+        $relatedServices = DB::table('categories')->latest()->limit(3)->get();
+        $projects = DB::table('projects')->where('category_id', $serviceDetail->id)->limit(4)->get();
+        $galleries = DB::table('galleries')->where('category_id', $serviceDetail->id)->get();
+        foreach ($galleries as $gallery) {
+            $images[] = (DB::table('images')->where('gallery_id', $gallery->id)->get()) ?? 'null';
+        }
+        $allImages = Arr::collapse($images);
+        return view('frontend.service-detail', compact('serviceDetail', 'relatedServices', 'projects', 'allImages'));
+    }
+
+    public function ongoingProjects()
+    {
+        $ongoingProjects = DB::table('projects')->where('status', 0)->get();
+        return view('frontend.ongoing-project', compact('ongoingProjects'));
+    }
+
+    public function completedProjects()
+    {
+        $completedProjects = DB::table('projects')->where('status', 1)->get();
+        return view('frontend.completed-project', compact('completedProjects'));
+    }
+
+    public function projectDetail($project)
+    {
+        $projectDetails = DB::table('projects')->where('id', $project)->first();
+        return view('frontend.project-detail', compact('projectDetails'));
     }
 }

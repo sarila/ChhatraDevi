@@ -90,4 +90,17 @@ Route::prefix('/admin')->group(function() {
 
 //Route Frontend
 
-Route::get('/', 'FrontController@index')->name('indexPage');
+Route::get('/index', 'FrontController@index')->name('indexPage');
+
+//Route for About US page
+Route::get('/about', 'FrontController@aboutUs')->name('aboutUs');
+
+//Route for Events Page
+Route::get('/events', 'FrontController@events')->name('events');
+Route::get('/teams', 'FrontController@teams')->name('teams');
+Route::get('/gallery', 'FrontController@gallery')->name('gallery');
+Route::get('/services', 'FrontController@services')->name('services');
+Route::get('/services/{service}', 'FrontController@serviceDetail')->name('serviceDetail');
+Route::get('/projects/ongoing', 'FrontController@ongoingProjects')->name('ongoingProjects');
+Route::get('/projects/completed', 'FrontController@completedProjects')->name('completedProjects');
+Route::get('/projects/{project}', 'FrontController@projectDetail')->name('projectDetail');

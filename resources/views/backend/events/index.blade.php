@@ -38,7 +38,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped custom-table mb-0" id="news-datatable">
+                            <table class="table table-striped custom-table mb-0" id="events-datatable">
                                 <thead>
                                     <tr>
                                         <th>S.N.</th>
@@ -99,9 +99,9 @@
 @endsection
 @section('js')
 
-<script>
- $(function() {
-   $('#events-datatable').DataTable();
- });
-</script>
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#events-datatable').DataTable();
+        } );
+    </script>
 @endsection

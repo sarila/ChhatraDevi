@@ -8,7 +8,7 @@
     <div class="swiper-container">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
-            <?php foreach ($sliders as $slider): ?>
+            @foreach ($sliders as $slider)
                 <div class="swiper-slide">
                     <div class="slider-wrapper">
                         <img class="lazy-image" src="{{ asset('storage/slider/'. $slider->slider_image) }}" data-src="{{ asset('storage/slider/'. $slider->slider_image) }}" alt="">
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div> <!-- end swiper-slide -->
-            <?php endforeach ?>
+            @endforeach
         </div>
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
@@ -53,7 +53,7 @@
             <span class="position-relative d-inline-block for-af"></span>
         </header>
         <div class="row">
-            <?php foreach ($categories as $category): ?>
+            @foreach ($categories as $category)
                 <!-- col -->
                 <div class="col-lg-2 col-6 mb-3">
                     <a href="service-detail.php" class="holder box-shadow-3 ls-title bg-white px-md-2 text-center">
@@ -61,7 +61,7 @@
                         <h2 class="icon-title text-black mb-0 mt-2 font-weight-bold">{{$category->category_name}}</h2>
                     </a>
                 </div>
-            <?php endforeach ?>
+            @endforeach
         </div>
     </div>
 </section>
@@ -69,7 +69,7 @@
 <!-- About Section -->
 <section class="about-section py-4">
     <div class="container">
-        <?php foreach ($settings as $setting): ?>
+        @foreach ($settings as $setting)
             <div class="row">
                 <div class="col-lg-5 col-12 md-lg-0 mb-3">
                     <div class="wrapper">
@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </div>
-        <?php endforeach ?>
+        @endforeach
        
     </div>
 </section>
@@ -110,7 +110,7 @@
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper py-4 position-relative">
 
-                    <?php foreach ($ongoingProjects as $ongoingProject): ?>
+                    @foreach ($ongoingProjects as $ongoingProject)
                         <!-- Slider -->
                         <div class="swiper-slide">
                             <div class="slider-wrapper bg-white p-md-3 box-shadow-1 pb-2">
@@ -141,7 +141,7 @@
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach ?>
+                    @endforeach
                    
                 </div>
             </div>
@@ -167,7 +167,7 @@
                 <header class="section-header-two mb-4">
                     <h2 class="section-title xs-title text-uppercase"><img src="assets/images/causes/like-white.png" alt="" class="mr-2"># Upcoming Events</h2>
                 </header>
-                <?php foreach ($upcomingEvents as $upcomingEvent): ?>
+                @foreach ($upcomingEvents as $upcomingEvent)
                     <!-- One -->
                     <div class="wrapper p-2 box-shadow-2 mb-3">
                         <div class="row">
@@ -185,7 +185,7 @@
                             </div>
                         </div>
                     </div>
-                <?php endforeach ?>
+                @endforeach
                
             </div>
             <!-- Past events -->
@@ -193,7 +193,7 @@
                 <header class="section-header-two text-right mb-4">
                     <h2 class="section-title xs-title text-uppercase"><img src="assets/images/causes/like-white.png" alt="" class="mr-2"># Past Events</h2>
                 </header>
-                <?php foreach ($pastEvents as $pastEvent): ?>
+                @foreach ($pastEvents as $pastEvent)
                      <div class="wrapper box-shadow-2 mb-4">
                         <div class="row">
                             <div class="col-lg-4 col-12 mb-md-0 mb-3">
@@ -217,7 +217,7 @@
                         </div>
                     </div>
                 <!-- wrapper end -->
-                <?php endforeach ?>
+                @endforeach
             </div>
         </div>
     </div>
@@ -238,7 +238,7 @@
                     </div>
                 </header>
             </div>
-            <?php foreach ($teams as $team): ?>
+            @foreach ($teams as $team)
                  <!-- Team -->
                 <div class="col-lg-3 col-md-6 col-12">
                     <div class="img-holder position-relative">
@@ -249,7 +249,7 @@
                         </div>
                     </div>
                 </div>
-            <?php endforeach ?>
+            @endforeach
            
 
         </div>
@@ -267,7 +267,7 @@
                 </header>
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        <?php foreach ($testimonials as $testimonial): ?>
+                        @foreach ($testimonials as $testimonial)
                             <div class="swiper-slide">
                                 <div class="slider-wrapper">
                                     <div class="content text-left bg-light p-3 xs-title">
@@ -285,7 +285,7 @@
                                     <img src="{{ asset('storage/testimonials/'. $testimonial->image) }}" alt="">
                                 </div>
                             </div> <!-- end swiper-slide -->
-                        <?php endforeach ?>
+                        @endforeach
                        
                     </div>
                     <div class="swiper-pagination text-right"></div>
@@ -344,7 +344,7 @@
         </header>
         <div class="holder p-2 bg-light py-4">
             <div class="row">
-                <?php foreach ($news as $latestNews): ?>
+                @foreach ($news as $latestNews)
                     <div class="col-lg-4 col-md-6 col-12 mb-3">
                         <div class="col-wrapper bg-white p-2 box-shadow-2">
                             <div class="img-wrapper">
@@ -363,7 +363,7 @@
                         </div>
                     </div>
                 <!-- End of Col -->
-                <?php endforeach ?>
+                @endforeach
             </div>
         </div>
     </div>
@@ -378,13 +378,13 @@
         <div class="swiper-container">
         <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
-                <?php foreach ($partners as $partner): ?>
+                @foreach ($partners as $partner)
                     <div class="swiper-slide">
-                    <div class="slider-wrapper">
-                        <img class="lazy-image" src="{{ asset('storage/partners/'. $partner->icon) }}" data-src="{{ asset('storage/partners/'. $partner->icon) }}" alt="">
-                    </div>
-                </div> <!-- end swiper-slide -->
-                <?php endforeach ?>
+                        <div class="slider-wrapper">
+                            <img class="lazy-image" src="{{ asset('storage/partners/'. $partner->icon) }}" data-src="{{ asset('storage/partners/'. $partner->icon) }}" alt="">
+                        </div>
+                    </div> <!-- end swiper-slide -->
+                @endforeach
             </div>
         </div>
     </div>

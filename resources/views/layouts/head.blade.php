@@ -35,8 +35,9 @@
         <!-- CSS for sweetalert -->
 		<link rel="stylesheet" href="{{ asset('/admin/assets/css/sweetalert.css') }}">
 
-		<!-- Jquery for datatable -->
-		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+		<!-- css for datatable -->
+		<link rel="stylesheet" type="text/css" href="{{ asset('/admin/assets/datatable/css/dataTables.bootstrap.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('/admin/assets/datatable/css/dataTables.foundation.min.css')}}">
 
 		<!-- Date-picker jquery -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
