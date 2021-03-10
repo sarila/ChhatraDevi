@@ -79,9 +79,11 @@ Route::prefix('/admin')->group(function() {
 		//Sliders
 		Route::resource('sliders', SliderController::class);
 
-		//Product Categories for shop
-		Route::resource('/products/categories', ProductCategoryController::class);
+		//Categories for products
+		Route::resource('pcategories', PcategoryController::class);
 
+		//Products
+		Route::resource('products', ProductController::class);
 
 		//route to store image through Ck editor
 		Route::post('ckeditor', 'CkeditorFileUploadController@store')->name('ckeditor.store');
@@ -92,7 +94,6 @@ Route::prefix('/admin')->group(function() {
 });
 
 //Route Frontend
-
 Route::get('/', 'FrontController@index')->name('indexPage');
 
 //Route for About US page
