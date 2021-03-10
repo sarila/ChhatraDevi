@@ -52,6 +52,7 @@ return array(
     'App\\Models\\Image' => $baseDir . '/app/Models/Image.php',
     'App\\Models\\News' => $baseDir . '/app/Models/News.php',
     'App\\Models\\Partner' => $baseDir . '/app/Models/Partner.php',
+    'App\\Models\\ProductCategory' => $baseDir . '/app/Models/ProductCategory.php',
     'App\\Models\\Project' => $baseDir . '/app/Models/Project.php',
     'App\\Models\\Role' => $baseDir . '/app/Models/Role.php',
     'App\\Models\\Setting' => $baseDir . '/app/Models/Setting.php',

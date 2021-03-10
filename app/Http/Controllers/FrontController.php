@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use App\Models\News;
 use App\Models\Project;
+use App\Models\Image as img;
 use App\Models\Setting;
 use App\Models\Slider;
 use DB;
@@ -65,7 +66,7 @@ class FrontController extends Controller
 
     public function services()
     {
-        $categories = DB::table('categories')->get(['category_name', 'category_icon']);
+        $categories = DB::table('categories')->get(['category_name', 'category_icon', 'id', 'slug']);
         return view('frontend.all-services', compact('categories'));
     }
 
@@ -74,10 +75,11 @@ class FrontController extends Controller
 
         $serviceDetail = DB::table('categories')->where('slug', $service)->first();
         $relatedServices = DB::table('categories')->latest()->limit(3)->get();
-        $projects = DB::table('projects')->where('category_id', $serviceDetail->id)->limit(4)->get();
+        $projects = DB::table('projects')->where('category_id', $serviceDetail->id)->get();
         $galleries = DB::table('galleries')->where('category_id', $serviceDetail->id)->get();
+        $images[] = null;
         foreach ($galleries as $gallery) {
-            $images[] = (DB::table('images')->where('gallery_id', $gallery->id)->get()) ?? 'null';
+            $images[] = (DB::table('images')->where('gallery_id', $gallery->id)->get());
         }
         $allImages = Arr::collapse($images);
         return view('frontend.service-detail', compact('serviceDetail', 'relatedServices', 'projects', 'allImages'));
@@ -86,18 +88,45 @@ class FrontController extends Controller
     public function ongoingProjects()
     {
         $ongoingProjects = DB::table('projects')->where('status', 0)->get();
-        return view('frontend.ongoing-project', compact('ongoingProjects'));
+        return view('frontend.projects.ongoing-project', compact('ongoingProjects'));
     }
 
     public function completedProjects()
     {
         $completedProjects = DB::table('projects')->where('status', 1)->get();
-        return view('frontend.completed-project', compact('completedProjects'));
+        return view('frontend.projects.completed-project', compact('completedProjects'));
     }
 
     public function projectDetail($project)
     {
         $projectDetails = DB::table('projects')->where('id', $project)->first();
-        return view('frontend.project-detail', compact('projectDetails'));
+        $galleries = img::where('gallery_id', $projectDetails->gallery_id)->get();
+        
+        return view('frontend.projects.project-detail', compact('projectDetails', 'galleries'));
+    }
+
+    public function articleNews()
+    {
+        $articleNews = News::where('news_type', 0)->get();
+        return view('frontend.news.article-news', compact('articleNews'));
+
+    }
+
+    public function mediaNews()
+    {
+        $mediaNews = News::where('news_type', 1)->get();
+        return view('frontend.news.media-coverage', compact('mediaNews'));
+    }
+
+    public function articleDetail($article)
+    {
+        $articleDetail = News::where('id', $article)->first();
+        return view('frontend.news.article-detail', compact('articleDetail'));
+    }
+
+    public function mediaDetail($media)
+    {
+        $mediaDetail =  News::where('news_type', 1)->first();
+        return view('frontend.news.media-detail', compact('mediaDetail'));
     }
 }

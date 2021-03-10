@@ -29,7 +29,7 @@
                         
                         <!-- col -->
                         <div class="col-lg-2 col-6 mb-3">
-                            <a href="service-detail.php" class="holder box-shadow-3 ls-title bg-white px-md-2 text-center">
+                            <a href="{{route('serviceDetail', $category->slug)}}" class="holder box-shadow-3 ls-title bg-white px-md-2 text-center">
                                 <img class="lazy-image" src="{{ asset('storage/category/'.$category->category_icon )}}" data-src="{{ asset('storage/category/'.$category->category_icon )}}" alt="">
                                 <h2 class="icon-title text-black mb-0 mt-2 font-weight-bold">{{$category->category_name}}</h2>
                             </a>

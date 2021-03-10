@@ -79,6 +79,9 @@ Route::prefix('/admin')->group(function() {
 		//Sliders
 		Route::resource('sliders', SliderController::class);
 
+		//Product Categories for shop
+		Route::resource('/products/categories', ProductCategoryController::class);
+
 
 		//route to store image through Ck editor
 		Route::post('ckeditor', 'CkeditorFileUploadController@store')->name('ckeditor.store');
@@ -90,7 +93,7 @@ Route::prefix('/admin')->group(function() {
 
 //Route Frontend
 
-Route::get('/index', 'FrontController@index')->name('indexPage');
+Route::get('/', 'FrontController@index')->name('indexPage');
 
 //Route for About US page
 Route::get('/about', 'FrontController@aboutUs')->name('aboutUs');
@@ -99,8 +102,20 @@ Route::get('/about', 'FrontController@aboutUs')->name('aboutUs');
 Route::get('/events', 'FrontController@events')->name('events');
 Route::get('/teams', 'FrontController@teams')->name('teams');
 Route::get('/gallery', 'FrontController@gallery')->name('gallery');
+
+//Services
 Route::get('/services', 'FrontController@services')->name('services');
 Route::get('/services/{service}', 'FrontController@serviceDetail')->name('serviceDetail');
+
+//Projects 
 Route::get('/projects/ongoing', 'FrontController@ongoingProjects')->name('ongoingProjects');
 Route::get('/projects/completed', 'FrontController@completedProjects')->name('completedProjects');
 Route::get('/projects/{project}', 'FrontController@projectDetail')->name('projectDetail');
+
+//News 
+Route::get('/news/article', 'FrontController@articleNews')->name('articleNews');
+Route::get('/news/article/{article}', 'FrontController@articleDetail')->name('articleDetail');
+Route::get('/news/media', 'FrontController@mediaNews')->name('mediaNews');
+Route::get('/news/media/{media}', 'FrontController@mediaDetail')->name('mediaDetail');
+
+

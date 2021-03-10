@@ -85,8 +85,8 @@
                                                 News Room
                                             </a>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="article.php">Articles</a>
-                                                <a class="dropdown-item" href="media-listing.php">Media Coverage</a>
+                                                <a class="dropdown-item" href="{{route('articleNews')}}">Articles</a>
+                                                <a class="dropdown-item" href="{{route('mediaNews')}}">Media Coverage</a>
                                             </div>
                                         </li>
                                         <li class="nav-item mr-lg-2 mb-lg-0 mb-3">

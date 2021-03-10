@@ -23,7 +23,7 @@
 	            <div class="row">
 	                <div class="col-md-9 col-12">
 	                    <div class="wrapper bg-white box-shadow-2">
-	                        <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/causes/img-6.jpg" alt="">
+	                        <img class="lazy-image" src="{{asset('storage/project/'. $projectDetails->coverimage)}}" data-src="{{asset('storage/project/'. $projectDetails->coverimage)}}" alt="">
 	                    </div>
 	                    <nav>
 	                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -47,12 +47,12 @@
 	                                    <h3 class="lg-title text-dark font-weight-bold after-border-b-primary">Cause Photos</h3>
 	                                </header>
 	                                <div class="row no-gutters">
-	                                	@foreach($projectDetails->galleries as $gallery)
+	                                	@foreach($galleries as $gallery)
 		                                    <!-- Team -->
 		                                    <div class="col-lg-3 col-md-6 col-12">
 		                                        <div class="img-holder position-relative box-shadow-2 p-2 bg-white">
-		                                            <a data-fancybox="gallery" href="assets/images/causes/img (2).jpg">
-		                                                <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/causes/img (2).jpg" alt="">
+		                                            <a data-fancybox="gallery" href="{{asset('storage/galleries/'. $gallery->image)}}">
+		                                                <img class="lazy-image" src="{{asset('storage/galleries/'. $gallery->image)}}" data-src="{{asset('storage/galleries/'. $gallery->image)}}" alt="">
 		                                            </a>
 		                                        </div>
 		                                    </div>	
