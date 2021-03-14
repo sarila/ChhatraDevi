@@ -59,7 +59,7 @@ class ProjectController extends Controller
         $project->excerpt = $data['excerpt'];
         $project->description = $data['description'];
         $project->gallery_id = $data['gallery_id'];
-        $project->status = $data['status'];
+        $project->quantity = $data['quantity'];
         $project->category_id = $data['category_id'];
         $project->goal = $data['goal'];
         $project->start_date =  Carbon::create($data['start_date']);

@@ -47,7 +47,7 @@
 					<a href="{{ route('pcategories.index')}}"><i class="la la-tasks"></i> <span>Product Categories</span> </a>
 				</li>
 				<li>
-					<a href="{{ route('events.index')}}"><i class="la la-tasks"></i> <span>Events</span> </a>
+					<a href="{{ route('products.index')}}"><i class="la la-tasks"></i> <span>Products</span> </a>
 				</li>
 			</ul>
 		</div>
