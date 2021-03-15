@@ -90,7 +90,7 @@
                                             </div>
                                         </li>
                                         <li class="nav-item mr-lg-2 mb-lg-0 mb-3">
-                                            <a class="nav-link" href="shop.php">Shop</a>
+                                            <a class="nav-link" href="{{route('shop')}}">Shop</a>
                                         </li>
                                         <li class="nav-item mr-lg-2 mb-lg-0 mb-3">
                                             <a class="nav-link" href="contact.php">Contact Us</a>

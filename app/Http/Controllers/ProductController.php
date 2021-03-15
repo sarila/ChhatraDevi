@@ -58,14 +58,14 @@ class ProductController extends Controller
         $product->discount = $data['discount'];
         $product->discount_type = $data['discount_type'];
         $product->pcategory_id = $data['pcategory_id'];
-        $product->SKU = Str::random(8);
+        $product->SKU = strtoupper(Str::random(8));
         $random = Str::random(10);
         if ($request->hasFile('coverimage')) {
             $image_tmp = $request->file('coverimage');
             if ($image_tmp->isValid()) {
                 $extension = $image_tmp->getClientOriginalExtension();
                 $filename = $random . '.' . $extension;
-                $path = 'storage/product/';
+                $path = 'storage/products/';
                 if(!File::isDirectory($path)){
                     File::makeDirectory($path, 0777, true, true);
                 }
@@ -94,12 +94,22 @@ class ProductController extends Controller
             } 
         }
 
-        if ($request->tags) {
+        if (isset($request->tags)) {
             foreach ($request->tags as $tag) {
-                $product->tags()->create([
-                    'tag_name' => $tag,
-                ]);
+                $tagExist = Tag::where('tag_name', $tag)->exists();
+                if(!$tagExist) {
+                    $product->tags()->create([
+                        'tag_name' => $tag
+                    ]);
+                    
+                } else {
+                    $product->tags()->attach([
+                        Tag::where('tag_name', $tag)->get(['id'])
+                    ]); 
+                }
+               
             }
+                
         }
 
         Session::flash('info_message', 'Product has been updated');
@@ -160,7 +170,7 @@ class ProductController extends Controller
             if ($image_tmp->isValid()) {
                 $extension = $image_tmp->getClientOriginalExtension();
                 $filename = $random . '.' . $extension;
-                $path = 'storage/product/';
+                $path = 'storage/products/';
                 if(!File::isDirectory($path)){
                     File::makeDirectory($path, 0777, true, true);
                 }
@@ -196,12 +206,22 @@ class ProductController extends Controller
             } 
         }
 
-        if ($request->tags) {
+         if (isset($request->tags)) {
             foreach ($request->tags as $tag) {
-                $product->tags()->create([
-                    'tag_name' => $tag,
-                ]);
+                $tagExist = Tag::where('tag_name', $tag)->exists();
+                if(!$tagExist) {
+                    $product->tags()->create([
+                        'tag_name' => $tag
+                    ]);
+                    
+                } else {
+                    $product->tags()->attach([
+                        Tag::where('tag_name', $tag)->get(['id'])
+                    ]); 
+                }
+               
             }
+                
         }
 
         Session::flash('info_message', 'Product has been saved');

@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Models\Image as img;
 use App\Models\Setting;
 use App\Models\Slider;
+use App\Models\Product;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -129,4 +130,25 @@ class FrontController extends Controller
         $mediaDetail =  News::where('news_type', 1)->first();
         return view('frontend.news.media-detail', compact('mediaDetail'));
     }
+
+    public function shop()
+    {
+        $pcategories = DB::table('pcategories')->get(['name', 'slug']);
+        $products = DB::table('products')->get(['coverimage', 'product_name', 'id', 'price']);
+        $topproducts = DB::table('products')->latest()->limit(3)->get(['coverimage', 'product_name', 'id', 'price']);
+
+        return view('frontend.shop.shop-index', compact('pcategories', 'products', 'topproducts'));
+    }
+
+    public function productDetail($product)
+    {
+        $productDetail = Product::where('id', $product)->first();
+        $image[] = $productDetail->coverimage;
+        foreach ($productDetail->pimages()->with('pimages')->pluck('name') as $relatedimg) {
+            $image[] = $relatedimg;
+        }
+
+        return view('frontend.shop.product-detail', compact('productDetail', 'image'));
+    }
+
 }

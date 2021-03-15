@@ -1,0 +1,24 @@
+	<div class="col-lg-6 col-12">
+						<div class="product-sliders">
+							 <div class="swiper-container gallery-top">
+								<div class="swiper-wrapper">
+									@foreach($productDetail->pimages() as $image )
+								  		<div class="swiper-slide" style="background-image:url('{{asset('storage/products/'. $image->name )}}')"></div>
+									@endforeach
+								</div>
+								<div class="swiper-button-next swiper-button-white"></div>
+								<div class="swiper-button-prev swiper-button-white"></div>
+							  </div>
+							  <div class="swiper-container gallery-thumbs mt-2">
+								<div class="swiper-wrapper">
+									@foreach($productDetail->pimages() as $image )
+								  		<div class="swiper-slide" style="background-image:url('{{asset('storage/products/'. $image->name )}}')"></div>
+									@endforeach
+								  <div class="swiper-slide"> <img src="">{{asset('storage/products/'. $image->name )}}</div>
+								  <div class="swiper-slide"> <img src="">{{asset('storage/products/'. $image->name )}}</div>
+								  <div class="swiper-slide"> <img src="">{{asset('storage/products/'. $image->name )}}</div>
+								  <div class="swiper-slide"> <img src="">{{asset('storage/products/'. $image->name )}}</div>
+								</div>
+							  </div>
+						</div>
+					</div>

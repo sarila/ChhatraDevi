@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Tag;
 use App\Models\Pimage;
+use App\Models\Pcategory;
 
 class Product extends Model
 {
@@ -21,5 +22,10 @@ class Product extends Model
     public function pimages()
     {
     	return $this->hasMany(Pimage::class);
+    }
+
+    public function pcategory()
+    {
+        return $this->belongsTo(Pcategory::class,'pcategory_id');
     }
 }

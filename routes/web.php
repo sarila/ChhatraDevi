@@ -119,4 +119,8 @@ Route::get('/news/article/{article}', 'FrontController@articleDetail')->name('ar
 Route::get('/news/media', 'FrontController@mediaNews')->name('mediaNews');
 Route::get('/news/media/{media}', 'FrontController@mediaDetail')->name('mediaDetail');
 
+//Shops
+Route::get('/shop', 'FrontController@shop')->name('shop');
+Route::get('/shop/product/{product}', 'FrontController@productDetail')->name('productDetail');
+
 
