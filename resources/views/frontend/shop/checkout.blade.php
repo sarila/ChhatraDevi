@@ -30,7 +30,7 @@
                 <div class="checkout-form">
                     <div class="row">
                         <div class="col-lg-8 col-12">
-                            <form method="#" action="#">
+                            <form method="post" action="">
                                 <div class="billing-detail">
                                 <div class="row clearfix">
                                     <div class="billing-column col-12">
@@ -39,37 +39,37 @@
                                             <!--Form Group-->
                                             <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                                 <div class="field-label">First Name<sup>*</sup></div>
-                                                <input type="text" name="field-name" value="" placeholder="">
+                                                <input type="text" name="first_name" value="" placeholder="">
                                             </div>
                                             <!--Form Group-->
                                             <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                                 <div class="field-label">Last Name<sup>*</sup></div>
-                                                <input type="text" name="field-name" value="" placeholder="">
+                                                <input type="text" name="last_name" value="" placeholder="">
                                             </div>
                                             <!--Form Group-->
                                             <div class="form-group col-lg-12 col-md-12 col-sm-12">
                                                 <div class="field-label">Email Address<sup>*</sup></div>
-                                                <input type="text" name="field-name" value="" placeholder="">
+                                                <input type="text" name="email" value="" placeholder="">
                                             </div>
                                             <!--Form Group-->
                                             <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                                 <div class="field-label">Phone Number<sup>*</sup></div>
-                                                <input type="text" name="field-name" value="" placeholder="">
+                                                <input type="text" name="phone_number" value="" placeholder="">
                                             </div>
                                             <!--Form Group-->
                                             <div class="form-group col-lg-12 col-md-12 col-sm-12 address">
                                                 <div class="field-label">Address*<sup>*</sup></div>
-                                                <input type="text" name="field-name" value="" placeholder="">
+                                                <input type="text" name="address" value="" placeholder="">
                                             </div>
                                             <!--Form Group-->
                                             <div class="form-group col-lg-12 col-md-12 col-sm-12">
                                                 <div class="field-label">Town / City <sup>*</sup></div>
-                                                <input type="text" name="field-name" value="" placeholder="">
+                                                <input type="text" name="town" value="" placeholder="">
                                             </div>
                                             <!--Form Group-->
                                             <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                                 <div class="field-label">State <sup>*</sup></div>
-                                                <input type="text" name="field-name" value="" placeholder="Email Address">
+                                                <input type="text" name="state" value="" placeholder="Email Address">
                                             </div>
                                             <div class="form-group col-lg-12 col-lg-12 col-md-12 col-sm-12">
                                                 <div class="check-box"><input type="checkbox" name="shipping-option" id="account-option"> &ensp; <label for="account-option">Create an account?</label></div>
@@ -81,7 +81,7 @@
                                                 <!--Form Group-->
                                                 <div class="form-group">
                                                     <div class="field-label">Order Notes</div>
-                                                    <textarea class="" placeholder="Notes about your order, e.g. special notes for your delivery."></textarea>
+                                                    <textarea name="order_notes" class="" placeholder="Notes about your order, e.g. special notes for your delivery."></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,19 +97,13 @@
                                 <ul class="list-none">
                                     <li>
                                         <div class="radio-option">
-                                            <input type="radio" name="payment-group" id="payment-1" checked>
-                                            <label for="payment-1"><strong class="d-block">Direct Bank Transfer</strong><span class="xs-title">Lorem ipsum dolor sit amet, consectetur, adipisicing elit. Enim nemo quis, eum quas fugiat magni, dolores quo iure aspernatur rerum, saepe in eaque.</span></label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio-option">
-                                            <input type="radio" name="payment-group" id="payment-3">
-                                            <label for="payment-3"><strong>Esewa</strong></label>
+                                            <input type="radio" name="payment_method" id="payment-1" checked>
+                                            <label for="payment-1"><strong class="d-block">Cash On Delivery</strong></label>
                                         </div>
                                     </li>
                                 </ul>
                                 <div class="btn-box">
-                                    <button type="button" class="button-two place-order cursor-pointer"><span class="btn-title">Place Order</span></button>
+                                    <button type="submit" class="button-two place-order cursor-pointer"><span class="btn-title">Place Order</span></button>
                                 </div>
                             </div>
                             <!--End Place Order-->

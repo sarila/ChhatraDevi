@@ -52,8 +52,16 @@
                                                 </div>
                                             </div>
                                             <div class="lower-content">
-                                                <h3><a href="{{route('productDetail', $product->id)}}">{{$product->product_name}}</a></h3>
-                                                <div class="price">Rs {{$product->price}}</div>
+                                                 <h3><a href="{{route('productDetail', $product->id)}}">{{$product->product_name}}</a></h3>
+                                                @if(($product->discount_type) == 0)
+                                                    <div class="price">Rs {{$product->price}}</div>
+                                                @elseif(($product->discount_type) == 1)
+                                                    <div class="price">Rs {{$product->price - $product->discount}}</div><strike class="">Rs {{$product->price}}</strike>
+                                                    <span class="text-success ml-2">{{$product->discount}} Rs. off</span>
+                                                @elseif(($product->discount_type) == 2)
+                                                    <div class="price">Rs {{$product->price - (($product->discount /100) * $product->price)}}</div><strike class="">Rs {{$product->price}}</strike>
+                                                    <span class="text-success ml-2">{{$product->discount}} % off</span>
+                                                @endif      
                                             </div>
                                         </div>
                                     </div>     

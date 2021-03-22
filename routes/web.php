@@ -126,4 +126,4 @@ Route::get('/cart', 'FrontController@cart')->name('cart');
 Route::get('/add-to-cart/{id}', 'FrontController@addToCart')->name('addToCart');
 Route::get('/checkout', 'FrontController@checkout')->name('checkout');
 
-
+Route::resource('/users', UserController::class);

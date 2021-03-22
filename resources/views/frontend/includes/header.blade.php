@@ -142,46 +142,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Product -->
-                    <div class="product pb-3 mb-3">
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="xs-title mb-2 d-inline-block" href="product-detail.php">Combo Oaths</a>
-                                <div class="prod-counts  mb-2">
-                                    <!-- <span class="d-block">Saved Rs :
-                                         <span class="save-count ml-2">80</span>
-                                    </span> -->
-                                    <span class="item-count">3</span> ×
-                                    <span class="prod-price">Rs 124.00</span> 
-                                </div>
-                                <div class="prod-remove">
-                                    Remove <i class="far fa-times-circle ml-2"></i></div>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="d-block"><img src="{{asset('frontend/assets/images/resource/products/1.png') }}" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product -->
-                    <div class="product pb-3 mb-3">
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="xs-title mb-2 d-inline-block" href="product-detail.php">Arna Bear</a>
-                                <div class="prod-counts  mb-2">
-                                    <!-- <span class="d-block">Saved Rs :
-                                         <span class="save-count ml-2">80</span>
-                                    </span> -->
-                                    <span class="item-count">2</span> ×
-                                    <span class="prod-price">Rs 324.00</span> 
-                                </div>
-                                <div class="prod-remove">
-                                    Remove <i class="far fa-times-circle ml-2"></i></div>
-                            </div>
-                            <div class="col-5">
-                                <a href="#" class="d-block"><img src="{{asset('frontend/assets/images/resource/products/4.png') }}" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="product-total p-2 d-flex">
                     <span class="font-weight-bold">SUBTOTAL:</span>

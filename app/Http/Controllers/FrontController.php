@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Gallery;
-use App\Models\News;
-use App\Models\Project;
 use App\Models\Image as img;
+use App\Models\News;
+use App\Models\Product;
+use App\Models\Project;
 use App\Models\Setting;
 use App\Models\Slider;
-use App\Models\Product;
-use Illuminate\Support\Facades\Session;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Session;
 
 class FrontController extends Controller
 {
@@ -135,7 +136,7 @@ class FrontController extends Controller
     public function shop()
     {
         $pcategories = DB::table('pcategories')->get(['name', 'slug']);
-        $products = DB::table('products')->get(['coverimage', 'product_name', 'id', 'price']);
+        $products = Product::all();
         $topproducts = DB::table('products')->latest()->limit(3)->get(['coverimage', 'product_name', 'id', 'price']);
 
         return view('frontend.shop.shop-index', compact('pcategories', 'products', 'topproducts'));
@@ -152,57 +153,29 @@ class FrontController extends Controller
         return view('frontend.shop.product-detail', compact('productDetail', 'image'));
     }
 
-    //Cart Page
-    public function cart()
-    {
-        return view('frontend.shop.cart');
-    }
-
-
     // Add to cart function
-    public function addToCart($product)
-    {
-        $item = Product::where('id', $product)->first();
-        if(!$product)
-        {
-            abort(404);
-        }
+    public function addToCart(Request $request, $id) {
+        $product = Product::findOrFail($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $product->id);
 
-        $cart = session()->get('cart');
+        $request->session()->put('cart', $cart);
 
-        //if cart is enpty
-        if (!$cart) {
-            $cart = [
-                $id => [
-                    'name' => $item->product_name,
-                    'quantity' => 1,
-                    'price' => $item->price,
-                    'photo' => $item->coverimage,
-                ]
-            ];
-
-            Session()->put('cart', $cart);
-
-            return redirect()->back()->with('success', 'Product added to cart successfully');
-        }
-        // If cart not empty
-
-        if (isset($cart['$id'])) {
-            dd($cart['$id']['quantity']++);
-
-            return redirect()->back()->with('success', 'Product added to cart successfully');
-        }
-
-        // if item not exist in cart then add to cart with quantity = 1
-        $cart['$id'] =  [
-            'name' => $item->product_name,
-            'quantity' => 1,
-            'price' => $item->price,
-            'photo' => $item->coverimage,
-        ];
-        session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->route('shop');
     }
+
+    //Cart View
+    public function cart() 
+    {
+        if (!Session::has('cart')) {
+            return view('frontend.shop.cart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        return view('frontend.shop.cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+    }
+
 
 
     // Checkout function
