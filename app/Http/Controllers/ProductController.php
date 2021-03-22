@@ -104,7 +104,7 @@ class ProductController extends Controller
                     
                 } else {
                     $product->tags()->attach([
-                        Tag::where('tag_name', $tag)->get(['id'])
+                        Tag::where('tag_name', $tag)->first()->tag_name
                     ]); 
                 }
                
@@ -241,12 +241,4 @@ class ProductController extends Controller
         return redirect()->route('products.index');
     }
 
-    // protected function validateData(Request $request)
-    // {
-    //     return request()->validate($request, [
-    //         'product_name' => 'required',
-    //         'product_description' => 'required',
-    //         'price' => 'required',
-    //     ]);
-    // }
 }

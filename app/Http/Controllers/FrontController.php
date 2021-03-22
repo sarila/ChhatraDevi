@@ -9,6 +9,7 @@ use App\Models\Image as img;
 use App\Models\Setting;
 use App\Models\Slider;
 use App\Models\Product;
+use Illuminate\Support\Facades\Session;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -149,6 +150,65 @@ class FrontController extends Controller
         }
 
         return view('frontend.shop.product-detail', compact('productDetail', 'image'));
+    }
+
+    //Cart Page
+    public function cart()
+    {
+        return view('frontend.shop.cart');
+    }
+
+
+    // Add to cart function
+    public function addToCart($product)
+    {
+        $item = Product::where('id', $product)->first();
+        if(!$product)
+        {
+            abort(404);
+        }
+
+        $cart = session()->get('cart');
+
+        //if cart is enpty
+        if (!$cart) {
+            $cart = [
+                $id => [
+                    'name' => $item->product_name,
+                    'quantity' => 1,
+                    'price' => $item->price,
+                    'photo' => $item->coverimage,
+                ]
+            ];
+
+            Session()->put('cart', $cart);
+
+            return redirect()->back()->with('success', 'Product added to cart successfully');
+        }
+        // If cart not empty
+
+        if (isset($cart['$id'])) {
+            dd($cart['$id']['quantity']++);
+
+            return redirect()->back()->with('success', 'Product added to cart successfully');
+        }
+
+        // if item not exist in cart then add to cart with quantity = 1
+        $cart['$id'] =  [
+            'name' => $item->product_name,
+            'quantity' => 1,
+            'price' => $item->price,
+            'photo' => $item->coverimage,
+        ];
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
+
+
+    // Checkout function
+    public function checkout()
+    {
+        return view('frontend.shop.checkout');
     }
 
 }

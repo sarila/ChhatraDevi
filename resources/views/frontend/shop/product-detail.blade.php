@@ -88,7 +88,7 @@
 								<li class="text-left xs-title mb-3">
 									<span class="font-weight-bold">Tags:</span>
 									@foreach ($productDetail->tags()->with('tags')->pluck('tag_name') as $tag)
-										<span class="ml-3">{{$tag}}</span>,
+										<span class="ml-3 text-dark">{{$tag}}</span>,
 									@endforeach
 								</li>
 							</ul>

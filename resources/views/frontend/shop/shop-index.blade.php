@@ -46,7 +46,7 @@
                                                 <div class="overlay-box">
                                                     <ul class="option-box">
                                                         
-                                                        <li><a class="bag" href="javascript:void(0)"><span class="fa fa-shopping-bag"></span></a></li>
+                                                        <li><a class="bag" href="{{route('addToCart', $product->id)}}"><span class="fa fa-shopping-bag"></span></a></li>
                                                         <li><a href="{{ asset ('storage/products/'. $product->coverimage)}}" class="lightbox-image" data-fancybox="products"><span class="fa fa-search"></span></a></li>
                                                     </ul>
                                                 </div>

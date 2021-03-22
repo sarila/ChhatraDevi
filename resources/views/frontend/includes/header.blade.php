@@ -188,8 +188,8 @@
                     <span class="float-right">Rs 1400</span>
                 </div>
                 <div class="prod-cta mt-4 xs-title">
-                    <a href="cart.php" class="button-two">View Cart</a>
-                    <a href="checkout.php" class="button-one float-right">CheckOut</a>
+                    <a href="{{route('cart')}}" class="button-two">View Cart</a>
+                    <a href="{{route('checkout')}}" class="button-one float-right">CheckOut</a>
                 </div>
             </div>
             <!-- End of Car Nav -->

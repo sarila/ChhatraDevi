@@ -122,5 +122,8 @@ Route::get('/news/media/{media}', 'FrontController@mediaDetail')->name('mediaDet
 //Shops
 Route::get('/shop', 'FrontController@shop')->name('shop');
 Route::get('/shop/product/{product}', 'FrontController@productDetail')->name('productDetail');
+Route::get('/cart', 'FrontController@cart')->name('cart');
+Route::get('/add-to-cart/{id}', 'FrontController@addToCart')->name('addToCart');
+Route::get('/checkout', 'FrontController@checkout')->name('checkout');
 
 
