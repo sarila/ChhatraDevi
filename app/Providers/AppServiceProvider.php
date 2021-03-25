@@ -15,6 +15,16 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    protected $oldcart = null;
+    protected $cart= null;
+
+    public function cart() {
+        if (Session::has('cart')) {
+            $oldCart = Session::get('cart');    
+            $cart = new Cart($oldCart);
+        }
+    }
+   
     public function register()
     {
         //View  Composer
@@ -30,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer(['frontend.includes.*'], function($view){
             $view->with('services', Category::all());
-        });
+        });       
     }
 
     /**

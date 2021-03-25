@@ -13,6 +13,7 @@ class Product extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $appends = ['discounted_price'];
 
     public function tags() 
     {
@@ -27,5 +28,18 @@ class Product extends Model
     public function pcategory()
     {
         return $this->belongsTo(Pcategory::class,'pcategory_id');
+    }
+
+    public function getDiscountedPriceAttribute()
+    {
+        if ($this->discount_type == 0) {
+            return $this->price;
+        }
+        elseif ($this->discount_type == 1) {
+            return $this->price-$this->discount;
+        }
+        elseif ($this->discount_type == 2) {
+            return $this->price - ($this->discount/100)*$this->price;
+        }
     }
 }

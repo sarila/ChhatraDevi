@@ -17,8 +17,8 @@
 	        </div>
 	    </div>
 	    <!-- End of Page Banner -->
-	 
-	   	 <!--End Cart Section-->
+	 	@if (Session::has('cart'))
+	   	 <!--Start Cart Section-->
 	    <section class="cart-section">
 	        <div class="container">
 	            <!--Cart Outer-->
@@ -38,7 +38,6 @@
 	                                            <th>&nbsp;</th>
 	                                        </tr>
 	                                    </thead>
-	                                      @if (Session::has('cart'))
 	                                    <tbody>
 	                                    	@foreach ($products as $product)
 	                                    		<tr>
@@ -48,9 +47,9 @@
 		                                                    <h4 class="prod-title">{{$product['item']['product_name']}}</h4>
 		                                                </div>
 		                                            </td>
-		                                            <td class="price">Rs {{$product['item']['price']}}</td>
-		                                            <td class="qty"><input type="number" value="{{$product['qty']}}" class="form-control w-25 mx-auto"></td>
-		                                            <td class="sub-total">Rs {{$product['item']['price']}}</td>
+		                                            <td class="price">Rs {{$product['item']['discounted_price']}}</td>
+		                                            <td class="qty"><input type="number" value="{{$product['qty']}}" class="form-control w-25 mx-auto" disabled></td>
+		                                            <td class="sub-total">Rs {{$product['item']['discounted_price']* $product['qty']}}  </td>
 		                                            <td class="remove"><a href="#" class="remove-btn"><i class="fas fa-times pt-1 xs-title"></i></a></td>
 		                                        </tr>
 	                                    	@endforeach
@@ -102,6 +101,16 @@
 	    </section>
 	    <!-- End Cart Section-->
 	    @else
+		    <div class="totals-column clearfix">
+                <div class="inner">
+                    <div class="cart-total">
+						<h3>There are no Items Available in Cart</h3>		                           
+                    </div>
+                </div>
+                 <div class="link-box">
+                    <a href="{{route('shop')}}" class="button-two cursor-pointer"><span class="btn-title">Go to Shop</span></a>
+                </div>
+	        </div>
         @endif
 	   
 	   

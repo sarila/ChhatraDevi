@@ -24,17 +24,17 @@ class Cart
 
 	public function add($item, $id)
 	{
-		$storedItem = ['qty' => 0, 'price' => $item->price, 'item'=> $item];
+		$storedItem = ['qty' => 0, 'price' => $item->discounted_price, 'item'=> $item];
 		if ($this->items) {
 			if (array_key_exists($id, $this->items)) {
 				$storedItem = $this->items[$id];
 			}
 		}
 		$storedItem['qty']++;
-		$storedItem['price'] = $item->price * $storedItem['qty'];
+		$storedItem['price'] = $item->discounted_price * $storedItem['qty'];
 		$this->items[$id] = $storedItem;
 		$this->totalQuantity++;
-		$this->totalPrice += $item->price;
+		$this->totalPrice += $item->discounted_price;
 	}
 
 }

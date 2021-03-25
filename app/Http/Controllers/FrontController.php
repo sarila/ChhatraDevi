@@ -181,7 +181,12 @@ class FrontController extends Controller
     // Checkout function
     public function checkout()
     {
-        return view('frontend.shop.checkout');
+        if (!Session::has('cart')) {
+            return view('frontend.shop.cart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        return view('frontend.shop.checkout', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
 
 }
