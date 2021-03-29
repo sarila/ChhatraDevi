@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Gallery;
 use App\Models\Image as img;
 use App\Models\News;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Project;
 use App\Models\Setting;
@@ -14,6 +15,7 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class FrontController extends Controller
@@ -172,13 +174,28 @@ class FrontController extends Controller
             return view('frontend.shop.cart');
         }
         $oldCart = Session::get('cart');
+        // dd($oldCart);
         $cart = new Cart($oldCart);
         return view('frontend.shop.cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
 
+    //Reduce the item
+    public function removeFromCart($id) 
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->removeItem($id);
 
+        if (count($cart->items) > 0) {
+            Session::put('cart', $cart);            
+        } else {
+            Session::forget('cart');
+        }
 
-    // Checkout function
+        return view('frontend.shop.cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+    }
+
+    // Checkout View
     public function checkout()
     {
         if (!Session::has('cart')) {
@@ -187,6 +204,37 @@ class FrontController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         return view('frontend.shop.checkout', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+    }
+
+    //Place Order
+    public function placeOrder(Request $request) 
+    {
+        if (!Session::has('cart')) {
+            return view('frontend.shop.cart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        
+        try {
+            $order = new Order();
+            $order->cart = serialize($cart);
+            $order->first_name = $request['first_name'];
+            $order->last_name = $request['last_name'];
+            $order->contact = $request['contact'];
+            $order->address = $request['address'];
+            $order->state = $request['state'];
+            $order->order_note = $request['order_note'];
+            $order->user_id = 1;
+            $order->save();
+            Session::forget('cart');
+            Session::flash('info_message', 'Order Placed Sucessfully');
+            return redirect()->route('shop');
+            // Auth::user()->orders()->save($order);
+        } catch (\Exception $e) {
+            Session::flash('error_message', 'Something went wrong. Please try again later.');
+            return redirect()->back();
+        }
+        
     }
 
 }

@@ -17,6 +17,11 @@
             </div>
         </div>
         <!-- End of Page Banner -->
+        <div class="row">
+            <div class="col-xl-9 col-md-offset-4">
+                @include('backend.includes.message')    
+            </div>
+        </div>
         <!--Sidebar Page Container-->
         <div class="sidebar-page-container shop-page">
             <div class="container">

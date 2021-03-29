@@ -85,6 +85,9 @@ Route::prefix('/admin')->group(function() {
 		//Products
 		Route::resource('products', ProductController::class);
 
+		//Orders
+		Route::resource('orders', OrderController::class)->except('create');
+
 		//route to store image through Ck editor
 		Route::post('ckeditor', 'CkeditorFileUploadController@store')->name('ckeditor.store');
 	});
@@ -124,6 +127,8 @@ Route::get('/shop', 'FrontController@shop')->name('shop');
 Route::get('/shop/product/{product}', 'FrontController@productDetail')->name('productDetail');
 Route::get('/cart', 'FrontController@cart')->name('cart');
 Route::get('/add-to-cart/{id}', 'FrontController@addToCart')->name('addToCart');
+Route::get('/remove/{id}', 'FrontController@removeFromCart')->name('removeFromCart');
 Route::get('/checkout', 'FrontController@checkout')->name('checkout');
+Route::post('/placeOrder', 'FrontController@placeOrder')->name('placeOrder');
 
 Route::resource('/users', UserController::class);

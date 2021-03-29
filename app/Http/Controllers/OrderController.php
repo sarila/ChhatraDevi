@@ -14,7 +14,13 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::latest()->get();
+        $orders->transform(function($order, $key) {
+            $order->cart = unserialize($order->cart);
+            // dd($order);
+            return $order;
+        });
+        return view('backend.orders.index', compact('orders'));
     }
 
     /**
@@ -46,7 +52,8 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        $order->cart = unserialize($order->cart);
+        return view('backend.orders.show', compact('order'));
     }
 
     /**
@@ -57,7 +64,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        return view('backend.orders.edit', compact('order'))
     }
 
     /**

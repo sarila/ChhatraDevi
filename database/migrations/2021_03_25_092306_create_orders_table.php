@@ -17,14 +17,15 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email');
+            $table->bigInteger('user_id');
             $table->bigInteger('contact');
             $table->string('address');
             $table->string('state'); 
             // $table->boolean('account'); //If true account is created
-            $table->longText('order_note');
+            $table->longText('order_note')->nullable();
             $table->tinyInteger('status')->default(0); //0 for unconfirmed, 1 for confirmed, 2 for shipping, 3 for delivered
             $table->tinyInteger('payment_process')->default(0); //0 for COD
+            $table->longText('cart');
             $table->timestamps();
         });
     }

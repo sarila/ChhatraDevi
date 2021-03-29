@@ -50,7 +50,7 @@
 		                                            <td class="price">Rs {{$product['item']['discounted_price']}}</td>
 		                                            <td class="qty"><input type="number" value="{{$product['qty']}}" class="form-control w-25 mx-auto" disabled></td>
 		                                            <td class="sub-total">Rs {{$product['item']['discounted_price']* $product['qty']}}  </td>
-		                                            <td class="remove"><a href="#" class="remove-btn"><i class="fas fa-times pt-1 xs-title"></i></a></td>
+		                                            <td class="remove"><a href="{{ route('removeFromCart', $product['item']['id']) }}" class="remove-btn"><i class="fas fa-times pt-1 xs-title"></i></a></td>
 		                                        </tr>
 	                                    	@endforeach
 	                                    </tbody>
@@ -69,7 +69,7 @@
 	                                        </div>
 	                                    </div> -->
 	                                    <div class="link-box">
-	                                    	<a href="{{route('shop')}}"><button type="button" class="button-one cursor-pointer"><span class="btn-title">Update Cart</span></button></a>
+	                                    	<!-- <a href="{{route('shop')}}"><button type="button" class="button-one cursor-pointer"><span class="btn-title">Update Cart</span></button></a> -->
 	                                        <a href="{{route('shop')}}" class="button-two cursor-pointer"><span class="btn-title">Continue Shoping</span></a>
 	                                    </div>
 	                                </div>

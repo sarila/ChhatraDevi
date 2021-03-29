@@ -1,42 +1,35 @@
-@extends('frontend.includes.layout')
+@extends('backend.admin.admin_design')
+
 
 @section('content')
 
-    <div class="cart-page">
-        <!-- Page Banner -->
-        <div class="page-banner">
-            <div class="container d-flex">
-                <h1 class="page-title lg-title flex-g-1">Checkout</h1>
-                <div class="bread-crumbs">
-                    <ul class="list-none d-flex justify-content-end">
-                        <li class="xs-title"><a href="{{route('indexPage')}}" class="d-inline-block text-white">Home</a></li>
-                        <span class="seperator px-2 text-white"> > </span>
-                        <li class="xs-title"><a href="{{route('cart')}}" class="d-inline-block text-white">Cart</a></li>
-                        <span class="seperator px-2 text-white"> > </span>
-                        <li class="xs-title active">Checkout</li>
+    <!-- Page Content -->
+    <div class="content container-fluid">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Categories</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Add New</li>
                     </ul>
+                </div>
+                <div class="col-auto float-right ml-auto">
+                    <a href="{{ route('news.index') }}" class="btn add-btn" ><i class="fa fa-eye"></i> All Categories</a>
                 </div>
             </div>
         </div>
-        <!-- End of Page Banner -->
-         <div class="row">
-            <div class="col-xl-9 col-md-offset-4">
-                @include('backend.includes.message')    
-            </div>
-        </div>
-        <!--CheckOut Page-->
-        <section class="checkout-page">
-            <div class="container">
-                <ul class="list-none">
-                   <!--  <li class="d-block bg-main text-white p-3 mb-4">Returning Customer? <span data-toggle="modal" data-target="#loginModal" class="text-white bg-none border-0 d-inlnie-block cursor-pointer">Click here to Login</span></li> -->
-                    <li class="d-block text-white p-3 mb-4 bg-danger">Please Fill all the necessary Fields</li>
-                </ul>
-                <!--Checkout Details-->
+        <!-- /Page Header -->
+        @include('backend.includes.message')
 
-                <div class="checkout-form">
-                    <div class="row">
-                        <div class="col-lg-6 col-12">
-                            <form method="post" action="{{ route('placeOrder') }}">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+
+                         <form method="post" action="{{ route('placeOrder') }}">
                                 @csrf
                                 @method('POST')
                                 <div class="billing-detail">
@@ -105,44 +98,38 @@
                                 </div>
                                 <!--End Place Order-->
                             </form>
-                        </div>
-                        <div class="col-lg-6 col-12">
-                            <div class="order-detail-info">
-                            <h3 class="checkout-title">Your Order</h3>
-                            <div class="order-detail">
-                                <div class="cart-outer">
-                                    <table class="cart-table">
-                                        <tbody>
-                                            @if (Session::has('cart'))
-                                            @foreach ($products as $product)
-                                            <tr>
-                                                <td class="prod-column">
-                                                    <div class="column-box">
-                                                        <figure class="prod-thumb"><img class="lazy-image" src="{{asset('storage/products/'. $product['item']['coverimage'])}}" data-src="{{asset('storage/products/'. $product['item']['coverimage'])}}" alt=""></figure>
-                                                        <h4 class="prod-title">Women back Top</h4> <span>&times;{{$product['qty']}}</span>
-                                                    </div>
-                                                </td>
-                                                <td class="sub-total">Rs {{$product['item']['discounted_price']}}</td>
-                                            </tr>
-                                            @endforeach
-                                            <tr>
-                                                <td class="col col-title">Order Total</td>
-                                                <td class="col total">Rs {{$totalPrice}}</td>
-                                            </tr>
-                                            @else
-                                            <tr> Cart Empty! Please Place your order first </tr>
-                                            @endif
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
+
+
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- End Checkout Page -->
+        </div>
     </div>
+    <!-- /Page Content -->
+@endsection
 
+ @section('js')
+    <!-- CKEDITOR js -->
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('editor1', {
+            filebrowserUploadUrl: "{{route('ckeditor.store', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
+
+
+    <script>
+        function readURL(input){
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#one')
+                        .attr('src', e.target.result)
+                        .width(200)
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 @endsection

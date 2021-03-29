@@ -105,7 +105,10 @@
                                 <li id="head-cart" class="mr-4 sm-title cart-icon ">
                                     <a href="javascript:void(0)" class="text-white shop-bag  d-lg-block d-none">
                                         <span class="fa fa-shopping-bag"></span>
-                                        <span class="prod-count">2</span>
+                                        <span class="prod-count"> <?php 
+                                        if (Session::has('cart')) {
+                                        $oldCart = Session::get('cart');
+                                        echo $oldCart->totalQuantity;  } else {?> 0 <?php } ?></span>
                                     </a>
                                 </li>
                                 <li class="mr-4 sm-title"><a href="#" class="text-main"><i class="fas fa-search"></i></a></li>
@@ -117,36 +120,45 @@
             </header>
              <!-- Cart Nav -->
             <div class="cart-nav box-shadow-1">
-                <h2 class="sm-title pb-3">
-                    <span class="fa fa-shopping-bag mr-3 text-primary"></span>
-                    SHOPPING BAG <span class="p-count ml-2">(6)</span>
-                    <span class="close-cart-now d-inline-block text-right">
-                    <i class="fas fa-times cursor-pointer"></i>
-                    </span>
-                </h2>
-                <div class="product-list my-4 overflow-scroll">
-                    <!-- Product -->
-                    <div class="product pb-3 mb-3">
-                        <div class="row">
-                            <div class="col-7">
-                                <a class="xs-title mb-2 d-inline-block" href="product-detail.php">Brown Bread</a>
-                                <div class="prod-counts  mb-2">
-                                    <span class="item-count">2</span> ×
-                                    <span class="prod-price">Rs 66.00</span> 
+                @if(Session::has('cart'))
+                    <?php 
+                        $oldCart = Session::get('cart');
+                    ?>
+                 
+                    <h2 class="sm-title pb-3">
+                        <span class="fa fa-shopping-bag mr-3 text-primary"></span>
+                        SHOPPING BAG <span class="p-count ml-2"> ({{ $oldCart->totalQuantity }}) </span>
+                        <span class="close-cart-now d-inline-block text-right">
+                        <i class="fas fa-times cursor-pointer"></i>
+                        </span>
+                    </h2>
+                    <div class="product-list my-4 overflow-scroll">
+                        @foreach($oldCart->items as $item)
+                            <!-- Product -->
+                            <div class="product pb-3 mb-3">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <a class="xs-title mb-2 d-inline-block" href="product-detail.php">{{$item['item']['product_name']}}</a>
+                                        <div class="prod-counts  mb-2">
+                                            <span class="item-count">{{ $item['qty'] }}</span> ×
+                                            <span class="prod-price">Rs {{ $item['price'] }}</span> 
+                                        </div>
+                                        <div class="prod-remove">
+                                            Remove <a href="{{route('removeFromCart', $item['item']['id'])}}"> <i class="far fa-times-circle ml-2"></i> </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-5">
+                                        <a href="{{route('productDetail', $item['item']['id'])}}" class="d-block"><img src="{{asset('storage/products/' . $item['item']['coverimage']) }}" alt=""></a>
+                                    </div>
                                 </div>
-                                <div class="prod-remove">
-                                    Remove <i class="far fa-times-circle ml-2"></i></div>
                             </div>
-                            <div class="col-5">
-                                <a href="#" class="d-block"><img src="{{asset('frontend/assets/images/resource/products/2.png') }}" alt=""></a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
-                </div>
-                <div class="product-total p-2 d-flex">
-                    <span class="font-weight-bold">SUBTOTAL:</span>
-                    <span class="float-right">Rs 1400</span>
-                </div>
+                    <div class="product-total p-2 d-flex">
+                        <span class="font-weight-bold">SUBTOTAL:</span>
+                        <span class="float-right">Rs {{ $oldCart->totalPrice }}</span>
+                    </div>
+                @endif
                 <div class="prod-cta mt-4 xs-title">
                     <a href="{{route('cart')}}" class="button-two">View Cart</a>
                     <a href="{{route('checkout')}}" class="button-one float-right">CheckOut</a>
