@@ -6,6 +6,7 @@ use App\Models\Gallery;
 use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Event;
 
 class Category extends Model
 {
@@ -19,5 +20,9 @@ class Category extends Model
 
     public function projects(){
     	return $this->hasMany(Project::class);
+    }
+
+    public function events(){
+    	return $this->hasMany(Event::class);
     }
 }

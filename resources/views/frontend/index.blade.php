@@ -56,7 +56,7 @@
             @foreach ($categories as $category)
                 <!-- col -->
                 <div class="col-lg-2 col-6 mb-3">
-                    <a href="service-detail.php" class="holder box-shadow-3 ls-title bg-white px-md-2 text-center">
+                    <a href="{{ route('serviceDetail', $category->slug) }}" class="holder box-shadow-3 ls-title bg-white px-md-2 text-center">
                         <img class="lazy-image" src="{{ asset('storage/category/'.$category->category_icon )}}" data-src="{{ asset('storage/category/'.$category->category_icon )}}" alt="">
                         <h2 class="icon-title text-black mb-0 mt-2 font-weight-bold">{{$category->category_name}}</h2>
                     </a>
@@ -85,7 +85,7 @@
                        {{ $setting->excerpt }}
                     </div>
                     <div class="btn-wrapper">
-                        <a href="about.php" class="button-two py-md-2 px-md-3 font-w-semi">Read More<i class="fas fa-arrow-right ml-2"></i></a>
+                        <a href="{{ route('aboutUs') }}" class="button-two py-md-2 px-md-3 font-w-semi">Read More<i class="fas fa-arrow-right ml-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                                     <!-- Left -->
                                     <div class="col-md-8 col-12">
                                         <div class="content xs-title px-md-0 px-2">
-                                            <a href="donate.php" class="sm-title text-black font-weight-bold">{{$ongoingProject->title}}</a>
+                                            <a href="{{route('projectDetail', $ongoingProject->id)}}" class="sm-title text-black font-weight-bold">{{$ongoingProject->title}}</a>
                                             <div class="fund pb-2 pt-1">
                                                 <span class="text-sec raised">$51,867</span> Raised of <span class="goal text-black font-weight-bold">{{$ongoingProject->goal}}</span> goal
                                             </div>
@@ -133,7 +133,7 @@
                                             </div>
                                             <p>{{$ongoingProject->excerpt}}</p>
                                             <div class="btn-more">
-                                                <a href="donate.php" class="button-four xs-title py-1">Read More<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
+                                                <a href="{{route('projectDetail', $ongoingProject->id)}}" class="button-four xs-title py-1">Read More<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
                                                 <a href="project-detail.php" class="ml-2 button-one-sec xs-title py-1">Donate Now <i class="fab fa-gratipay ml-2"></i></a>
                                             </div>
                                         </div>
@@ -173,12 +173,12 @@
                         <div class="row">
                             <div class="col-3">
                                 <div class="e-date text-uppercase bg-main sm-title text-white text-center">
-                                    28 <br> Feb
+                                   {{ date('d M', strtotime($upcomingEvent->date))}}
                                 </div>
                             </div>
                             <div class="col-9">
                                 <div class="event-box">
-                                    <a href="event-detail.php" class="d-block ls-title font-weight-bold text-black mb-0">Event:{{ $upcomingEvent->title }}</a>
+                                    <a href="{{route('eventDetail', $upcomingEvent->id)}}" class="d-block ls-title font-weight-bold text-black mb-0">Event:{{ $upcomingEvent->title }}</a>
                                     <span class="date ts-title text-upppercase mr-2"><i class="far fa-calendar-alt text-pri mr-2 font-weight-bold"></i> {{ $upcomingEvent->date }}</span>
                                     <span class="date ts-title text-upppercase"><i class="fas fa-map-marker-alt text-pri mr-2"></i> {{ $upcomingEvent->location }}</span>
                                 </div>

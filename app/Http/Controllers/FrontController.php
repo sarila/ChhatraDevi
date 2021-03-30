@@ -22,7 +22,7 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $categories = DB::table('categories')->get(['category_name', 'category_icon']);
+        $categories = DB::table('categories')->get(['category_name', 'category_icon', 'slug']);
         $ongoingProjects = DB::table('projects')->where('status', 0)->get();
         $upcomingEvents = DB::table('events')->where('status', 1)->inRandomOrder(4)->limit(4)->get();
         $pastEvents = DB::table('events')->where('status', 0)->inRandomOrder()->limit(2)->get();
@@ -62,6 +62,12 @@ class FrontController extends Controller
     	return view('frontend.event', compact('upcomingEvents', 'pastEvents'));
     }
 
+    public function eventDetail($event)
+    {
+        $eventDetail = DB::table('events')->where('id', $event)->first();
+        dd($eventDetail);
+        return view('frontend.event-detail', compact('eventDetail'));
+    }
 
     public function gallery()
     {

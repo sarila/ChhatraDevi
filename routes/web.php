@@ -102,10 +102,13 @@ Route::get('/', 'FrontController@index')->name('indexPage');
 //Route for About US page
 Route::get('/about', 'FrontController@aboutUs')->name('aboutUs');
 
-//Route for Events Page
-Route::get('/events', 'FrontController@events')->name('events');
+
 Route::get('/teams', 'FrontController@teams')->name('teams');
 Route::get('/gallery', 'FrontController@gallery')->name('gallery');
+
+//Route for Events Page
+Route::get('/events', 'FrontController@events')->name('events');
+Route::get('/events/{event}', 'FrontController@eventDetail')->name('eventDetail');
 
 //Services
 Route::get('/services', 'FrontController@services')->name('services');

@@ -183,6 +183,7 @@ class ComposerStaticInitcc45d1a29a79f1fab7c302fd2aa87cce
         'B' => 
         array (
             'Brick\\Math\\' => 11,
+            'BeyondCode\\QueryDetector\\' => 25,
         ),
         'A' => 
         array (
@@ -519,6 +520,10 @@ class ComposerStaticInitcc45d1a29a79f1fab7c302fd2aa87cce
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
+        'BeyondCode\\QueryDetector\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/beyondcode/laravel-query-detector/src',
+        ),
         'Asm89\\Stack\\' => 
         array (
             0 => __DIR__ . '/..' . '/asm89/stack-cors/src',
@@ -561,6 +566,7 @@ class ComposerStaticInitcc45d1a29a79f1fab7c302fd2aa87cce
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\ImageController' => __DIR__ . '/../..' . '/app/Http/Controllers/ImageController.php',
         'App\\Http\\Controllers\\NewsController' => __DIR__ . '/../..' . '/app/Http/Controllers/NewsController.php',
+        'App\\Http\\Controllers\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrderController.php',
         'App\\Http\\Controllers\\PartnerController' => __DIR__ . '/../..' . '/app/Http/Controllers/PartnerController.php',
         'App\\Http\\Controllers\\PcategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/PcategoryController.php',
         'App\\Http\\Controllers\\PimagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/PimagesController.php',
@@ -571,7 +577,6 @@ class ComposerStaticInitcc45d1a29a79f1fab7c302fd2aa87cce
         'App\\Http\\Controllers\\TeamController' => __DIR__ . '/../..' . '/app/Http/Controllers/TeamController.php',
         'App\\Http\\Controllers\\TestimonialController' => __DIR__ . '/../..' . '/app/Http/Controllers/TestimonialController.php',
         'App\\Http\\Controllers\\ThemeController' => __DIR__ . '/../..' . '/app/Http/Controllers/ThemeController.php',
-        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\AdminMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminMiddleware.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -612,6 +617,18 @@ class ComposerStaticInitcc45d1a29a79f1fab7c302fd2aa87cce
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/CorsService.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'BeyondCode\\QueryDetector\\Events\\QueryDetected' => __DIR__ . '/..' . '/beyondcode/laravel-query-detector/src/Events/QueryDetected.php',
+        'BeyondCode\\QueryDetector\\LumenQueryDetectorServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-query-detector/src/LumenQueryDetectorServiceProvider.php',
+        'BeyondCode\\QueryDetector\\Outputs\\Alert' => __DIR__ . '/..' . '/beyondcode/laravel-query-detector/src/Outputs/Alert.php',
+        'BeyondCode\\QueryDetector\\Outputs\\Clockwork' => __DIR__ . '/..' . '/beyondcode/laravel-query-detector/src/Outputs/Clockwork.php',
+        'BeyondCode\\QueryDetector\\Outputs\\Console' => __DIR__ . '/..' . '/beyondcode/laravel-query-detector/src/Outputs/Console.php',
+        'BeyondCode\\QueryDetector\\Outputs\\Debugbar' => __DIR__ . '/..' . '/beyondcode/laravel-query-detector/src/Outputs/Debugbar.php',
+        'BeyondCode\\QueryDetector\\Outputs\\Json' => __DIR__ . '/..' . '/beyondcode/laravel-query-detector/src/Outputs/Json.php',
+        'BeyondCode\\QueryDetector\\Outputs\\Log' => __DIR__ . '/..' . '/beyondcode/laravel-query-detector/src/Outputs/Log.php',
+        'BeyondCode\\QueryDetector\\Outputs\\Output' => __DIR__ . '/..' . '/beyondcode/laravel-query-detector/src/Outputs/Output.php',
+        'BeyondCode\\QueryDetector\\QueryDetector' => __DIR__ . '/..' . '/beyondcode/laravel-query-detector/src/QueryDetector.php',
+        'BeyondCode\\QueryDetector\\QueryDetectorMiddleware' => __DIR__ . '/..' . '/beyondcode/laravel-query-detector/src/QueryDetectorMiddleware.php',
+        'BeyondCode\\QueryDetector\\QueryDetectorServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-query-detector/src/QueryDetectorServiceProvider.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
         'Brick\\Math\\BigNumber' => __DIR__ . '/..' . '/brick/math/src/BigNumber.php',

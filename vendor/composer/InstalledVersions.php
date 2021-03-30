@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'cb426847e65bf85a8d410aa5095efae4d4a18c10',
+    'reference' => '04aeef66ea9791c4430e621e0c97f1763674650a',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -32,6 +32,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '8d8f88b3b3830916be94292c1fbce84433efb1aa',
+    ),
+    'beyondcode/laravel-query-detector' => 
+    array (
+      'pretty_version' => '1.5.0',
+      'version' => '1.5.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4a3a0cfb5d5ddc5da59d530ef5c13e260adc6d07',
     ),
     'brick/math' => 
     array (
@@ -467,7 +476,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'cb426847e65bf85a8d410aa5095efae4d4a18c10',
+      'reference' => '04aeef66ea9791c4430e621e0c97f1763674650a',
     ),
     'laravel/sail' => 
     array (
