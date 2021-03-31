@@ -38,9 +38,9 @@
     </div>
     <div class="social-links position-absolute border-right">
         <ul class="list-none d-flex flex-column ls-title">
-            <li class="mr-3"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-            <li class="mr-3"><a href="#"><i class="fab fa-instagram"></i></a></li>
-            <li class="mr-3"><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li class="mr-3"><a href="{{$setting->facebook}}"><i class="fab fa-facebook-f"></i></a></li>
+            <li class="mr-3"><a href="{{$setting->instagram}}"><i class="fab fa-instagram"></i></a></li>
+            <li class="mr-3"><a href="{{$setting->twitter}}"><i class="fab fa-twitter"></i></a></li>
         </ul>
     </div>
 </section>
@@ -158,7 +158,7 @@
     </div>
 </section>
 <!-- End of Our causes -->
-<!-- Event SEction -->
+<!-- Event Section -->
 <section class="event-section py-5">
     <div class="container">
         <div class="row">
@@ -210,7 +210,7 @@
                                     </div>
                                     <p>{{ $pastEvent->excerpt}}</p>
                                     <div class="btns">
-                                        <a href="event-detail.php" class="button-two font-weight-bold py-1 xs-title">Read More<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
+                                        <a href="{{route('eventDetail', $pastEvent->id)}}" class="button-two font-weight-bold py-1 xs-title">Read More<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -234,7 +234,7 @@
                     <p>If you haven't any charity in your heart, You have the worst kind of heart trouble.</p>
                     <a href="contact.php" class="left-two-border text-black d-inline-block mb-3">Become a Volunter</a>
                     <div class="btns">
-                        <a href="team-listing.php" class="button-three">View all<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
+                        <a href="{{route('teams')}}" class="button-three">View all<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
                     </div>
                 </header>
             </div>
@@ -339,7 +339,7 @@
                 <h3 class="lg-title text-dark font-weight-bold">Our Latest News</h3>
             </div>
             <div class="all text-center mt-4">
-                <a href="event-listing.php" class="button-one">View all <i class="fas fa-arrow-right ml-2"></i></a>
+                <a href="{{route('mediaNews')}}" class="button-one">View all <i class="fas fa-arrow-right ml-2"></i></a>
             </div>
         </header>
         <div class="holder p-2 bg-light py-4">
@@ -358,7 +358,7 @@
                                 <p>{{$latestNews->excerpt}}</p>
                             </div>
                             <div class="btns">
-                                <a href="event-detail.php" class="button-two font-weight-bold py-1 xs-title">Read More<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
+                                <a href="{{route('mediaDetail', $latestNews->id)}}" class="button-two font-weight-bold py-1 xs-title">Read More<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
                             </div>
                         </div>
                     </div>

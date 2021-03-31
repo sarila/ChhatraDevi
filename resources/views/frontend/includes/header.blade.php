@@ -93,7 +93,7 @@
                                             <a class="nav-link" href="{{route('shop')}}">Shop</a>
                                         </li>
                                         <li class="nav-item mr-lg-2 mb-lg-0 mb-3">
-                                            <a class="nav-link" href="contact.php">Contact Us</a>
+                                            <a class="nav-link" href="{{route('contact-us')}}">Contact Us</a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -112,7 +112,7 @@
                                     </a>
                                 </li>
                                 <li class="mr-4 sm-title"><a href="#" class="text-main"><i class="fas fa-search"></i></a></li>
-                                <a href="#" class="button-two py-2 px-3 font-w-semi"><i class="far fa-heart mr-2"></i>Donate Now</a>
+                                <a href="{{route('donation')}}" class="button-two py-2 px-3 font-w-semi"><i class="far fa-heart mr-2"></i>Donate Now</a>
                             </ul>
                         </div>
                     </div>
@@ -164,4 +164,4 @@
                     <a href="{{route('checkout')}}" class="button-one float-right">CheckOut</a>
                 </div>
             </div>
-            <!-- End of Car Nav -->
+            <!-- End of Cart Nav -->

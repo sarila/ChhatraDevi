@@ -65,8 +65,15 @@ class FrontController extends Controller
     public function eventDetail($event)
     {
         $eventDetail = DB::table('events')->where('id', $event)->first();
-        dd($eventDetail);
-        return view('frontend.event-detail', compact('eventDetail'));
+        $category = DB::table('categories')->where('id', $eventDetail->category_id)->first(['category_name']);
+        $galleries = DB::table('galleries')->where('id', $eventDetail->gallery_id)->get();
+        $images[] = null;
+        foreach ($galleries as $gallery) {
+            $images[] = (DB::table('images')->where('gallery_id', $gallery->id)->get());
+        }
+        $allImages = Arr::collapse($images);
+        // dd($allImages);
+        return view('frontend.event-detail', compact('eventDetail', 'category', 'allImages'));
     }
 
     public function gallery()
@@ -241,6 +248,19 @@ class FrontController extends Controller
             return redirect()->back();
         }
         
+    }
+
+
+    //Contact Us Page
+    public function contactUs()
+    {
+        return view('frontend.contact');
+    }
+
+    //Donation
+    public function donation()
+    {
+        return view('frontend.donation');
     }
 
 }

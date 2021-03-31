@@ -1,4 +1,4 @@
- <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!--   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header border-bottom-0">
@@ -35,12 +35,9 @@
                         </div>
                     </div>
                 </div>
-<!--                 <div class="modal-footer d-flex justify-content-center">
-                    <div class="signup-section">Not a member yet? <a href="#a" class="text-info"> Sign Up</a>.</div>
-                </div> -->
             </div>
         </div>
-    </div>
+    </div> -->
 
      <!-- Footer -->
         <footer class="site-footer">
@@ -52,12 +49,12 @@
                             <a href="index.php" class="footer-logo d-inline-block bg-white mb-3">
                                 <img src="{{ asset('frontend/assets/images/logo.png') }}" alt="">
                             </a>
-                            <p>Chhatra Devi Foundation Nepal is established for social work all over in Nepal in sectors like Health, Education, Peace, Human Rights, Child Protection, Woman Empowerment, Disabilities and others.</p>
+                           <p>{{$theme->footer_text}}</p>
                             <div class="social-links">
                                 <ul class="list-none d-flex">
-                                    <li class="mr-3"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li class="mr-3"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li class="mr-3"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li class="mr-3"><a href="{{$setting->facebook}}"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="mr-3"><a href="{{$setting->instagram}}"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="mr-3"><a href="{{$setting->twitter}}"><i class="fab fa-twitter"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -66,25 +63,25 @@
                             <h2 class="sm-title text-white d-inline-block after-border-b-white mb-4">Quick Links</h2>
                             <div class="d-flex">
                                 <ul class="list-none mr-3">
+                                    <li><a href="{{route('indexPage')}}" class="xs-title text-white mb-3 d-block">Home</a></li>
+                                    <li><a href="{{route('ongoingProjects')}}" class="xs-title text-white mb-3 d-block">Our Projects</a></li>
+                                    <li><a href="{{route('services')}}" class="xs-title text-white mb-3 d-block">Services</a></li>
+                                    <li><a href="{{route('contact-us')}}" class="xs-title text-white mb-3 d-block">Contact Us</a></li>
+                                </ul>
+                                <!-- <ul class="list-none">
                                     <li><a href="#" class="xs-title text-white mb-3 d-block">Home</a></li>
                                     <li><a href="#" class="xs-title text-white mb-3 d-block">Our Projects</a></li>
                                     <li><a href="#" class="xs-title text-white mb-3 d-block">Services</a></li>
                                     <li><a href="#" class="xs-title text-white mb-3 d-block">Contact Us</a></li>
-                                </ul>
-                                <ul class="list-none">
-                                    <li><a href="#" class="xs-title text-white mb-3 d-block">Home</a></li>
-                                    <li><a href="#" class="xs-title text-white mb-3 d-block">Our Projects</a></li>
-                                    <li><a href="#" class="xs-title text-white mb-3 d-block">Services</a></li>
-                                    <li><a href="#" class="xs-title text-white mb-3 d-block">Contact Us</a></li>
-                                </ul>
+                                </ul> -->
                             </div>
                         </div>
                         <!-- Col -->
                         <div class="col-lg-3 col-md-6 col-12 mb-3 xs-title text-white mb-4">
                             <h2 class="sm-title text-white d-inline-block after-border-b-white mb-4">Contact info</h2>
-                            <h3 class="xs-title text-white mb-3"><i class="fas fa-map-marker-alt mr-3"></i>Kathmandu Nepal</h3>
-                            <a href="#" class="xs-title text-white mb-3 d-block"><i class="fas fa-phone-alt mr-2"></i>+977 980-1004855</a>
-                            <a href="mailto: " class="xs-title text-white mb-0"><i class="far fa-envelope mr-2"></i>ChhatraDevi@gmail.com</a>
+                            <h3 class="xs-title text-white mb-3"><i class="fas fa-map-marker-alt mr-3"></i>{{$setting->address}}</h3>
+                            <a href="#" class="xs-title text-white mb-3 d-block"><i class="fas fa-phone-alt mr-2"></i>{{$setting->contact_number}}</a>
+                            <a href="mailto: {{$setting->email}}" class="xs-title text-white mb-0"><i class="far fa-envelope mr-2"></i>{{$setting->email}}</a>
                         </div>
                     </div>
                 </div>
@@ -92,7 +89,7 @@
             <!-- Footer Bottom -->
             <div class="footer-b text-center text-white py-2 border-top xs-title">
                 <div class="container">
-                    <p>© Copyright <a href="index.php" class="d-inline-block text-white">TechCoderz</a>2020. All Rights Reserved Chhatra Devi Foundation Nepal.</p>
+                    <p>© Copyright <a href="index.php" class="d-inline-block text-white">TechCoderz </a><?php echo date('Y'); ?>. All Rights Reserved Chhatra Devi Foundation Nepal.</p>
                 </div>
             </div>
         </footer>

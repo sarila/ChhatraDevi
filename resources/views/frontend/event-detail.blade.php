@@ -42,9 +42,9 @@
                                         <i class="fas fa-bookmark mr-3"></i>Event Detail
                                     </h2>
                                     <ul class="list-none text-center">
-                                        <h2 class="xs-title d-block p-2 box-shadow-1 font-weight-bold text-left"><i class="far fa-file-alt mr-2"></i>Category: <span class="float-right font-w-light">{{$eventDetail->category->category_name}}</span></h2>
+                                        <h2 class="xs-title d-block p-2 box-shadow-1 font-weight-bold text-left"><i class="far fa-file-alt mr-2"></i>Category: <span class="float-right font-w-light">{{$category->category_name}}</span></h2>
                                         <h2 class="xs-title d-block p-2 box-shadow-1 font-weight-bold text-left"><i class="far fa-calendar-alt mr-2"></i>Date: <span class="float-right font-w-light">{{$eventDetail->date}}</span></h2>
-                                        <h2 class="xs-title d-block p-2 box-shadow-1 font-weight-bold text-left"><i class="fas fa-map-marker-alt mr-2"></i>Location: <span class="float-right font-w-light">{{$eventDetail->location}}</span></h2>
+                                        <h2 class="xs-title d-block p-2 box-shadow-1 font-weight-bold text-left"><i class="fas fa-map-marker-alt mr-2"></i>Location: <span class="font-w-light">{{$eventDetail->location}}</span></h2>
                                         <h2 class="xs-title d-block p-2 box-shadow-1 font-weight-bold text-left"><i class="far fa-clock mr-2"></i>Time: <span class="float-right font-w-light">{{$eventDetail->time_duration}}</span></h2>
                                         <h2 class="xs-title d-block p-2 box-shadow-1 font-weight-bold text-left"><i class="fas fa-history mr-2"></i>Duration: <span class="float-right font-w-light">{{$eventDetail->duration}} Days</span></h2>
                                         <h2 class="xs-title d-block p-2 box-shadow-1 font-weight-bold text-left"><i class="fas fa-network-wired mr-2"></i>Entrance: <span class="float-right font-w-light">{{$eventDetail->no_of_seat}} Seats</span></h2>
@@ -56,7 +56,7 @@
                             <div class="col-12 align-self-center">
                                 <div class="content xs-title">
                                     <h2 class="event-title md-title text-black font-weight-bold  mb-3 d-block">{{$eventDetail->title}}</h2>
-                                    {{$eventDetail->description}}
+                                    {!! $eventDetail->description !!}
                                 </div>
                             </div>
                             <!-- End of Content -->
@@ -67,70 +67,16 @@
                                         <h2 class="section-title xs-title text-uppercase mb-3"><img src="assets/images/causes/like-white.png" alt="" class="mr-2">#Event Gallery</h2>
                                     </header>
                                     <div class="row no-gutters">
-                                        <!-- Team -->
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <div class="img-holder position-relative box-shadow-2 p-2 bg-white">
-                                                <a data-fancybox="gallery" href="assets/images/causes/img (2).jpg">
-                                                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/causes/img (2).jpg" alt="">
-                                                </a>
+                                       @foreach($allImages as $image)
+                                            <div class="col-lg-3 col-md-6 col-12">
+                                                <div class="img-holder position-relative box-shadow-2 p-2 bg-white">
+                                                    <a data-fancybox="gallery" href="{{ asset('storage/galleries/'. $image->image)}}">
+                                                        <img class="lazy-image" src="{{ asset('storage/galleries/'. $image->image)}}" data-src="{{ asset('storage/galleries/'. $image->image)}}" alt="">
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- Team -->
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <div class="img-holder position-relative box-shadow-2 p-2 bg-white">
-                                                <a data-fancybox="gallery" href="assets/images/about/img-2.jpg">
-                                                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/about/img-2.jpg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- Team -->
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <div class="img-holder position-relative box-shadow-2 p-2 bg-white">
-                                                <a data-fancybox="gallery" href="assets/images/team/img1.jpg">
-                                                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/team/img1.jpg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- Team -->
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <div class="img-holder position-relative box-shadow-2 p-2 bg-white">
-                                                <a data-fancybox="gallery" href="assets/images/team/img2.jpg">
-                                                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/team/img2.jpg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- Team -->
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <div class="img-holder position-relative box-shadow-2 p-2 bg-white">
-                                                <a data-fancybox="gallery" href="assets/images/team/img3.jpg">
-                                                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/team/img3.jpg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- Team -->
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <div class="img-holder position-relative box-shadow-2 p-2 bg-white">
-                                                <a data-fancybox="gallery" href="assets/images/team/img4.jpg">
-                                                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/team/img4.jpg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- Team -->
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <div class="img-holder position-relative box-shadow-2 p-2 bg-white">
-                                                <a data-fancybox="gallery" href="images/team/img5.jpg">
-                                                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/team/img5.jpg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- Team -->
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <div class="img-holder position-relative box-shadow-2 p-2 bg-white">
-                                                <a data-fancybox="gallery" href="assets/images/team/img3.jpg">
-                                                    <img class="lazy-image" src="assets/images/image-bg.svg" data-src="assets/images/team/img3.jpg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
+                                        @endforeach
+                                   
                                     </div>
                                 </div>
                             </section>

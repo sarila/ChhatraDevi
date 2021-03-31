@@ -78,6 +78,7 @@ class SettingController extends Controller
             $theme = Theme::first();
             $data = $request->all();
             $theme->website_name = $data['website_name'];
+            $theme->footer_text = $data['footer_text'];
             $slug = Str::slug($data['website_name']);
             $currentDate = Carbon::now()->toDateString();
 

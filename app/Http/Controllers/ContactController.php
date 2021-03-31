@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Donation;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class DonationController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +25,7 @@ class DonationController extends Controller
      */
     public function create()
     {
-        //
+        return view('frontend.contact-us');
     }
 
     /**
@@ -36,21 +36,38 @@ class DonationController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+    	$rules = [
+    		'name'=> 'required | max:250',
+    		'email' => 'required | email | max:250',
+    		'subject' => 'required | max:250',
+    		'message' => 'required',
+    	];
+
+    	$message = [
+    		'name.required' => 'Name Is Required',
+    		'name.max' => 'Name cannot be more than 255 chracters',
+    		'email.required' => 'Email is required',
+    		'email.max' => 'Email cannot be more than 255 chracters',
+    		'email.email' => 'Email must be valid email',
+    		'subject.required' => 'Subject is required',
+    		'subject.max' => 'Subject cannot be more thata 255 characters',
+    		'message.required' => 'Message is required ',
+    	];
+    	$this->validate($request, $rules, $message);
         $data = $request->all();
-        $donation = new Donation($data);
-        $donation->save();
-        Session::flash('success_message', 'Thankyou for Supporting Us. Your Donation Will be used for good Cause');
-        return redirect()->route('indexPage');
+        $contact = new Contact($data);
+        $contact->save();
+        Session::flash('success_message', 'Your Message has been Sent');
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Donation  $donation
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Donation $donation)
+    public function show($id)
     {
         //
     }
@@ -58,10 +75,10 @@ class DonationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Donation  $donation
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Donation $donation)
+    public function edit($id)
     {
         //
     }
@@ -70,10 +87,10 @@ class DonationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Donation  $donation
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Donation $donation)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -81,10 +98,10 @@ class DonationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Donation  $donation
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Donation $donation)
+    public function destroy($id)
     {
         //
     }

@@ -50,10 +50,6 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now()
         ]);
 
-        Theme::insert([
-            'website_name' => 'ChattraDevi Foundation',
-        ]);
-
         Setting::insert([
             'site_title' => 'ChhatraDevi Foundation',
             'contact_number' => 1234567890,
@@ -66,6 +62,10 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+        Theme::insert([
+            'website_name' => 'ChattraDevi Foundation',
+        ]);
+
       
     }
 }

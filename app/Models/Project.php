@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Donation;
 use App\Models\Gallery;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -21,5 +22,10 @@ class Project extends Model
 	public function category()
 	{
 		return $this->belongsTo(Category::class);
+	}
+
+	public function donations()
+	{
+		return $this->hasMany(Donation::class);
 	}
 }

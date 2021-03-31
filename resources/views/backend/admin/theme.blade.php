@@ -49,6 +49,12 @@
                             <input name="website_name" class="form-control" value="{{$theme->website_name}}" type="text">
                         </div>
                     </div>
+                     <div class="form-group row">
+                        <label class="col-lg-3 col-form-label">Footer Text</label>
+                        <div class="col-lg-9">
+                            <input name="footer_text" class="form-control" value="{{$theme->footer_text}}" type="text">
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">Header Logo</label>
                         <div class="col-lg-5">

@@ -101,8 +101,6 @@ Route::get('/', 'FrontController@index')->name('indexPage');
 
 //Route for About US page
 Route::get('/about', 'FrontController@aboutUs')->name('aboutUs');
-
-
 Route::get('/teams', 'FrontController@teams')->name('teams');
 Route::get('/gallery', 'FrontController@gallery')->name('gallery');
 
@@ -133,5 +131,14 @@ Route::get('/add-to-cart/{id}', 'FrontController@addToCart')->name('addToCart');
 Route::get('/remove/{id}', 'FrontController@removeFromCart')->name('removeFromCart');
 Route::get('/checkout', 'FrontController@checkout')->name('checkout');
 Route::post('/placeOrder', 'FrontController@placeOrder')->name('placeOrder');
+
+//Contact Us
+Route::resource('/contact', ContactController::class);
+Route::get('/contact-us', 'FrontController@contactUS')->name('contact-us');
+Route::post('/contact-message', 'ContactController@contact-message')->name('contact-message');
+
+//donation
+Route::get('/donation', 'FrontController@donation')->name('donation');
+Route::resource('/donations', DonationController::class);
 
 Route::resource('/users', UserController::class);
