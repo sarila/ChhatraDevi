@@ -151,7 +151,7 @@ class FrontController extends Controller
     public function shop()
     {
         $pcategories = DB::table('pcategories')->get(['name', 'slug']);
-        $products = Product::all();
+        $products = Product::paginate(9);
         $topproducts = DB::table('products')->latest()->limit(3)->get(['coverimage', 'product_name', 'id', 'price']);
 
         return view('frontend.shop.shop-index', compact('pcategories', 'products', 'topproducts'));

@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                @foreach ($products as $product): 
+                                @foreach ($products as $product)
                                     <!--Shop Item-->   
                                     <div class="shop-item col-xl-4 col-lg-6 col-md-6 col-sm-12 wow fadeInUp">
                                         <div class="inner-box">
@@ -72,14 +72,14 @@
                                     </div>     
                                @endforeach 
                             </div>
+                                {{$products->links()}}
+                            <!-- 
                             <div class="pagination-box">
                                 <ul class="list-none text-center">
                                     <li><a href="#" class="active">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#"><span class="fa fa-angle-right"></span></a></li>
+                                    <li><a href="{{$products->links()}}"><span class="fa fa-angle-right"></span></a></li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <!--Sidebar Side-->
@@ -101,20 +101,20 @@
                                 <div class="widget-content">
                                     <ul class="list-none">
                                         @foreach($pcategories as $pcategory)
-                                            <li><a href="blog-single.html">{{$pcategory->name}}</a></li>
+                                            <li><a >{{$pcategory->name}}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
                             </div>
                             <!-- Post Widget -->
                             <div class="sidebar-widget popular-products">
-                                <h3 class="sidebar-title after-border-b-primary mb-3">Top Products</h3>
+                                <h3 class="sidebar-title after-border-b-primary mb-3">Latest Products</h3>
                                 <div class="widget-content">
                                     @foreach($topproducts as $topproduct )
                                     <!--Product-->
                                         <div class="product">
-                                            <div class="post-thumb"><a href="product-detail.php"><img class="lazy-image" src="{{ asset ('storage/products/'. $product->coverimage)}}" data-src="{{ asset ('storage/products/'. $topproduct->coverimage)}}" alt=""></a></div>
-                                            <h4><a href="topproduct-detail.php">{{$topproduct->product_name}}</a></h4>
+                                            <div class="post-thumb"><a href="{{route('productDetail', $topproduct->id)}}"><img class="lazy-image" src="{{ asset ('storage/products/'. $product->coverimage)}}" data-src="{{ asset ('storage/products/'. $topproduct->coverimage)}}" alt=""></a></div>
+                                            <h4><a href="{{route('productDetail', $topproduct->id)}}">{{$topproduct->product_name}}</a></h4>
                                             <div class="price">{{$topproduct->price}}</div>
                                         </div>
                                     @endforeach

@@ -1,52 +1,99 @@
 @extends('backend.admin.admin_design')
 @section('content')
 
-    <!-- Page Content -->
+  <!-- Page Content -->
     <div class="content container-fluid">
 
         <!-- Page Header -->
         <div class="page-header">
             <div class="row align-items-center">
-                
-                <div class="card-header">
-                    <div class="col-8">
-                        <h3 class="page-title">Order</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Order Details</li>
-                        </ul>
-                    </div>
-                    <div class="col-4">
-                        <div class="pull-right">
-                            <div class="dropdown">
-                                <a href="{{route('orders.index')}}" class="btn btn-primary" ><i class="fa fa-plus"></i> View All</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col">
+                    <h3 class="page-title">Orders</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+                        <li class="breadcrumb-item active">View All</li>
+                    </ul>
+                </div>
+                <div class="col-auto float-right ml-auto">
+                    <a href=""><button class="btn btn-info"> Add Orders</button></a>
+                    <a href="{{route('orders.index')}}" class="btn btn-success"> All Orders</a>
                 </div>
             </div>
         </div>
         <!-- /Page Header -->
-
-        @include('backend.includes.message')
-  
-        <div class="col-12 align-self-center">
-            <div class="content xs-title">
-               <span>Total Price: </span> <span>{{$order->cart->totalPrice }}</span>
+         @include('backend.includes.message')
+        <section>
+            <div class="card mb-0">
+                <div class="card-body">
+                    @foreach($order->cart->items as $item)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="profile-view">
+                                    <div class="profile-img-wrap">
+                                        <div class="profile-img">
+                                            <img src="{{ asset('storage/products/'. $item['item']['coverimage']) }}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="profile-basic">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <ul class="personal-info">
+                                                    <li>
+                                                        <span class="title">Product Name:</span>
+                                                        <span class="text">{{ $item['item']['product_name'] }}</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">Quantity:</span>
+                                                        <span class="text">{{ $item['qty'] }}</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">Price:</span>
+                                                        <span class="text">{{ $item['price'] }}</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <hr>
+                    @endforeach
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h4>Total Price</h4>
+                        </div>
+                        <div class="col-lg-6">
+                            Rs. {{$order->cart->totalPrice }}
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h4>Order Note</h4><br>
+                        </div>
+                        <div class="col-lg-6">
+                        <p>
+                            {{ $order->order_note }}
+                        </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h4>Status</h4><br>
+                        </div>
+                        <div class="col-lg-6">
+                        <p>
+                            {{ $order->status }}
+                        </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            @foreach($order->cart->items as $item)
-                <td>{{ $item['item']['product_name'] }}  || {{ $item['qty'] }}  ||  {{ $item['price'] }}</td> <br>
-            @endforeach
-        </div>
-        <div class="card-body">
-            {{ $order->order_note }}
-        </div>
+        </section>
 
-        <!-- End of Content -->
     </div>
-    <!-- Page Content -->
-
-</div>
 
 @endsection
 

@@ -15,8 +15,8 @@
                     </ul>
                 </div>
                 <div class="col-auto float-right ml-auto">
-                    <a href="{{route('')}}"></a>
-                    <button class="btn btn-success"> All Products</button>
+                    <a href="{{route('products.create')}}"><button class="btn btn-info"> Add Products</button></a>
+                    <a href="{{route('products.index')}}" class="btn btn-success"> All Products</a>
                 </div>
             </div>
         </div>
@@ -25,26 +25,58 @@
         <section>
             <div class="card mb-3">
                 <div class="row g-0">
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                       <img src="{{asset('storage/products/'. $product->coverimage)}}" alt="">
                     </div>
-                    <div class="col-lg-8">
-                      <div class="card-body">
-                        <h3 class="card-title">{{$product->product_name}}</h3>
-                        <h5 class="card-text">Price: {{$product->price}}</h5>
-                        <h5 class="card-text">Quantity: {{$product->quantity}}</h5>
-                        <h5 class="card-text">Discount: {{$product->discount}}</h5>
-                        <h5 class="card-text">Discount Type: {{$product->discount_type}}</h5>
-                        <h5 class="card-text">SKU: {{$product->SKU}}</h5>
-                        <h5 class="card-text">Category: {{$product->pcategory_id}}</h5>
-                        <h5 class="card-text">Status: {{$product->status}}</h5>
-                        <p class="card-text">{{$product->product_description}}</p>
-                        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                      </div>
-                    </div>
+                            <div class="col-lg-3">
+                                <div class="profile-info-left">
+                                    <h3 class="user-name m-t-0">{{$product->product_name}}</h3>
+                                    <h5 class="company-role m-t-0 mb-0">{{$product->SKU}}</h5>
+                                    <small class="text-muted">Price: {{$product->price}}</small>
+                                    <div class="staff-id">Category: {{$product->pcategory_id}}</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul class="personal-info">
+                                    <li>
+                                        <span class="title">Quantity:</span>
+                                        <span class="text">{{$product->quantity}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="title">Discount:</span>
+                                        <span class="text">{{$product->discount}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="title">Discount Type:</span>
+                                        <span class="text">{{$product->discount_type}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="title">Status:</span>
+                                        <span class="text">{{$product->status}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="title">Description:</span>
+                                        <span class="text">{{$product->product_description}}</span>
+                                    </li>
+                                </ul>
+                            </div>
                 </div>
             </div>
+            <div class="row">
+                <h1>All Images</h1>
+                @foreach($images as $image)
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                      <a href="{{asset('storage/products/'.$image)}}">
+                        <img src="{{asset('storage/products/'.$image)}}"  style="width:100%">
+                      </a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+
         </section>
+
     </div>
     <!-- Page Content -->
 

@@ -31,25 +31,25 @@
 					<a href="{{ route('projects.index')}}"><i class="la la-tasks"></i> <span>Projects</span> </a>
 				</li>
 				<li>
-					<a href="{{ route('testimonials.index')}}"><i class="la la-tasks"></i> <span>Testimonials</span> </a>
+					<a href="{{ route('testimonials.index')}}"><i class="la la-question-circle"></i> <span>Testimonials</span> </a>
 				</li>
 				<li>
-					<a href="{{ route('partners.index')}}"><i class="la la-tasks"></i> <span>Partners</span> </a>
+					<a href="{{ route('partners.index')}}"><i class="fa fa-handshake-o"></i> <span>Partners</span> </a>
 				</li>
 				<li>
-					<a href="{{ route('sliders.index')}}"><i class="la la-tasks"></i> <span>Slider</span> </a>
+					<a href="{{ route('sliders.index')}}"><i class="la la-sliders"></i> <span>Slider</span> </a>
 				</li>
 				<li>
-					<a href="{{ route('events.index')}}"><i class="la la-tasks"></i> <span>Events</span> </a>
+					<a href="{{ route('events.index')}}"><i class="la la-calendar"></i> <span>Events</span> </a>
 				</li>
 				<li>
-					<a href="{{ route('pcategories.index')}}"><i class="la la-tasks"></i> <span>Product Categories</span> </a>
+					<a href="{{ route('pcategories.index')}}"><i class="la la-list"></i> <span>Product Categories</span> </a>
 				</li>
 				<li>
-					<a href="{{ route('products.index')}}"><i class="la la-tasks"></i> <span>Products</span> </a>
+					<a href="{{ route('products.index')}}"><i class="fa fa-product-hunt"></i> <span>Products</span> </a>
 				</li>
 				<li>
-					<a href="{{ route('orders.index')}}"><i class="la la-tasks"></i> <span>Orders</span> </a>
+					<a href="{{ route('orders.index')}}"><i class="la la-shopping-cart"></i> <span>Orders</span> </a>
 				</li>
 			</ul>
 		</div>

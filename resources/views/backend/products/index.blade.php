@@ -1,104 +1,96 @@
 @extends('backend.admin.admin_design')
-@section('content')
-
+@section('content')    
+   
+    
     <!-- Page Content -->
     <div class="content container-fluid">
-
+    
         <!-- Page Header -->
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
                     <h3 class="page-title">Products</h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="">Dashboard</a></li>
-                        <li class="breadcrumb-item active">View All</li>
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Products</li>
                     </ul>
                 </div>
                 <div class="col-auto float-right ml-auto">
+                    <a href="{{route('products.create')}}" class="btn add-btn"><i class="fa fa-plus"></i> Add Product</a>
                 </div>
             </div>
         </div>
         <!-- /Page Header -->
-
-        @include('backend.includes.message')
-
-        <div class="row">
-
-            <div class="col-sm-12">
-                <div class="card mb-0">
-                    <div class="card-header">
-                        <span style="position:relative; top: 7px">
-                            Please use the table below to navigate or filter the results.
-                        </span>
-                        <div class="pull-right">
-                            <div class="dropdown">
-                                <a href="{{route('products.create')}}" class="btn btn-primary" ><i class="fa fa-plus"></i> Add New</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped custom-table mb-0" id="products-datatable">
-                                <thead>
-                                    <tr>
-                                        <th>S.N.</th>
-                                        <th>Product Name</th>
-                                        <th>Price</th>
-                                        <th>Discount</th>
-                                        <th>Discount Type</th>
-                                        <th>SKU</th>
-                                        <th>CoverImage</th>
-                                        <th>Category</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    @foreach($products as $data)
-                                        <tr>
-                                            <td>{{ $data->id }}</td>
-                                            <td>{{ $data->product_name }}</td>
-                                            <td>{{ $data->price }}</td>
-                                            <td>{{ $data->discount }}</td>
-                                            <td>{{ $data->discount_type }}</td>
-                                            <td>{{ $data->SKU }}</td>
-                                            <td>{{ $data->coverimage }}</td>
-                                            <td>{{ $data->pcategory_id }}</td>
-                                            <td>{{ $data->status }}</td>
-                                            <td>
-                                                <form action="{{ route('products.destroy',$data->id) }}" method="POST">
-
-                                                    <a href="{{ route('products.show',$data->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a>
-
-                                                    <a class="btn btn-primary" href="{{ route('products.edit',$data->id) }}"><i class="fa fa-pencil"></i></a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-
-                                                </form>
-
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+          @include('backend.includes.message')
+        <!-- Search Filter -->
+        <!--          <div class="row filter-row">
+            <div class="col-sm-6 col-md-3">  
+                <div class="form-group form-focus">
+                    <input type="text" class="form-control floating">
+                    <label class="focus-label">Client ID</label>
                 </div>
             </div>
+            <div class="col-sm-6 col-md-3">  
+                <div class="form-group form-focus">
+                    <input type="text" class="form-control floating">
+                    <label class="focus-label">Client Name</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3"> 
+                <div class="form-group form-focus select-focus">
+                    <select class="select floating"> 
+                        <option>Select Company</option>
+                        <option>Global Technologies</option>
+                        <option>Delta Infotech</option>
+                    </select>
+                    <label class="focus-label">Company</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">  
+                <a href="clients.html#" class="btn btn-success btn-block"> Search </a>  
+            </div>     
+        </div> -->
+        <!-- Search Filter -->
+        
+        <div class="row staff-grid-row">
+            @foreach($products as $data)
+                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
+                    <div class="profile-widget">
+                        <div class="profile-img">
+                            <a href="{{ route('products.show', $data->id) }}" class="avatar"><img alt="" src="{{asset('storage/products/'.$data->coverimage)}}"></a>
+                            <!-- <a href="{{ route('news.show',$data->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a> -->
+                        </div>
+                        <div class="dropdown profile-action">
+                            <a href="clients.html#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                            <form method="POST" action="{{route('products.destroy', $data->id)}}">
+                                @csrf
+                                @method('DELETE')
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a  class="dropdown-item" href="{{ route('products.show',$data->id) }}"><i class="fa fa-eye m-r-5" > Show </i></a>
+                                    <a class="dropdown-item" href="{{ route('products.edit',$data->id) }}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                    <button type="submit" class="dropdown-item"><i class="fa fa-trash-o m-r-5"></i> Delete </button>
+                                </div>
+                            </form>
+                        </div>
+                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="client-profile.html">{{ $data->product_name }}</a></h4>
+                        <h5 class="user-name m-t-10 mb-0 text-ellipsis"><a href="client-profile.html">{{$data->discounted_price}}</a></h5>
+                        <div class="small text-muted">{{ $data->SKU }}</div>
+                        <a href="{{ route('products.show', $data->id) }}" class="btn btn-white btn-sm m-t-10">View Product</a>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
-    <!-- Page Content -->
-
+    <!-- /Page Content -->
 
 </div>
 
 @endsection
-@section('js')
+<!-- @section('js')
     <script type="text/javascript">
-        $(document).ready( function () {
-            $('#products-datatable').DataTable();
+        $('.addAttr').click( function () {
+            var id = $(this).data('id');
+            $('#id').val(id);
         } );
     </script>
-@endsection
+@endsection -->

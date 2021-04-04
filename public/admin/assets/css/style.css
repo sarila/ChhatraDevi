@@ -1309,6 +1309,8 @@ table.dataTable thead > tr > td.sorting {
 }
 .sidebar-inner {
 	height: 100%;
+	overflow-y: auto;
+	overflow-x: auto;
 	transition: all 0.2s ease-in-out 0s;
 }
 .sidebar-menu {
@@ -2467,10 +2469,10 @@ table.dataTable thead > tr > td.sorting {
 	height: 24px
 }
 .avatar > img {
-    border-radius: 50%;
     display: block;
     overflow: hidden;
     width: 100%;
+    height: 100%;
 }
 .chat.chat-left .chat-bubble:first-child .chat-content {
 	border-top-left-radius: 20px;
@@ -3256,7 +3258,7 @@ table.dataTable thead > tr > td.sorting {
 	float: left;
 	font-weight: 500;
 	margin-right: 30px;
-	width: 25%;
+	width: 45%;
 }
 .personal-info li .text {
 	color: #8e8e8e;

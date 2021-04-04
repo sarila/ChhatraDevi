@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
@@ -64,6 +65,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
+        $order->cart = unserialize($order->cart);
         return view('backend.orders.edit', compact('order'));
     }
 
@@ -76,7 +78,14 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        // dd($request, $order);
+        $this->validate($request, [
+            'status' => 'required',
+        ]);
+        $order->status = $request->status;
+        $order->save();
+        Session::flash('info_message', 'Order Status updated Successfully');
+        return redirect()->route('orders.index');
     }
 
     /**
@@ -87,6 +96,8 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        Session::flash('info_message', 'Order has been deleted Successfully');
+        return redirect()->route('orders.index');
     }
 }

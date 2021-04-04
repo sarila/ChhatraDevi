@@ -125,7 +125,15 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('backend.products.show', compact('product'));
+        // $galleries = DB::table('galleries')->where('category_id', $serviceDetail->id)->get();
+        $images[] = $product->coverimage;
+        $galleries = $product->pimages()->get();
+        
+        foreach ($galleries as $gallery) {
+            $images[] = $gallery->name;
+        }
+        // dd($images);
+        return view('backend.products.show', compact('product','images'));
         
     }
 
@@ -237,6 +245,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        // dd($product);
         $product->delete();
         Session::flash('info_message', 'Product Deleted');
         return redirect()->route('products.index');
