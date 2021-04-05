@@ -71,7 +71,7 @@ class GalleryController extends Controller
             } 
         }
         $gallery->save();
-        Session::flash('info_message', 'Gallery Added');
+        Session::flash('success_message', 'Gallery Added');
         return redirect()->route('galleries.index');
         
     }
@@ -135,7 +135,7 @@ class GalleryController extends Controller
             } 
         }
         $gallery->save();
-        Session::flash('info_message', 'Gallery Added');
+        Session::flash('success_message', 'Gallery Added');
         return redirect()->route('galleries.index');
     }
 
@@ -148,7 +148,7 @@ class GalleryController extends Controller
     public function destroy(Gallery $gallery)
     {
         $gallery->delete();
-        Session::flash('info_message', 'Gallery has been deleted');
+        Session::flash('success_message', 'Gallery has been deleted');
         return redirect()->back();
 
     }

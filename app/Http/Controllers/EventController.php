@@ -82,7 +82,7 @@ class EventController extends Controller
         }
        
         $event->save();
-        Session::flash('info_message', 'Event has been Added');
+        Session::flash('success_message', 'Event has been Added');
         return redirect()->route('events.index');
     }
 
@@ -160,7 +160,7 @@ class EventController extends Controller
         }
         $event->feature_image = $filename;
         $event->save();
-        Session::flash('info_message', 'Event has been updated successfully');
+        Session::flash('success_message', 'Event has been updated successfully');
         return redirect()->route('events.index');
     }
 
@@ -173,7 +173,7 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         $event->delete();
-        Session::flash('info_message', 'Event Deleted');
+        Session::flash('success_message', 'Event Deleted');
         return redirect()->back();
     }
 }

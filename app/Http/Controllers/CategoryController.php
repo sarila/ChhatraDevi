@@ -68,7 +68,7 @@ class CategoryController extends Controller
             }
         }
         $category->save();
-        Session::flash('info_message', 'Category has been Added');
+        Session::flash('success_message', 'Category has been Added');
         return redirect()->route('categories.index');
     }
 
@@ -134,7 +134,7 @@ class CategoryController extends Controller
         }
         $category->category_icon = $filename;
         $category->save();
-        Session::flash('info_message', 'Category has been updated');
+        Session::flash('success_message', 'Category has been updated');
         return redirect()->route('categories.index');
     }
 

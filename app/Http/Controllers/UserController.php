@@ -57,7 +57,7 @@ class UserController extends Controller
             'password' => $request->password,
         ]);
 
-        Session::flash('info_message', 'Account has been Created');
+        Session::flash('success_message', 'Account has been Created');
         return redirect()->back();
     }
 

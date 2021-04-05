@@ -15,7 +15,7 @@
                     </ul>
                 </div>
                 <div class="col-auto float-right ml-auto">
-                    <a href=""><button class="btn btn-info"> Add Orders</button></a>
+                    <a href="{{route('orders.edit', $order->id)}}"><button class="btn btn-info"> Edit Order</button></a>
                     <a href="{{route('orders.index')}}" class="btn btn-success"> All Orders</a>
                 </div>
             </div>

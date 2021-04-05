@@ -240,7 +240,7 @@ class FrontController extends Controller
             $order->user_id = 1;
             $order->save();
             Session::forget('cart');
-            Session::flash('info_message', 'Order Placed Sucessfully');
+            Session::flash('success_message', 'Order Placed Sucessfully');
             return redirect()->route('shop');
             // Auth::user()->orders()->save($order);
         } catch (\Exception $e) {

@@ -66,7 +66,7 @@ class ImageController extends Controller
         }
 
         $new_image->save();
-        Session::flash('info_message', 'Images added to gallery');
+        Session::flash('success_message', 'Images added to gallery');
         return redirect()->route('images.index');
     }
 

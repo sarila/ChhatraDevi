@@ -22,7 +22,9 @@ class Order extends Model
     		return "Pending Order";
     	} elseif ($status == 1) {
     		return "Completed Order";
-    	}
+    	} elseif($status == 2) {
+            return "Cancelled";
+        }
     }
 
     public function getPaymentProcessAttribute($payment_process) {

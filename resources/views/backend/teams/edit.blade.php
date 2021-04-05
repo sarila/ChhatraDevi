@@ -55,6 +55,18 @@
                                         <input type="text" class="form-control" name="address" id="address" value="{{ old('address') ?? $team->address }}">
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" name="email" id="email" value="{{ old('email') ?? $team->email }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="contact">Contact Number</label>
+                                        <input type="text" class="form-control" name="contact" id="contact" value="{{ old('contact') ?? $team->contact }}">
+                                    </div>
+                                </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Image</label>

@@ -57,7 +57,7 @@
                                 <input type="radio" id="cash" name="payment_method" value="0">
                                 <label for="cash">Cash Donation</label>
                             </div>
-                            <div class="radio mr-3">
+                           <!--  <div class="radio mr-3">
                                 <input type="radio" id="esewa" name="payment_method" value="1">
                                 <label for="esewa">Esewa</label>
                             </div>
@@ -68,7 +68,7 @@
                             <div class="radio mr-3">
                                 <input type="radio" id="khalti" name="payment_method" value="3">
                                 <label for="khalti">Khalti</label>
-                            </div>
+                            </div> -->
                         </ul>
                     </div>
                     <div class="row">

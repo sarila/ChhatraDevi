@@ -22,6 +22,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
+        // $category = $projects->with('category')->pluck('category_name');
         return view('backend.projects.index', compact('projects'));
     }
 
@@ -95,7 +96,7 @@ class ProjectController extends Controller
         }
        
         $project->save();
-        Session::flash('info_message', 'Project has been Added');
+        Session::flash('success_message', 'Project has been Added');
         return redirect()->route('projects.index');
     }
 
@@ -193,7 +194,7 @@ class ProjectController extends Controller
         $project->coverimage = $filename1;
         $project->frontimage = $filename2;
         $project->save();
-        Session::flash('info_message', 'Project has been Added');
+        Session::flash('success_message', 'Project has been Added');
         return redirect()->route('projects.index');
     }
 
@@ -206,7 +207,7 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        Session::flash('info_message', 'Project Deleted');
+        Session::flash('success_message', 'Project Deleted');
         return redirect()->back();
     }
 }

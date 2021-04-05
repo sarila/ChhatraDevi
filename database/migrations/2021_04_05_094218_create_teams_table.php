@@ -19,6 +19,8 @@ class CreateTeamsTable extends Migration
             $table->string('department',255);
             $table->string('designation',255);
             $table->string('address',255);
+            $table->string('email', 255);
+            $table->string('contact', 255);
             $table->string('image',255);
             $table->timestamps();
         });

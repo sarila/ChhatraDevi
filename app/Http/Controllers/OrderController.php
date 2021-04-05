@@ -78,13 +78,19 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        // dd($request, $order);
-        $this->validate($request, [
-            'status' => 'required',
-        ]);
+        $this->RequestValidation($request);
+        $order->first_name = $request->first_name;
+        $order->last_name = $request->last_name;
+        $order->contact = $request->contact;
+        $order->address = $request->address;
+        $order->contact = $request->contact;
+        $order->state = $request->state;
+        $order->payment_process = $request->payment_process;
+        $order->order_note = $request->order_note;
         $order->status = $request->status;
+        // dd($request, $order);
         $order->save();
-        Session::flash('info_message', 'Order Status updated Successfully');
+        Session::flash('success_message', 'Order Status updated Successfully');
         return redirect()->route('orders.index');
     }
 
@@ -97,7 +103,25 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
-        Session::flash('info_message', 'Order has been deleted Successfully');
+        Session::flash('success_message', 'Order has been deleted Successfully');
         return redirect()->route('orders.index');
+    }
+
+    public function RequestValidation(Request $request) {
+        $rules = [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'contact' => 'required' ,
+            'address' => 'required',
+        ];
+
+        $messages = [
+            'first_name.required' => 'First Name is required',
+            'last_name.required' => 'Last Name is required',
+            'contact.required' => 'Contact Number is required',
+            'address.required' => 'Address is required',
+        ];
+
+        $this->validate($request, $rules, $messages);
     }
 }

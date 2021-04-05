@@ -29,6 +29,80 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="card mb-5">
+                            <form method="post" action="{{route('orders.update', $order->id)}}" enctype="multipart/form-data">
+                                @csrf
+                                @method('put')
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="first_name">First Name <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="first_name" id="first_name" value="{{ old('first_name')??$order->first_name }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="last_name">Last Name <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="last_name" id="last_name" value="{{ old('last_name')??$order->last_name }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="contact">Contact Number <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="contact" id="contact" value="{{ old('contact')??$order->contact }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="address">Address <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="address" id="address" value="{{ old('address')??$order->address }}">
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="state">State <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="state" id="state" value="{{ old('state')??$order->state }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="payment_process">Payment Process</label>
+                                            <select name="payment_process" id="payment_process" class="form-control">
+                                                <option value= "0" >Cash On Delivery</option>
+                                                <!-- <option value= "1" >Esewa</option>
+                                                <option value= "2" >Fone Pay</option>
+                                                <option value= "3" >Khalti</option> -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="status"> Status</label>
+                                            <select name="status" id="status" class="form-control">
+                                                <option value= "0">Pending</option>
+                                                <option value= "1">Completed</option>
+                                                <option value= "2">Canceled</option>
+                                            </select>
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Order Notes</label>
+                                            <textarea rows="5" cols="5" class="form-control editor1" id="editor1">
+                                                {{old('order_note') ?? $order->order_note}}
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12">
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card mb-5">
                             <div class="card-body">
                                 @foreach($order->cart->items as $item)
                                     <div class="row">
@@ -75,49 +149,7 @@
                                 </div>
                             </div>  
                         </div>
-                        <div class="card mb-5">
-                            <form method="post" action="{{route('orders.update', $order->id)}}" enctype="multipart/form-data">
-                                @csrf
-                                @method('put')
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="first_name">First Name <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="first_name" id="first_name" value="{{ old('first_name')??$order->first_name }}" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="last_name">Last Name <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="last_name" id="last_name" value="{{ old('last_name')??$order->last_name }}" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Order Notes</label>
-                                            <textarea rows="5" cols="5" class="form-control editor1" id="editor1" disabled>
-                                                {{old('order_note') ?? $order->order_note}}
-                                            </textarea>
-                                        </div>
-                                    </div>
-                                     <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Order Status</label><br>
-                                            <input type="radio" id="completed" name="status" value="1" {{!$order->status ? 'checked' : ''}}>
-                                            <label for="completed">Completed</label><br>
-                                            <input type="radio" id="pending" name="status" value="0" {{$order->status ? 'checked' : ''}}>
-                                            <label for="pending">Pending</label><br>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-12">
-                                    <div class="text-right">
-                                        <button type="submit" class="btn btn-primary">Update</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -126,28 +158,3 @@
     <!-- /Page Content -->
 @endsection
 
- @section('js')
-    <!-- CKEDITOR js -->
-   <!--  <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
-    <script type="text/javascript">
-        CKEDITOR.replace('editor1', {
-            filebrowserUploadUrl: "{{route('ckeditor.store', ['_token' => csrf_token() ])}}",
-            filebrowserUploadMethod: 'form'
-        });
-    </script>
-
-
-    <script>
-        function readURL(input){
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#one')
-                        .attr('src', e.target.result)
-                        .width(200)
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script> -->
-@endsection

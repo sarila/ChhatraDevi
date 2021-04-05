@@ -70,7 +70,7 @@ class NewsController extends Controller
             }
         }
         $news->save();
-        Session::flash('info_message', 'News has been Added');
+        Session::flash('success_message', 'News has been Added');
         return redirect()->route('news.index');
 
     }
@@ -141,7 +141,7 @@ class NewsController extends Controller
         }
         $news->image = $filename;
         $news->save();
-        Session::flash('info_message', 'News has been Updated');
+        Session::flash('success_message', 'News has been Updated');
         return redirect()->route('news.index');
     }
 
@@ -154,7 +154,7 @@ class NewsController extends Controller
     public function destroy(News $news)
     {
         $news->delete();
-        Session::flash('info_message', 'News Deleted');
+        Session::flash('success_message', 'News Deleted');
         return redirect()->back();
     }
 }

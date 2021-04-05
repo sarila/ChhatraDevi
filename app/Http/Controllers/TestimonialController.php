@@ -70,7 +70,7 @@ class TestimonialController extends Controller
             }
         }
         $testimonial->save();
-        Session::flash('info_message', 'Testimonial has been Added');
+        Session::flash('success_message', 'Testimonial has been Added');
         return redirect()->route('testimonials.index');
     }
 
@@ -138,7 +138,7 @@ class TestimonialController extends Controller
         }
         $testimonial->image = $filename;
         $testimonial->save();
-        Session::flash('info_message', 'Testimonial has been Added');
+        Session::flash('success_message', 'Testimonial has been Added');
         return redirect()->route('testimonials.index');
     }
 
@@ -151,7 +151,7 @@ class TestimonialController extends Controller
     public function destroy(Testimonial $testimonial)
     {
         $testimonial->delete();
-        Session::flash('info_message', 'Testimonial Deleted');
+        Session::flash('success_message', 'Testimonial Deleted');
         return redirect()->back();
     }
 }

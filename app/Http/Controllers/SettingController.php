@@ -176,7 +176,7 @@ class SettingController extends Controller
             $setting->youtube = $data['youtube'];
             $setting->instagram = $data['instagram'];
             $setting->save();
-            Session::flash('info_message', 'Social Settings has been updated successfully');
+            Session::flash('success_message', 'Social Settings has been updated successfully');
             return redirect()->back();
     }
 

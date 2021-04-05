@@ -134,7 +134,7 @@
                                             <p>{{$ongoingProject->excerpt}}</p>
                                             <div class="btn-more">
                                                 <a href="{{route('projectDetail', $ongoingProject->id)}}" class="button-four xs-title py-1">Read More<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
-                                                <a href="project-detail.php" class="ml-2 button-one-sec xs-title py-1">Donate Now <i class="fab fa-gratipay ml-2"></i></a>
+                                                <a href="{{route('donation')}}" class="ml-2 button-one-sec xs-title py-1">Donate Now <i class="fab fa-gratipay ml-2"></i></a>
                                             </div>
                                         </div>
                                     </div>

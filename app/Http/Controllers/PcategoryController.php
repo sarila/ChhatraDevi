@@ -47,7 +47,7 @@ class PcategoryController extends Controller
         $pcategory->name = $data['name'];
         $pcategory->slug = Str::slug($data['name']);
         $pcategory->save();
-        Session::flash('info_message', 'Product Category has been Added');
+        Session::flash('success_message', 'Product Category has been Added');
         return redirect()->route('pcategories.index');
 
     }
@@ -91,7 +91,7 @@ class PcategoryController extends Controller
         $pcategory->name = $data['name'];
         $pcategory->slug = Str::slug($data['name']);
         $pcategory->save();
-        Session::flash('info_message', 'Product Category has been Updated');
+        Session::flash('success_message', 'Product Category has been Updated');
         return redirect()->route('pcategories.index');
 
     }
@@ -105,7 +105,7 @@ class PcategoryController extends Controller
     public function destroy(Pcategory $pcategory)
     {
         $pcategory->delete();
-        Session::flash('info_message', 'Product Category deleted succesfully');
+        Session::flash('success_message', 'Product Category deleted succesfully');
         return redirect()->route('pcategories.index');
     }
 }

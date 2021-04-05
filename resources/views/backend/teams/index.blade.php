@@ -15,6 +15,7 @@
                     </ul>
                 </div>
                 <div class="col-auto float-right ml-auto">
+                    <a href="{{route('teams.create')}}" class="btn add-btn"><i class="fa fa-plus"></i> Add Team</a>
                 </div>
             </div>
         </div>
@@ -22,114 +23,37 @@
 
         @include('backend.includes.message')
 
-        <div class="row">
 
-            <div class="col-sm-12">
-                <div class="card mb-0">
-                    <div class="card-header">
-                        <span style="position:relative; top: 7px">
-                            Please use the table below to navigate or filter the results.
-                        </span>
-                        <div class="pull-right">
-                            <div class="dropdown">
-                                <a href="{{route('teams.create')}}" class="btn btn-primary" ><i class="fa fa-plus"></i> Add New</a>
-                            </div>
+        <div class="row staff-grid-row">
+            @foreach($teams as $data)
+                <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
+                    <div class="profile-widget">
+                        <div class="profile-img">
+                            <a href="{{ route('teams.show', $data->id) }}" class="avatar"><img alt="" src="{{asset('storage/team/'.$data->image)}}"></a>
+                            <!-- <a href="{{ route('news.show',$data->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a> -->
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped custom-table mb-0" id="team-datatable">
-                                <thead>
-                                    <tr>
-                                        <th>S.N.</th>
-                                        <th>Name</th>
-                                        <th>Department</th>
-                                        <th>Designation</th>
-                                        <th>Address</th>
-                                        <th>Image</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-
-                                 <tbody>
-                                    @foreach($teams as $team)
-                                        <tr>
-                                            <td>{{ $team->id }}</td>
-                                            <td>{{ $team->name }}</td>
-                                            <td>{{ $team->department }}</td>
-                                            <td>{{ $team->designation }}</td>
-                                            <td>{{ $team->address }}</td>
-                                            <td> <img src="{{ asset('storage/team/'. $team->image)}}"  width="40" align="center"></td>
-                                            <td>
-                                                <form action="{{ route('teams.destroy',$team->id) }}" method="POST">
-
-                                                    <a href="{{ route('teams.show',$team->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a>
-
-                                                    <a class="btn btn-primary" href="{{ route('teams.edit',$team->id) }}"><i class="fa fa-pencil"></i></a>
-                                                    @csrf
-
-                                                    @method('DELETE')
-
-                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-
-                                                </form>
-
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                        <div class="dropdown profile-action">
+                            <a href="clients.html#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                            <form method="POST" action="{{route('teams.destroy', $data->id)}}">
+                                @csrf
+                                @method('DELETE')
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a  class="dropdown-item" href="{{ route('teams.show',$data->id) }}"><i class="fa fa-eye m-r-5" > Show </i></a>
+                                    <a class="dropdown-item" href="{{ route('teams.edit',$data->id) }}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                    <button type="submit" class="dropdown-item"><i class="fa fa-trash-o m-r-5"></i> Delete </button>
+                                </div>
+                            </form>
                         </div>
+                        <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="{{route('teams.show', $data->id)}}">{{ $data->name }}</a></h4>
+                        <h5 class="user-name m-t-10 mb-0 text-ellipsis"><a href="{{route('teams.show', $data->id)}}">{{$data->designation}}</a></h5>
+                        <div class="small text-muted">{{ $data->department }}</div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
     <!-- Page Content -->
-    <!-- For show data -->
-    <div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header" id="modal-header">
-                    <h4 class="modal-title" id="modal-title">Form Input</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body" id="modal-body">
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 </div>
 
 @endsection
-@section('js')
-    <script>
-        $(function() {
-            $('#team-datatable').DataTable();
-        });
-    </script>
-    
-    <script>      
-        // For Show Modal 
-        $('body').on('click', '.show', function (event) {
-            event.preventDefault();
-            var me = $(this),
-            
-                url = me.attr('href'),
-                title = me.attr('title');
-            $('#modal-title').text(title);
-            $.ajax({
-                type: "POST",
-                url: url,
-                dataType: 'html',
-                success: function (response) {
-                    $('#modal-body').html(response);
-                }
-            });
-            $('#showModal').modal('show');
-        });
-    </script>
-        
-@endsection
+

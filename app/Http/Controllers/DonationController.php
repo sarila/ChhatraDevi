@@ -15,7 +15,8 @@ class DonationController extends Controller
      */
     public function index()
     {
-        //
+        $donations = Donation::latest()->get();
+        return view('backend.donations.index', compact('donations'));
     }
 
     /**
@@ -25,7 +26,7 @@ class DonationController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.donations.create');
     }
 
     /**
@@ -41,7 +42,7 @@ class DonationController extends Controller
         $donation = new Donation($data);
         $donation->save();
         Session::flash('success_message', 'Thankyou for Supporting Us. Your Donation Will be used for good Cause');
-        return redirect()->route('indexPage');
+        return redirect()->back();
     }
 
     /**
@@ -52,7 +53,7 @@ class DonationController extends Controller
      */
     public function show(Donation $donation)
     {
-        //
+        return view('backend.donations.show', compact('donation'));
     }
 
     /**
@@ -63,7 +64,7 @@ class DonationController extends Controller
      */
     public function edit(Donation $donation)
     {
-        //
+        return view('backend.donations.edit', compact('donation'));
     }
 
     /**
@@ -75,7 +76,16 @@ class DonationController extends Controller
      */
     public function update(Request $request, Donation $donation)
     {
-        //
+        $data = $request->all();
+        $donation->name = $request->name;
+        $donation->email = $request->email;
+        $donation->donation_amount = $request->donation_amount;
+        $donation->payment_method = $request->payment_method;
+        $donation->message = $request->message;
+        $donation->status = $request->status;
+        $donation->save();
+        Session::flash('success_message', 'Donation Updated');
+        return redirect()->route('donations.index');
     }
 
     /**
@@ -86,6 +96,8 @@ class DonationController extends Controller
      */
     public function destroy(Donation $donation)
     {
-        //
+        $donation->delete();
+        Session::flash('success_message', 'donation Deleted');
+        return redirect()->back();
     }
 }

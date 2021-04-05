@@ -8,7 +8,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Projects</h3>
+                    <h3 class="page-title">Donations</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="">Dashboard</a></li>
                         <li class="breadcrumb-item active">View All</li>
@@ -32,51 +32,42 @@
                         </span>
                         <div class="pull-right">
                             <div class="dropdown">
-                                <a href="{{route('projects.create')}}" class="btn btn-primary" ><i class="fa fa-plus"></i> Add New</a>
+                                <a href="{{route('donations.create')}}" class="btn btn-primary" ><i class="fa fa-plus"></i> Add New</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped custom-table mb-0" id="projects-datatable">
+                            <table class="table table-striped custom-table mb-0" id="category-datatable">
                                 <thead>
                                     <tr>
                                         <th>S.N.</th>
-                                        <th>Title</th>
-                                        <th>Gallery_id</th>
-                                        <th>Category</th>
+                                        <th>Name</th>
+                                        <th>Payment Method</th>
+                                        <th>Donation Amount</th>
                                         <th>Status</th>
-                                        <th>Goal Amount</th>
-                                        <th>Start Date</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach($projects as $data)
+                                    @foreach($donations as $donation)
                                         <tr>
-                                            <td>{{ $data->id }}</td>
-                                            <td>{{ $data->title }}</td>
-                                            <td>{{ $data->gallery_id }}</td>
-                                            <td>{{ $data->category->category_name }}</td>
-                                            <td>{{ $data->status }}</td>
-                                            <td>{{ $data->goal }}</td>
-                                            <td>{{ $data->start_date }}</td>
-
+                                            <td>{{ $donation->id }}</td>
+                                            <td>{{ $donation->name }}</td>
+                                            <td>{{ $donation->payment_method }}</td>
+                                            <td>{{ $donation->donation_amount }}</td>
+                                            <td>{{ $donation->status }}</td>
                                             <td>
-                                                <form action="{{ route('projects.destroy',$data->id) }}" method="POST">
-
-                                                    <a href="{{ route('projects.show',$data->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a>
-
-                                                    <a class="btn btn-primary" href="{{ route('projects.edit',$data->id) }}"><i class="fa fa-pencil"></i></a>
+                                                <form action="{{ route('donations.destroy',$donation->id) }}" method="POST">
+                                                    <a href="{{ route('donations.show',$donation->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a>
+                                                    <a class="btn btn-primary" href="{{ route('donations.edit',$donation->id) }}"><i class="fa fa-pencil"></i></a>
                                                     @csrf
 
                                                     @method('DELETE')
 
                                                     <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-
                                                 </form>
-
                                             </td>
                                         </tr>
                                     @endforeach
@@ -89,15 +80,14 @@
         </div>
     </div>
     <!-- Page Content -->
-
-
 </div>
 
 @endsection
 @section('js')
     <script type="text/javascript">
         $(document).ready( function () {
-            $('#projects-datatable').DataTable();
+            $('#donation-datatable').DataTable();
         } );
     </script>
+    
 @endsection

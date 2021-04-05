@@ -55,6 +55,8 @@ class TeamController extends Controller
         $team->designation = $data['designation'];
         $team->department = $data['department'];
         $team->address = $data['address'];
+        $team->email = $data['email'];
+        $team->contact = $data['contact'];
         $random = Str::random(10);
         if ($request->hasFile('image')) {
             $image_tmp = $request->file('image');
@@ -71,7 +73,7 @@ class TeamController extends Controller
             }
         }
         $team->save();
-        Session::flash('info_message', 'Team has been Added');
+        Session::flash('success_message', 'Team has been Added');
         return redirect()->route('teams.index');
     }
 
@@ -117,6 +119,8 @@ class TeamController extends Controller
         $team->designation = $data['designation'];
         $team->department = $data['department'];
         $team->address = $data['address'];
+        $team->email = $data['email'];
+        $team->contact = $data['contact'];
         $random = Str::random(10);
         if ($request->hasFile('image')) {
             $image_tmp = $request->file('image');
@@ -140,7 +144,7 @@ class TeamController extends Controller
         }
         $team->image = $filename;
         $team->save();
-        Session::flash('info_message', 'Team has been Updated Successfully');
+        Session::flash('success_message', 'Team has been Updated Successfully');
         return redirect()->route('teams.index');
     }
 
@@ -153,7 +157,7 @@ class TeamController extends Controller
     public function destroy(Team $team)
     {
         $team->delete();
-        Session::flash('info_message', 'Team has been deleted successfully');
+        Session::flash('success_message', 'Team has been deleted successfully');
         return redirect()->back();
     }
 

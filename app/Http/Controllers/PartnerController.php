@@ -68,7 +68,7 @@ class PartnerController extends Controller
             }
         }
         $partner->save();
-        Session::flash('info_message', 'Partner has been Added');
+        Session::flash('success_message', 'Partner has been Added');
         return redirect()->route('partners.index');
     }
 
@@ -136,7 +136,7 @@ class PartnerController extends Controller
         }
         $partner->icon = $filename;
         $partner->save();
-        Session::flash('info_message', 'Partner has been Updated');
+        Session::flash('success_message', 'Partner has been Updated');
         return redirect()->route('partners.index');
     }
 
@@ -149,7 +149,7 @@ class PartnerController extends Controller
     public function destroy(Partner $partner)
     {
         $partner->delete();
-        Session::flash('info_message', 'Partner Deleted');
+        Session::flash('success_message', 'Partner Deleted');
         return redirect()->back();
     }
 }

@@ -113,7 +113,7 @@ class ProductController extends Controller
                 
         }
 
-        Session::flash('info_message', 'Product has been updated');
+        Session::flash('success_message', 'Product has been updated');
         return redirect()->route('products.index');
     }
 
@@ -233,7 +233,7 @@ class ProductController extends Controller
                 
         }
 
-        Session::flash('info_message', 'Product has been saved');
+        Session::flash('success_message', 'Product has been saved');
         return redirect()->route('products.index');
     }
 
@@ -247,7 +247,7 @@ class ProductController extends Controller
     {
         // dd($product);
         $product->delete();
-        Session::flash('info_message', 'Product Deleted');
+        Session::flash('success_message', 'Product Deleted');
         return redirect()->route('products.index');
     }
 

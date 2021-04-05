@@ -64,7 +64,7 @@ class SliderController extends Controller
             }
         }
         $slider->save();
-        Session::flash('info_message', 'Slider has been Added');
+        Session::flash('success_message', 'Slider has been Added');
         return redirect()->route('sliders.index');
     }
 
@@ -127,7 +127,7 @@ class SliderController extends Controller
         }
         $slider->slider_image = $filename;
         $slider->save();
-        Session::flash('info_message', 'Slider has been Updated');
+        Session::flash('success_message', 'Slider has been Updated');
         return redirect()->route('sliders.index');
     }
 
@@ -140,7 +140,7 @@ class SliderController extends Controller
     public function destroy(Slider $slider)
     {
         $slider->delete();
-        Session::flash('info_message', 'Slider has been deleted');
+        Session::flash('success_message', 'Slider has been deleted');
         return redirect()->back();
     }
 }

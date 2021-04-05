@@ -51,6 +51,9 @@
 				<li>
 					<a href="{{ route('orders.index')}}"><i class="la la-shopping-cart"></i> <span>Orders</span> </a>
 				</li>
+				<li>
+					<a href="{{ route('donations.index')}}"><i class="la la-heart-o"></i> <span>Donation</span> </a>
+				</li>
 			</ul>
 		</div>
     </div>
