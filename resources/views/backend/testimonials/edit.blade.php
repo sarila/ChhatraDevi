@@ -46,7 +46,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="message">Message</label>
-                                        <input type="text" class="form-control" name="message" id="message" value="{{ old('message') ?? $testimonial->message }}">
+                                        <textarea type="text" class="form-control" name="message" id="message" rows="9" >{{old('message')??$testimonial->message}}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">

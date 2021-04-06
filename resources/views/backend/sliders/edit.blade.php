@@ -39,19 +39,16 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea rows="5" class="form-control" id="description"  name="description">
-                                            {{old('description') ?? $slider->description}}
-                                        </textarea>
+                                        <textarea rows="5" class="form-control" id="description"  name="description">{{old('description') ?? $slider->description}}</textarea>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="link">Link</label>
                                         <input type="text" class="form-control" name="link" id="link" value="{{ old('link')??$slider->link }}">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="slider_image">Slider Image<span class="text-danger">*</span></label>
                                         <input type="hidden" name="slider_image">
@@ -65,6 +62,7 @@
                                         @endif
                                     </div>
                                 </div>
+                            </div>
                             <div class="col-md-12">
                                 <div class="text-right">
                                     <button type="submit" class="btn btn-primary">Update</button>

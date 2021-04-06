@@ -37,7 +37,25 @@
                                         <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Facebook Link</label>
+                                        <input type="text" class="form-control" name="facebook" id="facebook" value="{{ old('facebook') }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Contact Number</label>
+                                        <input type="text" class="form-control" name="contact" id="contact" value="{{ old('contact') }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" name="email" id="email" value="{{ old('email') }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Icon<span class="text-danger">*</span></label>
                                         <input type="hidden" name="icon">
@@ -49,24 +67,6 @@
                                         @else
                                             <img src="{{ asset('storage/partners/'.$user->icon) }}" style="width: 100px" id="one">
                                         @endif
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>contact</label>
-                                        <input type="text" class="form-control" name="contact" id="contact" value="{{ old('contact') }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>email</label>
-                                        <input type="text" class="form-control" name="email" id="email" value="{{ old('email') }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>facebook</label>
-                                        <input type="text" class="form-control" name="facebook" id="facebook" value="{{ old('facebook') }}">
                                     </div>
                                 </div>
                             </div>

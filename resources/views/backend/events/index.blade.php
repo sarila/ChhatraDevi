@@ -44,11 +44,7 @@
                                         <th>S.N.</th>
                                         <th>Title</th>
                                         <th>Location</th>
-                                        <th>Duration</th>
-                                        <th>Entrance (no. of seat)</th>
-                                        <th>Feature_image</th>
                                         <th>Date</th>
-                                        <th>Time Duration</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
@@ -60,26 +56,16 @@
                                             <td>{{ $data->id }}</td>
                                             <td>{{ $data->title }}</td>
                                             <td>{{ $data->location }}</td>
-                                            <td>{{ $data->duration }}</td>
-                                            <td>{{ $data->no_of_seat }}</td>
-                                            <td><img src="{{ asset('storage/event/'. $data->feature_image)}}" width="100px"></td>
                                             <td>{{ $data->date }}</td>
-                                            <td>{{ $data->time_duration }}</td>
                                             <td>{{ $data->status }}</td>
                                             <td>
                                                 <form action="{{ route('events.destroy',$data->id) }}" method="POST">
-
                                                     <a href="{{ route('events.show',$data->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a>
-
                                                     <a class="btn btn-primary" href="{{ route('events.edit',$data->id) }}"><i class="fa fa-pencil"></i></a>
                                                     @csrf
-
                                                     @method('DELETE')
-
                                                     <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-
                                                 </form>
-
                                             </td>
                                         </tr>
                                     @endforeach

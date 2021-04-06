@@ -61,7 +61,7 @@
                                             <td>
                                                 <form action="{{ route('testimonials.destroy',$testimonial->id) }}" method="POST">
 
-                                                    <a href="{{ route('testimonials.show',$testimonial->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a>
+                                                  <!--   <a href="{{ route('testimonials.show',$testimonial->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a> -->
 
                                                     <a class="btn btn-primary" href="{{ route('testimonials.edit',$testimonial->id) }}"><i class="fa fa-pencil"></i></a>
                                                     @csrf

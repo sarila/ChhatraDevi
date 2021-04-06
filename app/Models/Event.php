@@ -24,4 +24,13 @@ class Event extends Model
 	{
 		return $this->belongsTo(Gallery::class);
 	}
+
+	public function getStatusAttribute($status)
+	{
+		if ($status == 1) {
+			return "Upcoming Event";
+		} elseif ($status == 0) {
+			return "Past Event";
+		}
+	}
 }

@@ -7,14 +7,14 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Update Category</h3>
+                    <h3 class="page-title">Update Partner</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Add New</li>
                     </ul>
                 </div>
                 <div class="col-auto float-right ml-auto">
-                    <a href=" {{route('partners.index')}}" class="btn add-btn" ><i class="fa fa-eye"></i> All Category</a>
+                    <a href=" {{route('partners.index')}}" class="btn add-btn" ><i class="fa fa-eye"></i> All Partners</a>
                 </div>
             </div>
         </div>
@@ -37,7 +37,25 @@
                                         <input type="text" class="form-control" name="name" id="name" value="{{ old('name') ?? $partner->name }}">
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Facebook Link</label>
+                                        <input type="text" class="form-control" name="facebook" id="facebook" value="{{ old('facebook')??$partner->facebook }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Contact Number</label>
+                                        <input type="text" class="form-control" name="contact" id="contact" value="{{ old('contact')??$partner->contact }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" name="email" id="email" value="{{ old('email')??$partner->email }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Icon<span class="text-danger">*</span></label>
                                         <input type="hidden" name="icon">
@@ -49,24 +67,6 @@
                                         @else
                                             <img src="{{ asset('storage/partners/'.$partner->icon) }}" style="width: 100px" id="one">
                                         @endif
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>contact</label>
-                                        <input type="text" class="form-control" name="contact" id="contact" value="{{ old('contact') ?? $partner->contact }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>email</label>
-                                        <input type="text" class="form-control" name="email" id="email" value="{{ old('email') ?? $partner->email  }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>facebook</label>
-                                        <input type="text" class="form-control" name="facebook" id="facebook" value="{{ old('facebook') ?? $partner->facebook  }}">
                                     </div>
                                 </div>
                             </div>

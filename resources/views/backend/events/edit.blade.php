@@ -10,14 +10,14 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Categories</h3>
+                    <h3 class="page-title">Events</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Add New</li>
                     </ul>
                 </div>
                 <div class="col-auto float-right ml-auto">
-                    <a href="{{ route('news.index') }}" class="btn add-btn" ><i class="fa fa-eye"></i> All Categories</a>
+                    <a href="{{ route('events.index') }}" class="btn add-btn" ><i class="fa fa-eye"></i> All Events</a>
                 </div>
             </div>
         </div>
@@ -62,58 +62,55 @@
                                         <input class="form-control" type="text" name="no_of_seat" id="no_of_seat" value="{{old('no_of_seat') ?? $event->no_of_seat}}">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="excerpt" style="font-size: 14px">Excerpt</label>
-                                        <textarea class="form-control" type="text" name="excerpt" id="excerpt" > {{old('excerpt') ?? $event->excerpt}} </textarea> 
+                                        <textarea class="form-control" type="text" name="excerpt" id="excerpt" >{{old('excerpt') ?? $event->excerpt}}</textarea> 
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea rows="5" cols="5" class="form-control editor1" id="editor1"  name="description">
-                                    {{ old('description') ?? $event->description }}
-                                </textarea>
-                            </div>
-                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <textarea rows="5" cols="5" class="form-control editor1" id="editor1"  name="description">
+                                            {{ old('description')?? $event->description }}
+                                        </textarea>
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="category_id"> Gallery ID</label>
-                                        <select name="gallery_id" id="gallery_id" class="form-control select">
+                                        <label for="gallery_id"> Gallery</label>
+                                        <select name="gallery_id" id="gallery_id" class="form-control">
+                                            <option>None</option>
                                             @foreach($galleries as $gallery)
-                                                <option value= " {{$gallery->id}} ">{{$gallery->name}}</option>
+                                                <option value= " {{$gallery->id}} " {{!$event->gallery_id ? 'checked' : ''}}>{{$gallery->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
-                               <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Status</label><br>
-                                        <input type="radio" id="past" name="status" value="0" {{!$event->status ? 'checked' : ''}}>
-                                        <label for="past">Past Event</label><br>
-                                        <input type="radio" id="future" name="status" value="1" {{!$event->status ? 'checked' : ''}}>
-                                        <label for="future">Future Events</label><br>
-                                    </div>
-                                </div>
+                                </div> 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="category_id">Category ID</label>
-                                        <select name="category_id" id="category_id" class="form-control select">
+                                        <label for="status"> Status</label>
+                                        <select name="status" id="status" class="form-control">
+                                            <option value= "0" {{!$event->status ? 'checked' : ''}}>Past Event</option>
+                                            <option value= "1" {{!$event->status ? 'checked' : ''}}>Upcoming Event</option>
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="category_id"> Category</label>
+                                        <select name="category_id" id="category_id" class="form-control">
+                                            <option>None</option>
                                             @foreach($categories as $category)
-                                                <option value= " {{$category->id}} " {{!$event->category_id ? 'checked' : ''}}>{{$category->category_name}}</option>
+                                                <option value= " {{$category->id}} " {{$event->category_id ? 'checked' : ''}}>{{$category->category_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
+                                </div> 
                                 <div class="col-md-6">
                                     <label for="time_duration">Time Duration <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="time_duration" id="time_duration"  value="{{old('time_duration') ?? $event->time_duration}}"> 
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="feature_image">Feature Image <span class="text-danger">*</span></label>
@@ -135,7 +132,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="text-right">
-                                    <button type="submit" class="btn btn-primary">Add Project</button>
+                                    <button type="submit" class="btn btn-primary">Update Events</button>
                                 </div>
                             </div>
                         </form>

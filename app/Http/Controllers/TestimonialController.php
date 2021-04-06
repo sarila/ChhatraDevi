@@ -138,7 +138,7 @@ class TestimonialController extends Controller
         }
         $testimonial->image = $filename;
         $testimonial->save();
-        Session::flash('success_message', 'Testimonial has been Added');
+        Session::flash('success_message', 'Testimonial Updated');
         return redirect()->route('testimonials.index');
     }
 

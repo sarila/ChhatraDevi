@@ -8,7 +8,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">partners</h3>
+                    <h3 class="page-title">Partners</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="">Dashboard</a></li>
                         <li class="breadcrumb-item active">View All</li>
@@ -62,8 +62,6 @@
                                             <td>{{ $partner->facebook }}</td>
                                             <td>
                                                 <form action="{{ route('partners.destroy',$partner->id) }}" method="POST">
-                                                    <a href="{{ route('partners.show',$partner->id) }}" class="btn btn-success show"><i class="la la-eye" ></i></a>
-                                                    
                                                     <a class="btn btn-primary" href="{{ route('partners.edit',$partner->id) }}"><i class="fa fa-pencil"></i></a>
                                                     @csrf
 

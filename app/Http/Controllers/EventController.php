@@ -94,7 +94,9 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        $images = $event->gallery->images->pluck('image');
+        // dd($image);
+        return view('backend.events.show', compact('event', 'images'));
     }
 
     /**

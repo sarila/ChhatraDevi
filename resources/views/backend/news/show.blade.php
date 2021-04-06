@@ -45,10 +45,6 @@
                                     <div class="text">{{$news->news_type}}</div>
                                 </li>
                                 <li>
-                                    <div class="title">Nationality</div>
-                                    <div class="text">Indian</div>
-                                </li>
-                                <li>
                                     <div class="title">Excerpt</div>
                                     <div class="text">{{$news->excerpt}}</div>
                                 </li>

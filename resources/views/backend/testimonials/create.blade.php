@@ -50,12 +50,10 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="message">Message</label>
-                                        <textarea type="text" class="form-control" name="message" id="message" >
-                                            {{ old('message') }}
-                                        </textarea>
+                                        <textarea type="text" class="form-control" name="message" id="message" rows="9">{{old('message')}}</textarea>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Image</label>
                                         <input type="hidden" name="image">

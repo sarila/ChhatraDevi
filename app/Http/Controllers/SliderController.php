@@ -76,7 +76,7 @@ class SliderController extends Controller
      */
     public function show(Slider $slider)
     {
-        //
+        return view('backend.sliders.show', compact('slider'));
     }
 
     /**

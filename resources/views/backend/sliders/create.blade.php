@@ -43,17 +43,13 @@
                                         <input type="text" class="form-control" name="link" id="link" value="{{ old('link') }}">
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea rows="5" class="form-control" id="description"  name="description">
-                                            {{ old('description') }}
-                                        </textarea>
+                                        <textarea rows="5" class="form-control" id="description"  name="description">{{ old('description') }}</textarea>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Slider Image<span class="text-danger">*</span></label>
                                         <input type="hidden" name="slider_image">
