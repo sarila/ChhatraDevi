@@ -80,7 +80,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        // return view('backend.categories.show', compact($category));
+        return view('backend.categories.show', compact('category'));
     }
 
     /**
@@ -147,6 +147,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
+        Session::flash('success_message', 'Category Deleted');
         return redirect()->back();
     }
 }

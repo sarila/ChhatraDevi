@@ -22,10 +22,9 @@
 
         @include('backend.includes.message')
 
-        @foreach ($images as $image)::
+        @foreach ($images as $image)
             <div class="col-12 mb-3">
                 <div class="img-holder">
-                    {{ $gallery->image }}
                     <img src="{{ asset('/storage/galleries/') . $image }}"  alt="">
                 </div>
             </div>

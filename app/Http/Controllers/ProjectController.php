@@ -21,8 +21,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
-        // $category = $projects->with('category')->pluck('category_name');
+        $projects = Project::with('category', 'gallery')->get();
+        // dd($projects);
         return view('backend.projects.index', compact('projects'));
     }
 

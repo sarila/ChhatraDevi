@@ -14,7 +14,7 @@
                     </ul>
                 </div>
                 <div class="col-auto float-right ml-auto">
-                    <a href=" {{route('categories.index')}}" class="btn add-btn" ><i class="fa fa-eye"></i> All Category</a>
+                    <a href=" {{route('categories.index')}}" class="btn add-btn" ><i class="fa fa-eye"></i> All Categories</a>
                 </div>
             </div>
         </div>

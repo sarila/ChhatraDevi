@@ -43,10 +43,8 @@
                                     <tr>
                                         <th>S.N.</th>
                                         <th>Title</th>
-                                        <th>SEO-Title</th>
-                                        <th>Keyword</th>
                                         <th>Image</th>
-                                        <th>News_Type</th>
+                                        <th>News Type</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -56,11 +54,8 @@
                                         <tr>
                                             <td>{{ $data->id }}</td>
                                             <td>{{ $data->title }}</td>
-                                            <td>{{ $data->seo_title }}</td>
-                                            <td>{{ $data->keywords }}</td>
                                             <td> <img src="{{ asset('storage/news/'. $data->image)}}"  width="40" align="center"></td>
                                             <td>{{ $data->news_type }}</td>
-
                                             <td>
                                                 <form action="{{ route('news.destroy',$data->id) }}" method="POST">
 

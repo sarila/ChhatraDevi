@@ -84,7 +84,8 @@ class GalleryController extends Controller
      */
     public function show(Gallery $gallery)
     {
-        $images = $gallery->images()->get();
+        $images = $gallery->images()->with('images')->pluck('image');
+        // dd($images);
         return view('backend.galleries.show', compact('gallery', 'images'));
     }
 

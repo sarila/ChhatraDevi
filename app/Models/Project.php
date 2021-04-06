@@ -28,4 +28,12 @@ class Project extends Model
 	{
 		return $this->hasMany(Donation::class);
 	}
+
+	public function getStatusAttribute ($status) {
+		if ($status == 0) {
+			return "Ongoing Project";
+		} elseif ($status == 1) {
+			return "Completed Project";
+		}
+	}
 }

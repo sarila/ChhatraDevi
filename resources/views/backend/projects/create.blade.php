@@ -41,83 +41,69 @@
                                         <input class="form-control" type="text" name="title" id="title" >
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="excerpt" style="font-size: 14px">Excerpt</label>
                                         <textarea class="form-control" type="text" name="excerpt" id="excerpt" > {{old('excerpt')}}</textarea> 
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea rows="5" cols="5" class="form-control editor1" id="editor1"  name="description">
-                                    {{ old('description') }}
-                                </textarea>
-                            </div>
-                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <textarea rows="5" cols="5" class="form-control editor1" id="editor1"  name="description">
+                                            {{ old('description')}}
+                                        </textarea>
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="category_id"> Gallery ID</label>
-                                        <select name="gallery_id" id="gallery_id" class="form-control select">
-                                            <option value="0">None</option>
+                                        <label for="gallery_id"> Gallery</label>
+                                        <select name="gallery_id" id="gallery_id" class="form-control">
+                                            <option>None</option>
                                             @foreach($galleries as $gallery)
                                                 <option value= " {{$gallery->id}} ">{{$gallery->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
+                                </div> 
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="status">Status</label><br>
-                                        <input type="radio" id="ongoing" name="status" value="0">
-                                        <label for="ongoing">Ongoing</label><br>
-                                        <input type="radio" id="completed" name="status" value="1">
-                                        <label for="completed">Completed</label><br>
+                                        <label for="status"> Status</label>
+                                        <select name="status" id="status" class="form-control">
+                                            <option value= "0">Ongoing</option>
+                                            <option value= "1">Completed</option>
+                                        </select>
                                     </div>
-                                </div>
+                                </div> 
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="goal">Goal Amount in dollars</label><br>
-                                        <input class="form-control"  type="number" id="goal" name="goal">
+                                        <label for="goal">Goal Amount in Rupees</label><br>
+                                        <input class="form-control"  type="number" id="goal" name="goal" value="{{old('goal')}}">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="category_id">Category ID</label>
-                                        <select name="category_id" id="category_id" class="form-control select">
-                                            <option value="0">None</option>
+                                        <label for="category_id"> Category</label>
+                                        <select name="category_id" id="category_id" class="form-control">
+                                            <option>None</option>
                                             @foreach($categories as $category)
                                                 <option value= " {{$category->id}} ">{{$category->category_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
+                                </div> 
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="frontimage">Front Image <span class="text-danger">*</span></label>
-                                        <input type="file" name="frontimage" class="form-control" id="frontimage" accept="image/*" onchange="readURL(this);">
-                                    </div>
+                                    <label for="start_date">Start Date <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="start_date" id="datepicker" value="{{ old('start_date')}}"> 
                                 </div>
-                            </div>
-                            <div class="row">
+    
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="coverimage">Cover Image <span class="text-danger">*</span></label>
                                         <input type="file" name="coverimage" class="form-control" id="coverimage" accept="image/*" onchange="readURL(this);">
                                     </div>
-                                </div>  
-                                <div class="col-md-6">
-                                    <label for="start_date">Start Date <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="start_date" id="datepicker"> 
                                 </div>
-                            </div>
-
-                           
+                            </div>  
                             <div class="col-md-12">
                                 <div class="text-right">
                                     <button type="submit" class="btn btn-primary">Add Project</button>

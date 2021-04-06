@@ -43,8 +43,6 @@
                                     <tr>
                                         <th>S.N.</th>
                                         <th>Title</th>
-                                        <th>Gallery_id</th>
-                                        <th>Category</th>
                                         <th>Status</th>
                                         <th>Goal Amount</th>
                                         <th>Start Date</th>
@@ -57,8 +55,6 @@
                                         <tr>
                                             <td>{{ $data->id }}</td>
                                             <td>{{ $data->title }}</td>
-                                            <td>{{ $data->gallery_id }}</td>
-                                            <td>{{ $data->category->category_name }}</td>
                                             <td>{{ $data->status }}</td>
                                             <td>{{ $data->goal }}</td>
                                             <td>{{ $data->start_date }}</td>
