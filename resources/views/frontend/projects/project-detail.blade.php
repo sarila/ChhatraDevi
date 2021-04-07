@@ -146,7 +146,7 @@
 	                <!-- Right -->
 	                <div class="col-md-3 col-12">
 	                    <div class="p-md-3 p-2 box-shadow-2 mb-5  donate-count">
-	                        <span class="text d-inline-block mb-3"><span class="raised">$75,682</span>raised of <span class="goal">$80,000</span> goal</span>
+	                        <span class="text d-inline-block mb-3"><span class="raised">RS. {{ $projectDetails->goal}}</span>raised of <span class="goal">RS. {{$projectDetails->goal}}</span> goal</span>
 	                        <div class="progress mb-2">
 	                            <span class="inner d-inline-block progress-bar"></span>
 	                        </div>

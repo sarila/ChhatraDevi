@@ -158,6 +158,23 @@
                         <span class="font-weight-bold">SUBTOTAL:</span>
                         <span class="float-right">Rs {{ $oldCart->totalPrice }}</span>
                     </div>
+                @else
+                    <h2 class="sm-title pb-3">
+                        <span class="fa fa-shopping-bag mr-3 text-primary"></span>
+                        SHOPPING BAG <span class="p-count ml-2"> </span>
+                        <span class="close-cart-now d-inline-block text-right">
+                        <i class="fas fa-times cursor-pointer"></i>
+                        </span>
+                    </h2>
+                    <div class="product-list my-4 overflow-scroll">
+                            <div class="product pb-3 mb-3">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h3>Empty Cart</h3>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
                 @endif
                 <div class="prod-cta mt-4 xs-title">
                     <a href="{{route('cart')}}" class="button-two">View Cart</a>

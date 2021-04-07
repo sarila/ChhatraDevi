@@ -99,12 +99,14 @@
                                    </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="tags">Tags</label>
-                                    <select class="form-control" name="tags[]" id="select-tags" multiple >
-                                        @foreach($tags as $tag)
-                                            <option value= "{{$tag->id}}">{{$tag->tag_name}}</option>
-                                        @endforeach
-                                    </select>
+                                    <div class="form-group">
+                                        <label for="tags">Tags</label>
+                                        <select class="form-control" name="tags[]" id="select-tags" multiple >
+                                            @foreach($tags as $tag)
+                                                <option value= "{{$tag->id}}">{{$tag->tag_name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>                              
                             </div>
                             <div class="col-md-12">

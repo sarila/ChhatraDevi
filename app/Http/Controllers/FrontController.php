@@ -205,7 +205,7 @@ class FrontController extends Controller
             Session::forget('cart');
         }
 
-        return view('frontend.shop.cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+        return redirect()->back()->with( ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
 
     // Checkout View

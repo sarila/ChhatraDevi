@@ -17,12 +17,14 @@
 	        </div>
 	    </div>
 	    <!-- End of Page Banner -->
-	 	@if (Session::has('cart'))
+	 	
 	   	 <!--Start Cart Section-->
 	    <section class="cart-section">
 	        <div class="container">
 	            <!--Cart Outer-->
 	            <div class="cart-outer">
+                    @if (Session::has('cart'))
+
 	                <div class="table-column">
 	                    <div class="inner-column">
 	                        <div class="table-outer">
@@ -56,24 +58,6 @@
 	                                    </tbody>
 	                                </table>
 	                            </div>
-	                        
-	                            <div class="coupon-outer">
-	                                <div class="content-box clearfix">
-	                                   <!--  <div class="apply-coupon clearfix">
-	                                        <div class="field-label">Click on a coupon code to apply</div>
-	                                        <div class="form-group clearfix">
-	                                            <input type="text" name="coupon-code" value="" placeholder="Apply Coupon Code">
-	                                        </div>
-	                                        <div class="form-group clearfix">
-	                                            <button type="button" class="button-one cursor-pointer"><span class="btn-title">Apply Now</span></button>
-	                                        </div>
-	                                    </div> -->
-	                                    <div class="link-box">
-	                                    	<!-- <a href="{{route('shop')}}"><button type="button" class="button-one cursor-pointer"><span class="btn-title">Update Cart</span></button></a> -->
-	                                        <a href="{{route('shop')}}" class="button-two cursor-pointer"><span class="btn-title">Continue Shoping</span></a>
-	                                    </div>
-	                                </div>
-	                            </div>
 	                        </div>
 	                    </div>
 	                </div>
@@ -96,24 +80,18 @@
 	                        </div>
 	                    </div>
 	                </div>
+	                @else
+					    <div class="totals-column clearfix">
+							<h3>There are no Items Available in Cart</h3>		                           
+			                 <!-- <div class="link-box"> -->
+			                    <a href="{{route('shop')}}" class="button-two cursor-pointer"><span class="btn-title">Go to Shop</span></a>
+			                <!-- </div> -->
+				        </div>
+			        @endif
 	            </div>
 	        </div>
 	    </section>
-	    <!-- End Cart Section-->
-	    @else
-		    <div class="totals-column clearfix">
-                <div class="inner">
-                    <div class="cart-total">
-						<h3>There are no Items Available in Cart</h3>		                           
-                    </div>
-                </div>
-                 <div class="link-box">
-                    <a href="{{route('shop')}}" class="button-two cursor-pointer"><span class="btn-title">Go to Shop</span></a>
-                </div>
-	        </div>
-        @endif
-	   
-	   
+	    <!-- End Cart Section--> 
 	</div>
 
 @endsection

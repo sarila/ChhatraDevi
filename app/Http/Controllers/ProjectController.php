@@ -7,6 +7,7 @@ use App\Models\Gallery;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -33,8 +34,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $galleries = Gallery::all();
-        $categories = Category::all();
+        $galleries = DB::table('galleries')->get(['id', 'name']);
+        $categories = DB::table('categories')->get(['id', 'category_name']);
         return view('backend.projects.create', compact('galleries', 'categories'));
     }
 

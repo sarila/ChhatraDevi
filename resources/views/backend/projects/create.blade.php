@@ -128,6 +128,27 @@
         });
     </script>
 
+    
+    <!-- JS FOR DATEPICKER -->
+    <script>
+        $( "#datepicker" ).datepicker({
+            format: "mm/dd/yyyy",
+            weekStart: 0,
+            calendarWeeks: true,
+            autoclose: true,
+            todayHighlight: true,
+            rtl: true,
+            orientation: "auto"
+        });
+    </script>
+
+    <!-- SELECT2 FOR TAGS -->
+    <script type="text/javascript">
+        $("#select-tags").select2({
+            tags: true,
+            tokenSeparators: [',', ' ']
+        })
+    </script>
 
     <script>
         function readURL(input){
