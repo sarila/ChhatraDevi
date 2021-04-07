@@ -60,8 +60,13 @@
                                                     <input type="text" id="contact" name="contact" value="" placeholder="">
                                                 </div>
                                                 <!--Form Group-->
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <div class="field-label">Email</div>
+                                                    <input type="text" id="email" name="email" value="" placeholder="">
+                                                </div>
+                                                <!--Form Group-->
                                                 <div class="form-group col-lg-12 col-md-12 col-sm-12 address">
-                                                    <div class="field-label">Address*<sup>*</sup></div>
+                                                    <div class="field-label">Address<sup>*</sup></div>
                                                     <input type="text" id="address" name="address" value="" placeholder="">
                                                 </div>
                                                 <!--Form Group-->

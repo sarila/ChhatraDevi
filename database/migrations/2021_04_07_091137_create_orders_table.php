@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('email')->nullable();
             $table->bigInteger('user_id');
             $table->bigInteger('contact');
             $table->string('address');

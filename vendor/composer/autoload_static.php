@@ -588,6 +588,8 @@ class ComposerStaticInitcc45d1a29a79f1fab7c302fd2aa87cce
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Mail\\DonationMail' => __DIR__ . '/../..' . '/app/Mail/DonationMail.php',
+        'App\\Mail\\OrderPlacedMail' => __DIR__ . '/../..' . '/app/Mail/OrderPlacedMail.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\Cart' => __DIR__ . '/../..' . '/app/Models/Cart.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',

@@ -88,9 +88,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Order Notes</label>
-                                            <textarea rows="5" cols="5" class="form-control editor1" id="editor1">
-                                                {{old('order_note') ?? $order->order_note}}
-                                            </textarea>
+                                            <textarea rows="5" cols="5" class="form-control editor1" name="order_note" id="editor1">{{old('order_note') ?? $order->order_note}}</textarea>
                                         </div>
                                     </div>
                                 </div>

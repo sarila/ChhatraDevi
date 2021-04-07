@@ -78,18 +78,8 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        $this->RequestValidation($request);
-        $order->first_name = $request->first_name;
-        $order->last_name = $request->last_name;
-        $order->contact = $request->contact;
-        $order->address = $request->address;
-        $order->contact = $request->contact;
-        $order->state = $request->state;
-        $order->payment_process = $request->payment_process;
-        $order->order_note = $request->order_note;
-        $order->status = $request->status;
-        // dd($request, $order);
-        $order->save();
+        $this->requestValidation($request);
+        $order->update($request->all());
         Session::flash('success_message', 'Order Status updated Successfully');
         return redirect()->route('orders.index');
     }
@@ -107,7 +97,7 @@ class OrderController extends Controller
         return redirect()->route('orders.index');
     }
 
-    public function RequestValidation(Request $request) {
+    public function requestValidation(Request $request) {
         $rules = [
             'first_name' => 'required',
             'last_name' => 'required',
@@ -122,6 +112,6 @@ class OrderController extends Controller
             'address.required' => 'Address is required',
         ];
 
-        $this->validate($request, $rules, $messages);
+       $this->validate($request, $rules, $messages);
     }
 }

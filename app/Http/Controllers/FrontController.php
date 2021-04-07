@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderPlacedMail;
 use App\Models\Cart;
 use App\Models\Gallery;
 use App\Models\Image as img;
@@ -16,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class FrontController extends Controller
@@ -234,11 +236,13 @@ class FrontController extends Controller
             $order->first_name = $request['first_name'];
             $order->last_name = $request['last_name'];
             $order->contact = $request['contact'];
+            $order->email = $request['email'];
             $order->address = $request['address'];
             $order->state = $request['state'];
             $order->order_note = $request['order_note'];
             $order->user_id = 1;
             $order->save();
+            Mail::to($request->email)->send(new OrderPlacedMail());
             Session::forget('cart');
             Session::flash('success_message', 'Order Placed Sucessfully');
             return redirect()->route('shop');

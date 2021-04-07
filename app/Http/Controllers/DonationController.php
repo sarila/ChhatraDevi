@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\DonationMail;
 use App\Models\Donation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class DonationController extends Controller
@@ -41,6 +43,7 @@ class DonationController extends Controller
         $data = $request->all();
         $donation = new Donation($data);
         $donation->save();
+        Mail::to($request->email)->send(new DonationMail);
         Session::flash('success_message', 'Thankyou for Supporting Us. Your Donation Will be used for good Cause');
         return redirect()->back();
     }
