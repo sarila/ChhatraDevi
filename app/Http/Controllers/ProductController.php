@@ -20,6 +20,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+        Session::put('admin_page', 'product');
         $products = Product::all();
         // dd($products);
         return view('backend.products.index', compact('products'));
@@ -32,6 +33,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        Session::put('admin_page', 'product');
         $pcategories = Pcategory::all();
         $tags = Tag::all();
         return view('backend.products.create', compact('pcategories', 'tags'));
@@ -126,6 +128,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         // $galleries = DB::table('galleries')->where('category_id', $serviceDetail->id)->get();
+        Session::put('admin_page', 'product');
         $images[] = $product->coverimage;
         $galleries = $product->pimages()->get();
         
@@ -145,6 +148,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        Session::put('admin_page', 'product');
         $pcategories = Pcategory::all();
         $tags = Tag::all();
         return view('backend.products.edit', compact('product', 'pcategories', 'tags'));

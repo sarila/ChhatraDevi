@@ -17,6 +17,7 @@ class DonationController extends Controller
      */
     public function index()
     {
+        Session::put('admin_page', 'donation');
         $donations = Donation::latest()->get();
         return view('backend.donations.index', compact('donations'));
     }
@@ -28,6 +29,7 @@ class DonationController extends Controller
      */
     public function create()
     {
+        Session::put('admin_page', 'donation');
         return view('backend.donations.create');
     }
 
@@ -56,6 +58,7 @@ class DonationController extends Controller
      */
     public function show(Donation $donation)
     {
+        Session::put('admin_page', 'donation');
         return view('backend.donations.show', compact('donation'));
     }
 
@@ -67,6 +70,7 @@ class DonationController extends Controller
      */
     public function edit(Donation $donation)
     {
+        Session::put('admin_page', 'donation');
         return view('backend.donations.edit', compact('donation'));
     }
 

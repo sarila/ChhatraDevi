@@ -18,6 +18,7 @@ class NewsController extends Controller
      */
     public function index()
     {
+        Session::put('admin_page', 'news');
         $news = News::all();
         return view('backend.news.index', compact('news'));
     }
@@ -29,6 +30,7 @@ class NewsController extends Controller
      */
     public function create()
     {
+        Session::put('admin_page', 'news');
         return view('backend.news.create');
     }
 
@@ -83,6 +85,7 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
+        Session::put('admin_page', 'news');
         return view('backend.news.show', compact('news'));
     }
 
@@ -94,6 +97,7 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
+        Session::put('admin_page', 'news');
         return view('backend.news.edit', compact('news'));
     }
 

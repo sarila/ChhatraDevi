@@ -18,6 +18,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        Session::put('admin_page', 'category');
         $categories = Category::all();
         return view('backend.categories.index', compact('categories'));
     }
@@ -29,6 +30,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        Session::put('admin_page', 'category');
         return view('backend.categories.create');
     }
 
@@ -80,6 +82,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
+        Session::put('admin_page', 'category');
         return view('backend.categories.show', compact('category'));
     }
 
@@ -91,6 +94,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        Session::put('admin_page', 'category');
         return view('backend.categories.edit', compact('category'));
     }
 

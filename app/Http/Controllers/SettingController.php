@@ -14,6 +14,7 @@ use Intervention\Image\Facades\Image;
 class SettingController extends Controller
 {
     public function index(){
+        Session::put('admin_page', 'setting');
     	$setting = Setting::first();
     	return view('backend.admin.setting', compact('setting'));
     }
@@ -68,6 +69,7 @@ class SettingController extends Controller
     }
 
     public function theme(){
+        Session::put('admin_page', 'theme');
         $theme = Theme::first();
         return view('backend.admin.theme', compact('theme'));
     }
@@ -163,6 +165,7 @@ class SettingController extends Controller
     }
 
     public function social(){
+        Session::put('admin_page', 'social');
         $setting = Setting::first();
         return view ('backend.admin.social', compact('setting'));
 

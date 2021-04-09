@@ -18,6 +18,7 @@ class SliderController extends Controller
      */
     public function index()
     {
+        Session::put('admin_page', 'slider');
         $sliders = Slider::all();
         return view('backend.sliders.index', compact('sliders'));
     }
@@ -29,6 +30,7 @@ class SliderController extends Controller
      */
     public function create()
     {
+        Session::put('admin_page', 'slider');
         return view('backend.sliders.create');
     }
 
@@ -76,6 +78,7 @@ class SliderController extends Controller
      */
     public function show(Slider $slider)
     {
+        Session::put('admin_page', 'slider');
         return view('backend.sliders.show', compact('slider'));
     }
 
@@ -87,6 +90,7 @@ class SliderController extends Controller
      */
     public function edit(Slider $slider)
     {
+        Session::put('admin_page', 'slider');
         return view('backend.sliders.edit', compact('slider'));
     }
 

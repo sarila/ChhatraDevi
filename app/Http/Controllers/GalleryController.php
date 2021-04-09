@@ -20,6 +20,7 @@ class GalleryController extends Controller
      */
     public function index()
     {
+        Session::put('admin_page', 'gallery');
         $galleries = Gallery::all();
         return view('backend.galleries.index', compact('galleries'));
     }
@@ -31,6 +32,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
+        Session::put('admin_page', 'gallery');
         $categories = Category::all();
         return view('backend.galleries.create', compact('categories'));
     }
@@ -84,6 +86,7 @@ class GalleryController extends Controller
      */
     public function show(Gallery $gallery)
     {
+        Session::put('admin_page', 'gallery');
         $images = $gallery->images()->with('images')->pluck('image');
         // dd($images);
         return view('backend.galleries.show', compact('gallery', 'images'));
@@ -97,6 +100,7 @@ class GalleryController extends Controller
      */
     public function edit(Gallery $gallery)
     {
+        Session::put('admin_page', 'gallery');
         return view('backend.galleries.edit', compact('gallery'));
     }
 

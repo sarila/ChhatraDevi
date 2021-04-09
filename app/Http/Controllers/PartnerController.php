@@ -18,6 +18,7 @@ class PartnerController extends Controller
      */
     public function index()
     {
+        Session::put('admin_page', 'partner');
         $partners = Partner::all();
         return view('backend.partners.index', compact('partners'));
     }
@@ -29,6 +30,7 @@ class PartnerController extends Controller
      */
     public function create()
     {
+        Session::put('admin_page', 'partner');
         return view('backend.partners.create');
     }
 
@@ -80,6 +82,7 @@ class PartnerController extends Controller
      */
     public function show(Partner $partner)
     {
+        Session::put('admin_page', 'partner');
         //
     }
 
@@ -91,6 +94,7 @@ class PartnerController extends Controller
      */
     public function edit(Partner $partner)
     {
+        Session::put('admin_page', 'partner');
         return view('backend.partners.edit', compact('partner'));
     }
 

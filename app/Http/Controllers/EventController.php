@@ -21,6 +21,7 @@ class EventController extends Controller
      */
     public function index()
     {
+        Session::put('admin_page', 'event');
         $events = Event::all();
         return view('backend.events.index', compact('events'));
     }
@@ -32,6 +33,7 @@ class EventController extends Controller
      */
     public function create()
     {
+        Session::put('admin_page', 'event');
         $galleries = Gallery::all();
         $categories = Category::all();
         return view('backend.events.create', compact('galleries', 'categories'));
@@ -94,6 +96,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
+        Session::put('admin_page', 'event');
         $images = $event->gallery->images->pluck('image');
         // dd($image);
         return view('backend.events.show', compact('event', 'images'));
@@ -107,6 +110,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
+        Session::put('admin_page', 'event');
         $galleries = Gallery::all();
         $categories = Category::all();
         return view('backend.events.edit', compact('event', 'galleries', 'categories'));

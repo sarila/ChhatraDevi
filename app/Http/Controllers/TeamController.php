@@ -19,6 +19,7 @@ class TeamController extends Controller
      */
     public function index()
     {
+        Session::put('admin_page', 'team');
         $teams = Team::all();
         return view('backend.teams.index', compact('teams'));
     }
@@ -30,6 +31,7 @@ class TeamController extends Controller
      */
     public function create()
     {
+        Session::put('admin_page', 'team');
         return view('backend.teams.create');
     }
 
@@ -85,6 +87,7 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
+        Session::put('admin_page', 'team');
         return view('backend.teams.show', compact('team'));
     }
 
@@ -96,6 +99,7 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
+        Session::put('admin_page', 'team');
         return view('backend.teams.edit', compact('team'));
     }
 

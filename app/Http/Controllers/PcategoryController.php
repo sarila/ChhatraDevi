@@ -16,6 +16,7 @@ class PcategoryController extends Controller
      */
     public function index()
     {
+        Session::put('admin_page', 'pcategory');
         $categories = Pcategory::all();
         return view('backend.shop.product-categories.index', compact('categories'));
     }
@@ -27,6 +28,7 @@ class PcategoryController extends Controller
      */
     public function create()
     {
+        Session::put('admin_page', 'pcategory');
         return view('backend.shop.product-categories.create');
     }
 
@@ -60,6 +62,7 @@ class PcategoryController extends Controller
      */
     public function show(Pcategory $pcategory)
     {
+        Session::put('admin_page', 'pcategory');
         //
     }
 
@@ -71,6 +74,7 @@ class PcategoryController extends Controller
      */
     public function edit(Pcategory $pcategory)
     {
+        Session::put('admin_page', 'pcategory');
         return view('backend.shop.product-categories.edit', compact('pcategory'));
     }
 

@@ -15,6 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
+        Session::put('admin_page', 'order');
         $orders = Order::latest()->get();
         $orders->transform(function($order, $key) {
             $order->cart = unserialize($order->cart);
@@ -53,6 +54,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
+        Session::put('admin_page', 'order');
         $order->cart = unserialize($order->cart);
         return view('backend.orders.show', compact('order'));
     }
@@ -65,6 +67,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
+        Session::put('admin_page', 'order');
         $order->cart = unserialize($order->cart);
         return view('backend.orders.edit', compact('order'));
     }

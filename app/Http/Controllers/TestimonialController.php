@@ -20,6 +20,7 @@ class TestimonialController extends Controller
      */
     public function index()
     {
+        Session::put('admin_page', 'testimonial');
         $testimonials = Testimonial::all();
         return view('backend.testimonials.index', compact('testimonials'));
     }
@@ -31,6 +32,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
+        Session::put('admin_page', 'testimonial');
         return view('backend.testimonials.create');
     }
 
@@ -82,6 +84,7 @@ class TestimonialController extends Controller
      */
     public function show(Testimonial $testimonial)
     {
+        Session::put('admin_page', 'testimonial');
         //
     }
 
@@ -93,6 +96,7 @@ class TestimonialController extends Controller
      */
     public function edit(Testimonial $testimonial)
     {
+        Session::put('admin_page', 'testimonial');
         return view('backend.testimonials.edit', compact('testimonial'));
     }
 

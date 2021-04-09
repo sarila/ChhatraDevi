@@ -15,6 +15,8 @@ class AdminController extends Controller
 {
     public function changePassword()
     {
+        Session::put('admin_page', 'password');
+        // dd(Session('admin_page'));
     	$user = Admin::where('email', Auth::guard('admin')->user()->email)->first();
     	return view('backend.admin.changePassword', compact('user'));
     }

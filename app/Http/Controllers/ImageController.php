@@ -19,6 +19,7 @@ class ImageController extends Controller
      */
     public function index()
     {
+        Session::put('admin_page', 'image');
         $images = img::all();
         return view('backend.images.index', compact('images'));
     }
@@ -30,6 +31,7 @@ class ImageController extends Controller
      */
     public function create()
     {
+        Session::put('admin_page', 'image');
         $galleries = Gallery::latest()->get();
         return view('backend.images.create', compact('galleries'));
     }
@@ -78,6 +80,7 @@ class ImageController extends Controller
      */
     public function show(Image $image)
     {
+        Session::put('admin_page', 'image');
         //
     }
 
@@ -89,6 +92,7 @@ class ImageController extends Controller
      */
     public function edit(Image $image)
     {
+        Session::put('admin_page', 'image');
         //
     }
 

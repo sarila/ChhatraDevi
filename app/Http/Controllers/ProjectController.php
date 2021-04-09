@@ -22,6 +22,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        Session::put('admin_page', 'project');
         $projects = Project::with('category', 'gallery')->get();
         // dd($projects);
         return view('backend.projects.index', compact('projects'));
@@ -34,6 +35,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        Session::put('admin_page', 'project');
         $galleries = DB::table('galleries')->get(['id', 'name']);
         $categories = DB::table('categories')->get(['id', 'category_name']);
         return view('backend.projects.create', compact('galleries', 'categories'));
@@ -109,6 +111,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+        Session::put('admin_page', 'project');
         return view('backend.projects.show', compact('project'));
     }
 
@@ -120,6 +123,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        Session::put('admin_page', 'project');
         $galleries = Gallery::all();
         $categories = Category::all();
         return view('backend.projects.edit', compact('project', 'galleries', 'categories'));
